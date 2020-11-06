@@ -184,3 +184,25 @@ body:before{
 
     
     }
+
+    /*------- FOOTER -------*/
+
+    #footer-link{
+        text-decoration: none;
+    }
+
+    #footer-utp-logo{
+        height:70px; margin-top: 20px;
+    }
+
+    #footer-left-links{
+        font-size:12px; margin-left:6px;
+    }
+
+    #footer-right-links{
+        font-size:12px; border-right: solid 1px rgb(201, 195, 195);
+    }
+
+    #footer-social{
+        height:20px;
+    }

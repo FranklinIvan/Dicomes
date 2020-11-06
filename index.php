@@ -10,38 +10,57 @@
   <!-- Icon UTP -->
   <link rel="shortcut icon" href="https://utp.ac.pa/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon" />
   <!-- Css Rocio -->
+  <title>LoginRegistro</title>
+<link rel="stylesheet" href="css/estilos.css">
 </head>
 
 <body>
-  <div class="container">
-    <h4 class="text-center display-4 mt-2 title">Iniciar Sesión</h4>
-    <hr>
-    <!-- Alerta de mensaje -->
-    <p class="text-danger text-center"> <?php if (isset($_GET['msg'])) echo $_GET['msg']; ?> </p>
-    <div class="container">
-      <div class="mx-auto w-50">
-        
-        <form action="admin/procesarLogin.php" method="POST">
-          <div class="form-group">
-            <label class="font-weight-bold">Correo</label>
-            <input type="email" class="form-control font-italic" name="correo" placeholder="Ejemplo@ejemplo.com" required>
-          </div>
-          <div class="form-group">
-            <label class="font-weight-bold">Contraseña</label>
-            <input type="password" class="form-control font-italic" name="contrasena" placeholder="***********" required>
-          </div>
+<div class="contenedor-form">
 
-          <button type="submit" name="iniciar" class="btn btn-block btn-dark">Iniciar Sesión</button>
-          <button type="reset" class="btn btn-block btn-outline-danger">Cancelar</button>
-        </form>
+        <div id="crear" class="toggle">
+            <span>Crear Cuenta</span>
 
-        <small class="text-muted">Ingresa a nuestra página y báilala como lisa.</small>
-        <hr>
-        <p>¿No tienes una cuenta? <a class="font-weight-bold text-dark" href="views/crearUsuario.php" style="text-decoration: none;">Regístrate</a></p>
-      </div>
+        </div>
+        <h2>DICOMES</h2>
+        <h6>Sistema para comunicación y prensa para eventos en la UTP.</h6>
+        <div id="login" class="formulario">
+            <img src="images/logo_utp.jpg" class="logo">
+            
+            <h2>Iniciar Sesión</h2>
+            <form action="admin/iniciar.php" method="POST">
+                <input type="email" placeholder="&#128272; Correo" name="email" required>
+                <input type="password" placeholder="&#128272; Contraseña" name="password" required>
+                <input type="submit" value="Iniciar Sesión">
+
+            </form>
+
+        </div>
+        <div id="iniciar" class="toggle-in">
+            <span>LOGIN</span>
+
+        </div>
+        <div id="registro" class="formulario">
+            <img src="img/logo_utp.jpg" class="logo" alt="">
+            <h2>Crear Usuario</h2>
+            <form action="admin/procesarUsuario.php" method="POST">
+                <input type="text" placeholder="Nombre"  name="nombre" required>
+                <input type="text" placeholder="Apellido" name="apellido" required>
+                <input type="email" placeholder="Correo" name="email" required>
+                <input type="password" placeholder="Contraseña" name="password1" required>
+                <input type="password" placeholder="Repetir Contraseña" name="password2" required>
+                <input type="submit" value="Registrarse">
+
+            </form>
+
+        </div>
+        <div class="reset-password">
+            <a href="#">¿Olvidó su contraseña?</a>
+        </div>
+
+
     </div>
-
-  </div>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/form.js"></script>
 
 </body>
 

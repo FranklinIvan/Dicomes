@@ -42,7 +42,7 @@
 
         </div>
         <div id="registro" class="formulario">
-            <img src="img/logo_utp.jpg" class="logo" alt="">
+            <img src="images/logo_utp.jpg" class="logo" alt="">
             <h2>Crear Usuario</h2>
             <form action="admin/procesarUsuario.php" method="POST">
                 <input type="text" placeholder="Nombre"  name="nombre" required>
@@ -64,126 +64,7 @@
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/form.js"></script>
 
-    <!---------- Footer ------->
-    <footer class="page-footer font-smal pt-5 text-white" style="background-color:rgb(81,3,79); padding-bottom: 20px;">
-        <div class="container-fluid text-center text-md-left">
-  
-        <!-- Grid row -->
-        <div class="row">
-
-        <div class="col-lg-1 col-md-1  mb-md-0 mb-3"></div>
-        <!-- Grid column -->
-        <div class=" col-lg-1 col-md-2 col-sm-12 mt-md-0 mb-3">
-            <img src="images/logoutp3.png" class="img-fluid" id="footer-utp-logo">
-        </div>
-        <!-- Grid column -->
-
-        <!-- Grid column -->
-        <div class="col-lg-4 col-md-3 col-sm-12 mt-md-0 mt-3">
-          <!-- Contenido izquierdo -->
-          <span style="font-size:12px;">
-            Universidad Tecnológica de Panamá - 2020<br>
-            Dirección: Avenida Universidad Tecnológica de Panamá, Vía Puente Centenario,<br>
-            Campus Metropolitano Víctor Levi Sasso. <br>
-            Teléfono. (507) 560-3000 <br>
-            Correo electrónico: buzondesugerencias@utp.ac.pa <br>
-            Políticas de Privacidad
-            </span>
-        </div>
-        <!-- Grid column -->
-  
-        <hr class="clearfix w-100 d-md-none pb-3">
-  
-        <div class="col-lg-2 col-md-1 mb-md-0 mb-3"></div>
-
-        <!-- Grid column -->
-        <!-- Links lado izquierdo -->
-        <div class="col-lg-1 col-md-2 mb-md-0 mb-3" id="footer-right-links">
-          <ul class="list-unstyled">
-            <li>
-              <a href="http://matricula.utp.ac.pa/" target="_blank" class="text-white" id="footer-link">Matrícula UTP</a>
-            </li>
-            <li>
-              <a href="http://correo.utp.ac.pa/" target="_blank" class="text-white">Correo UTP</a>
-            </li>
-            <li>
-              <a href="http://www.sistemadebibliotecas.utp.ac.pa/" target="_blank" class="text-white">Biblioteca UTP</a>
-            </li>
-            <li>
-              <a href="https://utp.ac.pa/introduccion-la-seccion-de-publicaciones" target="_blank" class="text-white">Publicaciones</a>
-            </li>
-            <li>
-                <a href="https://utp.ac.pa/noticias" target="_blank" class="text-white">Sala de Prensa</a>
-            </li>
-            <li>
-                <a href="https://utp.ac.pa/bolsa-de-trabajo-0" target="_blank" class="text-white">Bolsa de Trabajo</a>
-            </li>
-            <li>
-                <a href="https://utp.ac.pa/introduccion-acreditacion" target="_blank" class="text-white">Acreditación</a>
-            </li>
-            <li>
-                <a href="http://centrodelenguas.utp.ac.pa/" target="_blank" class="text-white">Centro de Lenguas</a>
-            </li>
-          </ul>
-  
-        </div>
-        <!-- /links lado izquierdo -->
-        <!-- Grid column -->
-  
-        <!-- Grid column -->
-        <!-- Links lado derecho -->
-        <div class="col-lg-2 col-md-2 mb-md-0 mb-3" id="footer-left-links">
-          <ul class="list-unstyled">
-            <li>
-              <a href="https://utp.ac.pa/mapas-de-ubicacion" target="_blank" class="text-white">Mapa de Ubicación</a>
-            </li>
-            <li>
-              <a href="https://utp.ac.pa/mapa-del-sitio" target="_blank" class="text-white">Mapa del Sitio</a>
-            </li>
-            <li>
-              <a href="https://utp.ac.pa/directorio-telefonico" target="_blank" class="text-white">Directorio Telefónico</a>
-            </li>
-            <li>
-              <a href="https://utp.ac.pa/contactenos" target="_blank" class="text-white">Contáctenos</a>
-            </li>
-            <li>
-                <a href="https://utp.ac.pa/identidad-visual-de-la-utp" target="_blank" class="text-white">Identidad Visual</a>
-            </li>
-          </ul>
-            <!--Iconos de redes sociales-->
-            <!-- Grid column -->
-            <div class="col-md-12 py-5">
-                <div class="mb-5 flex-center">
-                <a href="https://www.facebook.com/paginautp" target="_blank" rel="noopener noreferrer" title="UTP en Facebook">
-                    <img src="images/SocialMediaIcons/facebook.png" id="footer-social" >
-                </a>
-
-                <a href="https://twitter.com/utppanama" target="_blank" rel="noopener noreferrer" title="UTP en Twitter">
-                    <img src="images/SocialMediaIcons/twitter.png"  id="footer-social" >
-                </a>
-
-                <a href="https://www.youtube.com/user/UTPPanama" target="_blank" rel="noopener noreferrer" title="UTP en Youtube">
-                    <img src="images/SocialMediaIcons/youtube.png" id="footer-social">
-                </a>
-
-                <a href="https://www.instagram.com/utppanama" target="_blank" rel="noopener noreferrer" title="UTP en Instagram">
-                    <img src="images/SocialMediaIcons/instagram.png" id="footer-social">
-                </a>
-
-                </div>
-            </div>
-            <!-- Grid column -->
-            <!--/Iconos de redes sociales-->
-
-        </div>
-        <!-- /links lado izquierdo -->
-        <!-- Grid column -->
-  
-      </div>
-      <!-- Grid row -->
-  </footer>
-  <!----- /Footer ----->
-
+    
 </body>
 
 </html>

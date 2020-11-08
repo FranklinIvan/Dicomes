@@ -1,5 +1,5 @@
 <?php
-include('../admin/verificarSesion.php');
+//include('../admin/verificarSesion.php');
 ?>
 
 <!DOCTYPE html>
@@ -212,8 +212,8 @@ include('../admin/verificarSesion.php');
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-dark small"><?php echo $nombre . " " . $apellido; ?></span>
-                            <img class="img-profile rounded-circle" src="../images/imagesDB/<?php echo $foto; ?>">
+                            <span class="mr-2 d-none d-lg-inline text-dark small">Admin UTP</span>
+                            <img class="img-profile rounded-circle" src="../images/imagesDB/6.png">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

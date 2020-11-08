@@ -93,5 +93,5 @@
 
 </html>
 <?php
-include('footer.html');
+include('footerPanel.html');
 ?>

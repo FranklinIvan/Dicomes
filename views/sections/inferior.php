@@ -23,7 +23,7 @@
             <div class="modal-body">¿Quieres terminar con la sesión actual de su cuenta?</div>
 
             <div class="modal-footer">
-                <a class="btn text-light" style="background-color: #b9181f" href="../admin/procesarLogout.php">Salir</a>
+                <a class="btn text-light" style="background-color: #b9181f" href="#">Salir</a>
                 <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
             </div>
 

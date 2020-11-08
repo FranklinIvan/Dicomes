@@ -28,16 +28,16 @@ require('../views/sections/superior.php');
     <!-- Dates -->
     <div class="modal-body">
         <div class="text-center">
-            <img class="rounded-circle" src="../images/imagesDB/<?php echo $foto; ?>" alt="Fotografía" style="width: 150px; height: 150px">
+            <img class="rounded-circle" src="../images/imagesDB/6.png" alt="Fotografía" style="width: 150px; height: 150px">
         </div>
         <div class="form-group">
-            <label> <span class="font-weight-bold">Nombre:</span> <?php echo $nombre; ?> </label>
+            <label> <span class="font-weight-bold">Nombre:</span> Admin </label>
         </div>
         <div class="form-group">
-            <label> <span class="font-weight-bold">Apellido:</span> <?php echo $apellido; ?> </label>
+            <label> <span class="font-weight-bold">Apellido:</span> UTP </label>
         </div>
         <div class="form-group">
-            <label> <span class="font-weight-bold">Correo:</span> <?php echo $correo; ?> </label>
+            <label> <span class="font-weight-bold">Correo:</span> admin@utp.ac.pa </label>
         </div>
         <hr>
     </div>
@@ -57,15 +57,15 @@ require('../views/sections/superior.php');
             <div id="mostrarEditar" style="display: none;">
                 <div class="form-group">
                     <label class="font-weight-bold">Nombre</label>
-                    <input type="text" class="form-control" name="nombre" value="<?php echo $nombre; ?>" required>
+                    <input type="text" class="form-control" name="nombre" value="Admin" required>
                 </div>
                 <div class="form-group">
                     <label class="font-weight-bold">Apellido</label>
-                    <input type="text" class="form-control" name="apellido" value="<?php echo $apellido; ?>" required>
+                    <input type="text" class="form-control" name="apellido" value="UTP" required>
                 </div>
                 <div class="form-group">
                     <label class="font-weight-bold">Correo</label>
-                    <input type="email" class="form-control" name="correo" value="<?php echo $correo; ?>" required>
+                    <input type="email" class="form-control" name="correo" value="admin@utp.ac.pa" required>
                 </div>
 
                 <!-- <div class="form-group">

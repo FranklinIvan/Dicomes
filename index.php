@@ -29,7 +29,7 @@
             <img src="images/logo_utp.jpg" class="logo">
             
             <h2>Iniciar Sesión</h2>
-            <form action="admin/iniciar.php" method="POST">
+            <form action="views/bienvenido.php" method="POST">
                 <input type="email" placeholder="&#128272; Correo" name="email" required>
                 <input type="password" placeholder="&#128272; Contraseña" name="password" required>
                 <input type="submit" value="Iniciar Sesión">

@@ -111,10 +111,6 @@ require('../views/sections/superior.php');
           <label class=" text-muted">Antigua Fecha del Evento:</label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Nueva Descripción:</label><br>
-          <label class=" text-muted">Antigua Descripción:</label>
-        </div>
-        <div class="form-group">
           <label class="font-weight-bold">Nueva Hora Inicio:</label><br>
           <label class=" text-muted">Antigua Hora Inicio:</label>
         </div>
@@ -123,8 +119,12 @@ require('../views/sections/superior.php');
           <label class=" text-muted">Antigua Hora Fin:</label>
         </div>
         <div class="form-group">
+          <label class="font-weight-bold">Nueva Descripción:</label><br>
+          <label class=" text-muted">Antigua Descripción:</label>
+        </div>
+        <div class="form-group">
           <label class="font-weight-bold">Motivo de la aprovación o rechazo:</label><br>
-          <textarea name="descripcion" id="" cols="57" rows=8></textarea>
+          <textarea name="descripcion" id="" cols="57" rows=5></textarea>
         </div>
 
       </div>

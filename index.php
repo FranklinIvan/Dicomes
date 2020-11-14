@@ -12,7 +12,7 @@
   <!-- Css Rocio -->
   <title>LoginRegistro</title>
 <link rel="stylesheet" href="css/estilos.css">
-
+<!-- Css Hi Rocio -->
 
 </head>
 

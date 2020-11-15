@@ -29,11 +29,14 @@
             <img src="images/logo_utp.jpg" class="logo">
             
             <h2>Iniciar Sesión</h2>
+            <?php if(!empty($_REQUEST['msg']))
+                echo "<span class='text-danger font-weight-bold'>".$_GET['msg']."</span>";
+            ?>
             <?php if(!empty($_REQUEST['registroMensaje']))
                 echo "<span class='text-danger font-weight-bold'>".$_GET['registroMensaje']."</span>";
             ?>
 
-            <form action="views/bienvenido.php" method="POST">
+            <form action="admin/procesarLogin.php" method="POST">
                 <input type="email" placeholder="&#128272; Correo" name="email" required>
                 <input type="password" placeholder="&#128272; Contraseña" name="password" required>
                 <input type="submit" value="Iniciar Sesión">
@@ -42,13 +45,13 @@
 
         </div>
         <div id="iniciar" class="toggle-in">
-            <span>LOGIN</span>
+            <span>Inicar Sesión</span>
 
         </div>
         <div id="registro" class="formulario">
             <!--<img src="images/logo_utp.jpg" class="logo" alt="">-->
             <h2>Crear Usuario</h2>
-            <form action="admin/procesarUsuario.php" method="GET">
+            <form action="admin/procesarUsuario.php" method="POST">
                 <input type="text" placeholder="Nombre"  name="nombre" required>
                 <input type="text" placeholder="Apellido" name="apellido" required>
                 <input type="text" placeholder="Cédula"  name="cedula" required>

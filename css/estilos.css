@@ -185,6 +185,10 @@ body:before{
     
     }
 
+    select{
+        margin-bottom: 20px;
+    }
+
     /*------- FOOTER -------*/
 
     #footer-link{

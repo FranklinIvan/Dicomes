@@ -1,54 +1,39 @@
-<?php
-    //Conexión BD
-    require('conexionDB.php');
+<?php 
+include("conexionDB.php");
+include("enviarEmail.php");
 
-    if(isset($_POST['registro'])){
-        try {
-            $sql = "INSERT INTO usuario (nombre, apellido, correo, password, foto) VALUES (:nombre, :apellido, :correo, :password, :foto)";
-            $stmt = $conex->prepare($sql);
-            $stmt->bindParam(':nombre',$_POST['nombre']);
-            $stmt->bindParam(':apellido',$_POST['apellido']);
-            $stmt->bindParam(':correo',$_POST['correo']);
-            $contra = md5($_POST['contrasena']);
-            $stmt->bindParam(':password',$contra);
-            $foto = "profile.png";
-            $stmt->bindParam(':foto',$foto);
+//Validando que pase por el registro
+if(isset($_REQUEST['email']) && isset($_REQUEST['password1'])){
 
-            if($stmt->execute() == true){
-                ?>
-                    <div class="alert alert-success alert-dismissible fade show">
-                        <span>¡Te has registrado correctamente!</span>
-                        <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
-                        </button>
-                    </div>
-                <?php
-            }else{
-                ?>
-                    <div class="alert alert-danger alert-dismissible fade show">
-                        <span>¡Ups, ha ocurrido un error!</span>
-                        <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
-                        </button>
-                    </div>
-                <?php
-            }
-        } catch (PDOException $e) {
-            $error = $stmt->errorInfo();
-            //echo var_dump($error);
-            if($error[1] == 1062){
-                ?>
-                    <div class="alert alert-danger alert-dismissible fade show">
-                        <span>El correo que ha ingresado, ya existe.</span>
-                        <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
-                        </button>
-                    </div>
-                <?php
-            }
+    $cedula = $_REQUEST['cedula'];
+    $nombre = $_REQUEST['nombre'];
+    $apellido = $_REQUEST['apellido'];
+    $correo = $_REQUEST['email'];
+    $pass = md5($_REQUEST['password1']);
+    $sede = $_REQUEST['sede'];
+    $foto = 'default.jpg';
+    $activacion = 0;
+    $hash= md5(rand(0,10000));
+
+    try{
+        $sql = "INSERT INTO cliente (cedula, nombre, apellido, correo, contrasena, sede,hash,activacion) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conex->prepare($sql);
+        if($stmt->execute([$cedula,$nombre, $apellido,$correo, $pass, $sede,$hash, $activacion])){
+            echo '<meta http-equiv="refresh" content="0; url= ../index.php?mensaje="Cuenta creada">';
+            enviarActivacion($correo,$hash,$nombre,$apellido); //Enviar link para activar cuenta
+        }
+        
+    }catch(PDOException $e ){
+        if($e->getCode() == 23000){
+            header('location: ../index.php?registroMensaje=Email no disponible');
+            exit;
         }
     }
+}//Si no ha pasado por el registro....
+else{
+    echo '<meta http-equiv="refresh" content="0; url= ../index.php">';
+}
+
 
 ?>
-
-<!-- Bootstrap 4 Scripts -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>

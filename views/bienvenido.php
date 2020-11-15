@@ -30,12 +30,13 @@ require('../views/sections/superior.php');
         },
 
         dateClick: function(info) {
+          $('#fecha').val(info.dateStr);
           $('#dayModal').modal();
           console.log(info);
-          /* calendar.addEvent({
+          calendar.addEvent({
             title:"Evento x",
             date:info.dateStr
-          }); */
+          });
 
           /* alert('Date: ' + info.dateStr);
           alert('Resource ID: ' + info.resource.id); */
@@ -81,6 +82,13 @@ require('../views/sections/superior.php');
       });
       calendar.setOption('locale', 'es');
       calendar.render();
+
+      function recolectarDatosGUI(method){
+        nuevoEvento={
+          
+        }
+      }
+
     });
   </script>
 
@@ -103,13 +111,28 @@ require('../views/sections/superior.php');
             <label> <span class="font-weight-bold">De:</span> Fial</label>
           </div>
           <div class="form-group">
-            <label> <span class="font-weight-bold">Fecha:</span> 14/10/2025</label>
+            <label> <span class="font-weight-bold">Fecha:</span>  <input id="fecha" disabled aria-label="Default" aria-describedby="inputGroup-sizing-default"> </label>
           </div>
           <div class="form-group">
             <label> <span class="font-weight-bold">Ubicación:</span> cha en mi casa loco</label>
           </div>
           <div class="form-group">
-            <label class="font-weight-bold">Descripción:</label><br>
+            <label> <span class="font-weight-bold">Hora inicio:</span> 9:00 am</label>
+          </div>
+          <div class="form-group">
+            <label> <span class="font-weight-bold">Hora final:</span> 3:00 pm</label>
+          </div>
+          <div class="form-group">
+            <label>  <span class="font-weight-bold">Tipo de Servicio: </span> Privado</label>
+          </div>
+          <div class="form-group">
+          <label>  <span class="font-weight-bold">Tipo de Evento: </span> Graduación</label>
+          </div>
+          <div class="form-group">
+          <label>  <span class="font-weight-bold">Cantidad de Personas: </span> 14</label>
+          </div>
+          <div class="form-group">
+          <label>  <span class="font-weight-bold">Descripción: </span> ete setch</label>
           </div>
 
         </div>

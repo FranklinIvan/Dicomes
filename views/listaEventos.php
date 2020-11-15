@@ -87,25 +87,31 @@ require('../views/sections/superior.php');
       <div class="modal-body">
 
         <div class="form-group">
-          <label class="font-weight-bold">Solicitante:</label>
+          <label> <span class="font-weight-bold">De:</span> </label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Correo:</label>
+          <label> <span class="font-weight-bold">Fecha:</span> </label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Ubicación:</label>
+          <label> <span class="font-weight-bold">Ubicación:</span> </label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Fecha del Evento:</label>
+          <label> <span class="font-weight-bold">Hora inicio:</span> </label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Hora Inicio:</label>
+          <label> <span class="font-weight-bold">Hora final:</span> </label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Hora Fin:</label>
+          <label> <span class="font-weight-bold">Tipo de Servicio: </span> </label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Descripción:</label>
+          <label> <span class="font-weight-bold">Tipo de Evento: </span> </label>
+        </div>
+        <div class="form-group">
+          <label> <span class="font-weight-bold">Cantidad de Personas: </span> </label>
+        </div>
+        <div class="form-group">
+          <label> <span class="font-weight-bold">Descripción: </span> </label>
         </div>
 
       </div>
@@ -131,21 +137,29 @@ require('../views/sections/superior.php');
       <div class="modal-body">
 
         <div class="form-group">
-          <label class="font-weight-bold">Fecha</label>
+          <label class="font-weight-bold">Fecha:</label>
           <input type="date" class="form-control font-italic" name="fecha" placeholder="fecha..." required>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Ubicación</label>
+          <label class="font-weight-bold">Ubicación:</label>
           <input type="text" class="form-control font-italic" name="ubicacion" placeholder="ubicación..." required>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Descripción</label><br>
-          <textarea name="descripcion" id="" cols="57" rows=8></textarea>
+          <label class="font-weight-bold">Hora Inicial:</label>
+          <input type="time" class="form-control font-italic" name="horaInicial" placeholder="hora inicial..." required>
         </div>
         <div class="form-group">
+          <label class="font-weight-bold">Hora Final:</label>
+          <input type="time" class="form-control font-italic" name="horaFinal" placeholder="hora final..." required>
+        </div>
+        <div class="form-group">
+          <label class="font-weight-bold">Descripción:</label><br>
+          <textarea name="descripcion" id="" cols="57" rows=5></textarea>
+        </div>
+        <!-- <div class="form-group">
           <label class="font-weight-bold">Color</label>
           <input type="color" class="form-control font-italic" name="color" placeholder="color..." required>
-        </div>
+        </div> -->
 
       </div>
       <div class="modal-footer">

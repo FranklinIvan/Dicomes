@@ -98,25 +98,31 @@ require('../views/sections/superior.php');
       <div class="modal-body">
 
         <div class="form-group">
-          <label class="font-weight-bold">Solicitante:</label>
+          <label> <span class="font-weight-bold">De:</span> </label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Correo:</label>
+          <label> <span class="font-weight-bold">Fecha:</span> </label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Ubicación:</label><br>
+          <label> <span class="font-weight-bold">Ubicación:</span> </label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Fecha del Evento:</label><br>
+          <label> <span class="font-weight-bold">Hora inicio:</span> </label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Hora Inicio:</label><br>
+          <label> <span class="font-weight-bold">Hora final:</span> </label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Hora Fin:</label><br>
+          <label> <span class="font-weight-bold">Tipo de Servicio: </span> </label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Descripción:</label><br>
+          <label> <span class="font-weight-bold">Tipo de Evento: </span> </label>
+        </div>
+        <div class="form-group">
+          <label> <span class="font-weight-bold">Cantidad de Personas: </span> </label>
+        </div>
+        <div class="form-group">
+          <label> <span class="font-weight-bold">Descripción: </span> </label>
         </div>
 
       </div>

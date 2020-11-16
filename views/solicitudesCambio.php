@@ -1,11 +1,21 @@
 <?php
+require('../admin/conexionDB.php');
 require('../views/sections/superior.php');
+$cambios = $conex->query("SELECT * FROM solicitudActualizar");
+$contador = 0;
 ?>
 
 <!-- Main Content -->
 <div class="container text-gray-900">
 
   <h2>Solicitudes de Cambio</h2><br>
+  <?php if (isset($_REQUEST['msg'])) { ?>
+    <div class="alert alert-success alert-dismissible fade show">
+      <h5><?php echo $_REQUEST['msg']; ?></h5>
+      <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
+      </button>
+    </div>
+  <?php }?>
 
   <!-- Table of Users DB -->
   <div class="card shadow mb-4">
@@ -26,24 +36,31 @@ require('../views/sections/superior.php');
             </tr>
           </thead>
           <tbody class="text-gray-900">
+            <?php foreach($cambios as $fila){ ?>
             <tr>
-              <td role="button" data-toggle="modal" data-target="#ModalInfo"> <i class="fas fa-search fa-fw"></i> </td>
-              <td>29/11/20</td>
-              <td>Franklin Iván</td>
-              <td>Mira, te voy a decir algo, pero sólo te lo voy a decir una sola vez ¿ok?, cha el barca está mal loco y eso cómo me molesta, ya era eso jaja.</td>
+              <td id="<?php echo $contador?>" role="button" data-toggle="modal" data-target="#ModalInfo" onclick="seleccionID(<?php echo $contador?>)"> <i class="fas fa-search fa-fw"></i> </td>
+              <td><?php echo $fila['fecha']; ?></td>
+              <td><?php echo $fila['nombre']." ".$fila['apellido']; ?></td>
+              <td><?php echo $fila['a_descripcion'];?></td>
             </tr>
-            <tr>
-              <td role="button" data-toggle="modal" data-target="#ModalInfo"> <i class="fas fa-search fa-fw"></i> </td>
-              <td>01/12/20</td>
-              <td>Jabier Harrue</td>
-              <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet maxime qui excepturi esse natus quos temporibus distinctio minus, similique error dolores..</td>
-            </tr>
-            <tr>
-              <td role="button" data-toggle="modal" data-target="#ModalInfo"> <i class="fas fa-search fa-fw"></i> </td>
-              <td>14/12/20</td>
-              <td>Rikardo Ñañes</td>
-              <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet maxime qui excepturi esse natus quos temporibus distinctio minus.</td>
-            </tr>
+            <!-- Registrando los datos de cada solicitud listada-->
+            <input type="hidden" id="idServicio<?php echo $contador?>" value="<?php echo $fila['id_servicio']; ?>">
+            <input type="hidden" id="idSolicitud<?php echo $contador?>" value="<?php echo $fila['id_solicitud']; ?>">
+            <input type="hidden" id="correo<?php echo $contador?>" value="<?php echo $fila['correo']; ?>">
+            <input type="hidden" id="nombre<?php echo $contador?>" value="<?php echo $fila['nombre']; ?>">
+            <input type="hidden" id="apellido<?php echo $contador?>" value="<?php echo $fila['apellido']; ?>">
+            <input type="hidden" id="a_fecha<?php echo $contador?>" value="<?php echo $fila['a_fecha']; ?>">
+            <input type="hidden" id="a_hora_inicio<?php echo $contador?>" value="<?php echo $fila['a_hora_inicio']; ?>">
+            <input type="hidden" id="a_hora_final<?php echo $contador?>" value="<?php echo $fila['a_hora_final']; ?>">
+            <input type="hidden" id="a_ubicacion<?php echo $contador?>" value="<?php echo $fila['a_ubicacion']; ?>">
+            <input type="hidden" id="a_descripcion<?php echo $contador?>" value="<?php echo $fila['a_descripcion']; ?>">
+            <input type="hidden" id="fecha<?php echo $contador?>" value="<?php echo $fila['fecha']; ?>">
+            <input type="hidden" id="hora_inicio<?php echo $contador?>" value="<?php echo $fila['hora_inicio']; ?>">
+            <input type="hidden" id="hora_final<?php echo $contador?>" value="<?php echo $fila['hora_final']; ?>">
+            <input type="hidden" id="ubicacion<?php echo $contador?>" value="<?php echo $fila['ubicacion']; ?>"> 
+            <input type="hidden" id="descripcion<?php echo $contador?>" value="<?php echo $fila['descripcion']; ?>">
+
+            <?php $contador++; }?>
           </tbody>
         </table>
       </div>
@@ -59,7 +76,7 @@ require('../views/sections/superior.php');
 
 <!-- Modals -->
 
-<!-- Modal QCambios -->
+<!-- Modal de informacion  -->
 
 <div class="modal fade text-gray-900" id="QCambios" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -81,9 +98,9 @@ require('../views/sections/superior.php');
     </div>
   </div>
 </div>
-<!-- End Modal QCambios -->
+<!-- End Modal De Informacion -->
 
-<!-- Modal info -->
+<!-- Modal de solicitud de  cambio -->
 
 <div class="modal fade text-gray-900" id="ModalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -97,30 +114,30 @@ require('../views/sections/superior.php');
       <div class="modal-body">
 
         <div class="form-group">
-          <label class="font-weight-bold">Solicitante:</label>
+          <label class="font-weight-bold">Solicitante:</label> <label id="solicitante" ></label> 
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Correo:</label>
+          <label class="font-weight-bold">Correo:</label> <label id="correo" ></label> 
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Nueva Ubicación:</label><br>
-          <label class=" text-muted">Antigua Ubicación:</label>
+          <label class="font-weight-bold">Nueva Ubicación:</label> <label id="a_ubicacion" ></label> <br>
+          <label class="text-muted">Antigua Ubicación: <label id="ubicacion" ></label> </label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Nueva Fecha del Evento:</label><br>
-          <label class=" text-muted">Antigua Fecha del Evento:</label>
+          <label class="font-weight-bold">Nueva Fecha del Evento:</label> <label id="a_fecha" ></label><br>
+          <label class=" text-muted">Antigua Fecha del Evento: <label id="fecha" ></label></label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Nueva Hora Inicio:</label><br>
-          <label class=" text-muted">Antigua Hora Inicio:</label>
+          <label class="font-weight-bold">Nueva Hora Inicio: </label> <label id="a_hora_inicio" ></label><br>
+          <label class=" text-muted">Antigua Hora Inicio:<label id="hora_inicio" ></label> </label> 
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Nueva Hora Fin:</label><br>
-          <label class=" text-muted">Antigua Hora Fin:</label>
+          <label class="font-weight-bold">Nueva Hora Fin:</label> <label id="a_hora_final" ></label> <br>
+          <label class=" text-muted">Antigua Hora Fin:  <label id="hora_final" ></label></label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Nueva Descripción:</label><br>
-          <label class=" text-muted">Antigua Descripción:</label>
+          <label class="font-weight-bold">Nueva Descripción: </label> <label id="a_descripcion" ></label> <br>
+          <label class=" text-muted">Antigua Descripción: <label id="descripcion"></label></label>
         </div>
         <div class="form-group">
           <label class="font-weight-bold">Motivo de la aprovación o rechazo:</label><br>
@@ -129,14 +146,28 @@ require('../views/sections/superior.php');
 
       </div>
       <div class="modal-footer">
+
+      <form action="../admin/realizarCambioEvento.php" method="POST">
+        <input type="hidden" name="idSolicitud" id="idSolicitud">
+        <input type="hidden" name="idServicio" id="idServicio">
+        <input type="hidden" name="a_ubicacionForm" id="a_ubicacionForm">
+        <input type="hidden" name="a_fechaForm" id="a_fechaForm">
+        <input type="hidden" name="a_hora_inicioForm" id="a_hora_inicioForm">
+        <input type="hidden" name="a_hora_finalForm" id="a_hora_finalForm">
+        <input type="hidden" name="a_descripcionForm" id="a_descripcionForm">
+
         <button id="btnAgregar" class="btn text-white" style="background-color: #0f9bd0;">Aceptar</button>
         <button id="btnEliminar" class="btn text-white" style="background-color: #b9181f;">Rechazar</button>
+      </form>
+
         <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
 </div>
-<!-- End Modal info -->
+<!-- End Modal solicitud de cambio -->
+
+<script src="../js/personalJS/solicitudesCambio.js"></script>
 
 <?php
 require('../views/sections/inferior.php');

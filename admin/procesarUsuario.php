@@ -3,12 +3,12 @@ include("conexionDB.php");
 include("enviarEmail.php");
 
 //Validando que pase por el registro
-if(isset($_REQUEST['email']) && isset($_REQUEST['password1'])){
+if(isset($_REQUEST['emailPrefijo']) && isset($_REQUEST['password1'])){
 
     $cedula = $_REQUEST['cedula'];
     $nombre = $_REQUEST['nombre'];
     $apellido = $_REQUEST['apellido'];
-    $correo = $_REQUEST['email'];
+    $correo = $_REQUEST['emailPrefijo'].$_REQUEST['emailSufijo'];
     $pass = md5($_REQUEST['password1']);
     $sede = $_REQUEST['sede'];
     $foto = 'default.jpg';

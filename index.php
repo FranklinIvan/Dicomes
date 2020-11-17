@@ -58,11 +58,19 @@
                 <?php if(!empty($_REQUEST['registroMensaje']))
                 echo "<span class='text-danger font-weight-bold'>".$_GET['registroMensaje']."</span>";
                 ?>
-                <input type="email" placeholder="Correo" name="email" required>
+                <div class="form-row">
+                    <div class="col">
+                    <input name="emailPrefijo" type="text" class="form-control" placeholder="nombre.apellido">
+                    </div>
+                    <div class="col">
+                    <input name="emailSufijo" type="text" class="form-control" value="@utp.ac.pa" class="email2Parte" readonly>
+                    </div>
+                </div>
+
                 <input type="password" placeholder="Contraseña" name="password1" required>
                 <input type="password" placeholder="Repetir Contraseña" name="password2" required>
-                <select name="sede" class="custom-select">
-                    <option selected>Centro regional</option>
+                <select name="sede" class="custom-select" required>
+                    <option value="" selected>Centro regional</option>
                     <option value="Centro Regional de Veraguas">Centro Regional de Veraguas</option>
                     <option value="Centro Regional de Panamá Oeste">Centro Regional de Panamá Oeste</option>
                     <option value="Centro Regional de Azuero">Centro Regional de Azuero</option>

@@ -87,6 +87,7 @@ body:before{
    margin-top: 10px;
    margin-bottom: 10px;
 }
+
 .contenedor-form input[type="email"],
 .contenedor-form input[type="text"],
 .contenedor-form input[type="password"]{

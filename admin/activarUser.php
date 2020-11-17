@@ -14,14 +14,16 @@
             $id = $row['id_cliente'];
             $sqlActivarUsuario = $conex->exec("UPDATE cliente set activacion = 1 WHERE id_cliente = '$id'");
 
-            echo "
-            <h1>Su cuenta ha sido activada</h1>
-            <br>
-            <a href='../index.php'>Iniciar sesión</a>";
+            header("location: ../views/activarUsuario.php?msg=Usuario activado correctamente. <br> Ya puede inicar sesion al sistema");
+            exit;
         }else{
-            echo "Activacion fallida";
+            header("location: ../views/activarUsuario.php?msg=Activacion fallida. Usuario no encontrado.");
+            exit;
         }
 
+    }else{
+        header("location: ../index.php");
+        exit;
     }
 
 

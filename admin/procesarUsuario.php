@@ -20,7 +20,7 @@ if(isset($_REQUEST['emailPrefijo']) && isset($_REQUEST['password1'])){
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $conex->prepare($sql);
         if($stmt->execute([$cedula,$nombre, $apellido,$correo, $pass, $sede,$hash, $activacion])){
-            echo '<meta http-equiv="refresh" content="0; url= ../index.php?mensaje="Cuenta creada">';
+            header('location: ../views/mensajeActivarCuenta.html');
             enviarActivacion($correo,$hash,$nombre,$apellido); //Enviar link para activar cuenta
         }
         

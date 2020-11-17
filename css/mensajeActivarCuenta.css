@@ -1,0 +1,51 @@
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+body{
+    min-height: 100vh;
+    background-image:url(../images/utphierba.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    font-family: arial;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+body:before{
+    content:"";
+    width: 100%;
+    min-height: 110vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: linear-gradient(90deg,#92bccf, #a14e9d);
+    opacity: 0.5;
+    
+}
+
+.contenedor-form{
+    text-align: center;
+    background: rgba(91, 94, 94, 0.7);
+    width: 100%;
+    max-width: 500px;
+    margin: 48px auto;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    position: absolute;
+    padding: 40px;
+   
+}
+
+.logo{
+    width: 100px;
+    display:block;
+    margin:auto; 
+    border-radius: 50%;
+    max-width:50%;
+    max-height: 50%
+   }

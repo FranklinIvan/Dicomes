@@ -1,4 +1,9 @@
+document.getElementById("solicitudCambio").style.backgroundColor = "rgb(248,249,252)";
+document.getElementById("solicitudCambioTitulo").style.color = "black";
+document.getElementById("solicitudCambioIcono").style.color = "black";
+
 function seleccionID(id){
+  //Capturando los valores de la solicitud seleccionada
     var correo = "correo".concat(id);
     var nombre = "nombre".concat(id);
     var apellido = "apellido".concat(id);
@@ -14,7 +19,9 @@ function seleccionID(id){
     var descripcion = "descripcion".concat(id);
     var idServicio = "idServicio".concat(id);
     var idSolicitud = "idSolicitud".concat(id);
-    //Asignando el contenido a los elementos del MODAL
+    var idCliente = "idCliente".concat(id);
+
+    //Asignando el contenido de la solicitud seleccionada a los elementos del MODAL
     document.getElementById("correo").innerHTML= document.getElementById(correo).value;
     document.getElementById("solicitante").innerHTML= document.getElementById(nombre).value + " " + document.getElementById(apellido).value;
     document.getElementById("a_fecha").innerHTML= document.getElementById(a_fecha).value;
@@ -29,7 +36,11 @@ function seleccionID(id){
     document.getElementById("descripcion").innerHTML= document.getElementById(descripcion).value;
 
     //Asignando los valores que seran enviados en el formulario
+    //Esto se hace debido a que los elementos del MODAL son LABEL. 
+    //Los LABEL no se le pueden hacer submit. POr lo tanto se colocaron input de tipo hidden.
+    document.getElementById("idCliente").value= document.getElementById(idCliente).value;
     document.getElementById("idSolicitud").value= document.getElementById(idSolicitud).value;
+    //ID del servicio no es tan necesario pero se maneja por si acaso.
     document.getElementById("idServicio").value= document.getElementById(idServicio).value;
     document.getElementById("a_fechaForm").value= document.getElementById(a_fecha).value;
     document.getElementById("a_hora_inicioForm").value= document.getElementById(a_hora_inicio).value;

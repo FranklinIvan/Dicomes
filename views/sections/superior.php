@@ -76,10 +76,10 @@
                     <span>Lista de eventos</span></a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item" id="solicitudCambio"> 
                 <a class="nav-link" href="../views/solicitudesCambio.php">
-                    <i class="fas fa-fw fa-exchange-alt"></i>
-                    <span>Solicitudes de cambio</span></a>
+                    <i class="fas fa-fw fa-exchange-alt" id="solicitudCambioIcono"></i>
+                    <span id="solicitudCambioTitulo">Solicitudes de cambio</span></a>
             </li>
 
             <!-- Divider -->

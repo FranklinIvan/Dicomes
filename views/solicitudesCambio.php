@@ -10,7 +10,7 @@ $contador = 0;
 
   <h2>Solicitudes de Cambio</h2><br>
   <?php if (isset($_REQUEST['msg'])) { ?>
-    <div class="alert alert-success alert-dismissible fade show">
+    <div class="alert <?php echo $_REQUEST['color']?> alert-dismissible fade show">
       <h5><?php echo $_REQUEST['msg']; ?></h5>
       <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
       </button>
@@ -44,6 +44,7 @@ $contador = 0;
               <td><?php echo $fila['a_descripcion'];?></td>
             </tr>
             <!-- Registrando los datos de cada solicitud listada-->
+            <input type="hidden" id="idCliente<?php echo $contador?>" value="<?php echo $fila['id_cliente']; ?>">
             <input type="hidden" id="idServicio<?php echo $contador?>" value="<?php echo $fila['id_servicio']; ?>">
             <input type="hidden" id="idSolicitud<?php echo $contador?>" value="<?php echo $fila['id_solicitud']; ?>">
             <input type="hidden" id="correo<?php echo $contador?>" value="<?php echo $fila['correo']; ?>">
@@ -139,27 +140,28 @@ $contador = 0;
           <label class="font-weight-bold">Nueva Descripción: </label> <label id="a_descripcion" ></label> <br>
           <label class=" text-muted">Antigua Descripción: <label id="descripcion"></label></label>
         </div>
+
         <div class="form-group">
           <label class="font-weight-bold">Motivo de la aprovación o rechazo:</label><br>
-          <textarea name="descripcion" id="" cols="57" rows=5></textarea>
+          <textarea name="mensaje" id="" cols="57" rows=5 form="formulario" required></textarea>
         </div>
 
       </div>
       <div class="modal-footer">
+        <!-- FORMULARIO -->
+        <form action="../admin/realizarCambioEvento.php" method="POST" id="formulario">
+          <input type="hidden" name="idCliente" id="idCliente">
+          <input type="hidden" name="idSolicitud" id="idSolicitud">
+          <input type="hidden" name="idServicio" id="idServicio">
+          <input type="hidden" name="a_ubicacionForm" id="a_ubicacionForm">
+          <input type="hidden" name="a_fechaForm" id="a_fechaForm">
+          <input type="hidden" name="a_hora_inicioForm" id="a_hora_inicioForm">
+          <input type="hidden" name="a_hora_finalForm" id="a_hora_finalForm">
+          <input type="hidden" name="a_descripcionForm" id="a_descripcionForm">
 
-      <form action="../admin/realizarCambioEvento.php" method="POST">
-        <input type="hidden" name="idSolicitud" id="idSolicitud">
-        <input type="hidden" name="idServicio" id="idServicio">
-        <input type="hidden" name="a_ubicacionForm" id="a_ubicacionForm">
-        <input type="hidden" name="a_fechaForm" id="a_fechaForm">
-        <input type="hidden" name="a_hora_inicioForm" id="a_hora_inicioForm">
-        <input type="hidden" name="a_hora_finalForm" id="a_hora_finalForm">
-        <input type="hidden" name="a_descripcionForm" id="a_descripcionForm">
-
-        <button id="btnAgregar" class="btn text-white" style="background-color: #0f9bd0;">Aceptar</button>
-        <button id="btnEliminar" class="btn text-white" style="background-color: #b9181f;">Rechazar</button>
-      </form>
-
+          <button name="accion" type="submit" value="aceptar" id="btnAgregar" class="btn text-white" style="background-color: #0f9bd0;">Aceptar</button>
+          <button name="accion" type="submit" value="rechazar" id="btnEliminar" class="btn text-white" style="background-color: #b9181f;">Rechazar</button>
+        </form>
         <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
       </div>
     </div>

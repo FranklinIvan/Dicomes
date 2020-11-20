@@ -29,7 +29,14 @@
             <img src="images/logo_utp.jpg" class="logo">
             
             <h2>Iniciar Sesión</h2>
-            <form action="views/bienvenido.php" method="POST">
+            <?php if(!empty($_REQUEST['msg']))
+                echo "<span class='text-danger font-weight-bold'>".$_GET['msg']."</span>";
+            ?>
+            <?php if(!empty($_REQUEST['registroMensaje']))
+                echo "<span class='text-danger font-weight-bold'>".$_GET['registroMensaje']."</span>";
+            ?>
+
+            <form action="admin/procesarLogin.php" method="POST">
                 <input type="email" placeholder="&#128272; Correo" name="email" required>
                 <input type="password" placeholder="&#128272; Contraseña" name="password" required>
                 <input type="submit" value="Iniciar Sesión">
@@ -38,18 +45,40 @@
 
         </div>
         <div id="iniciar" class="toggle-in">
-            <span>LOGIN</span>
+            <span>Inicar Sesión</span>
 
         </div>
         <div id="registro" class="formulario">
-            <img src="images/logo_utp.jpg" class="logo" alt="">
+            <!--<img src="images/logo_utp.jpg" class="logo" alt="">-->
             <h2>Crear Usuario</h2>
             <form action="admin/procesarUsuario.php" method="POST">
                 <input type="text" placeholder="Nombre"  name="nombre" required>
                 <input type="text" placeholder="Apellido" name="apellido" required>
-                <input type="email" placeholder="Correo" name="email" required>
+                <input type="text" placeholder="Cédula"  name="cedula" required>
+                <?php if(!empty($_REQUEST['registroMensaje']))
+                echo "<span class='text-danger font-weight-bold'>".$_GET['registroMensaje']."</span>";
+                ?>
+                <div class="form-row">
+                    <div class="col">
+                    <input name="emailPrefijo" type="text" class="form-control" placeholder="nombre.apellido">
+                    </div>
+                    <div class="col">
+                    <input name="emailSufijo" type="text" class="form-control" value="@utp.ac.pa" class="email2Parte" readonly>
+                    </div>
+                </div>
+
                 <input type="password" placeholder="Contraseña" name="password1" required>
                 <input type="password" placeholder="Repetir Contraseña" name="password2" required>
+                <select name="sede" class="custom-select" required>
+                    <option value="" selected>Centro regional</option>
+                    <option value="Centro Regional de Veraguas">Centro Regional de Veraguas</option>
+                    <option value="Centro Regional de Panamá Oeste">Centro Regional de Panamá Oeste</option>
+                    <option value="Centro Regional de Azuero">Centro Regional de Azuero</option>
+                    <option value="Centro Regional de Chiriquí">Centro Regional de Chiriquí</option>
+                    <option value="Centro Regional de Colón">Centro Regional de Colón</option>
+                    <option value="Centro Regional de Coclé">Centro Regional de Coclé</option>
+                </select>
+
                 <input type="submit" value="Registrarse">
 
             </form>

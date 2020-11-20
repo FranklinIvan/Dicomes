@@ -56,7 +56,7 @@ tipo_servicio varchar(50) not null
 )
 
 create table actualizar(
-
+id_solicitud INT PRIMARY KEY AUTO_INCREMENT,
 fecha date not null,
 hora_inicio time(6) not null,
 hora_final time(6) not null,
@@ -66,7 +66,6 @@ id_cliente INT ,
 id_servicio INT,
 FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
 FOREIGN KEY (id_servicio) REFERENCES servicio(id_servicio)
-
 )
 
 create table atiende (

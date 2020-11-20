@@ -65,7 +65,8 @@ descripcion varchar(100) not null,
 id_cliente INT ,
 id_servicio INT,
 FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
-FOREIGN KEY (id_servicio) REFERENCES servicio(id_servicio)
+FOREIGN KEY (id_servicio) REFERENCES servicio(id)
+
 )
 
 create table atiende (

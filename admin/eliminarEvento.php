@@ -5,7 +5,7 @@
         {
         $id_servicio=$_REQUEST['id_servicioE'];
 
-        $sentencia=$conex->exec("DELETE FROM servicio WHERE id_servicio='$id_servicio'");
+        $sentencia=$conex->exec("DELETE FROM servicio WHERE id='$id_servicio'");
 
         if($sentencia=true){
             

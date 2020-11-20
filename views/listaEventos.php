@@ -33,7 +33,7 @@ require('../views/sections/superior.php');
             <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
             </button>
         </div>
-    <?php } else if (isset($_GET['msgActualizacion'])) { ?>
+    <?php } else if (isset($_GET['msgActualizado'])) { ?>
         <div class="alert alert-danger alert-dismissible fade show">
             <span>El evento ha sido actualizado</span>
             <button type="button" class="close" data-dismiss="alert"><span>&times;</span>

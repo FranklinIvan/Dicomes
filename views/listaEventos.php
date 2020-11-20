@@ -18,7 +18,9 @@ require('../views/sections/superior.php');
                                                 tipo_evento,
                                                 descripcion 
                                                 FROM servicio");   
-        $datosCliente = $conex->query( "SELECT nombre,apellido FROM cliente");
+        
+        
+        $datosCliente = $conex->query( "SELECT nombre,apellido FROM cliente JOIN servicio ON servicio.id_cliente = cliente.id_cliente");
     ?>
 
 <!-- Main Content -->

@@ -1,5 +1,7 @@
 <?php
+
 require('../views/sections/superior.php');
+
 ?>
 
 <!-- Main Content -->
@@ -26,23 +28,24 @@ require('../views/sections/superior.php');
             </tr>
           </thead>
           <tbody class="text-gray-900">
-            <tr>
+          <?php?>
+          <tr>
               <td role="button" data-toggle="modal" data-target="#ModalInfo"> <i class="fas fa-search fa-fw"></i> </td>
-              <td>29/11/20</td>
+              <td>           </td>
               <td>Franklin Iván</td>
               <td>Mira, te voy a decir algo, pero sólo te lo voy a decir una sola vez ¿ok?, cha el barca está mal loco y eso cómo me molesta, ya era eso jaja.</td>
             </tr>
             <tr>
               <td role="button" data-toggle="modal" data-target="#ModalInfo"> <i class="fas fa-search fa-fw"></i> </td>
-              <td>01/12/20</td>
-              <td>Jabier Harrue</td>
-              <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet maxime qui excepturi esse natus quos temporibus distinctio minus, similique error dolores..</td>
+              <td>           </td>
+              <td>Franklin Iván</td>
+              <td>Mira, te voy a decir algo, pero sólo te lo voy a decir una sola vez ¿ok?, cha el barca está mal loco y eso cómo me molesta, ya era eso jaja.</td>
             </tr>
             <tr>
               <td role="button" data-toggle="modal" data-target="#ModalInfo"> <i class="fas fa-search fa-fw"></i> </td>
-              <td>14/12/20</td>
-              <td>Rikardo Ñañes</td>
-              <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet maxime qui excepturi esse natus quos temporibus distinctio minus.</td>
+              <td>           </td>
+              <td>Franklin Iván</td>
+              <td>Mira, te voy a decir algo, pero sólo te lo voy a decir una sola vez ¿ok?, cha el barca está mal loco y eso cómo me molesta, ya era eso jaja.</td>
             </tr>
           </tbody>
         </table>
@@ -101,28 +104,28 @@ require('../views/sections/superior.php');
           <label> <span class="font-weight-bold">De:</span> </label>
         </div>
         <div class="form-group">
-          <label> <span class="font-weight-bold">Fecha:</span> </label>
+          <label> <span id= fecha class="font-weight-bold">Fecha:</span> </label>
         </div>
         <div class="form-group">
-          <label> <span class="font-weight-bold">Ubicación:</span> </label>
+          <label> <span id= ubicacion class="font-weight-bold">Ubicación:</span> </label>
         </div>
         <div class="form-group">
-          <label> <span class="font-weight-bold">Hora inicio:</span> </label>
+          <label> <span id= horainicio  class="font-weight-bold">Hora inicio:</span> </label>
         </div>
         <div class="form-group">
-          <label> <span class="font-weight-bold">Hora final:</span> </label>
+          <label> <span  id= horafinal  class="font-weight-bold">Hora final:</span> </label>
         </div>
         <div class="form-group">
-          <label> <span class="font-weight-bold">Tipo de Servicio: </span> </label>
+          <label> <span id= tiposervicio class="font-weight-bold">Tipo de Servicio: </span> </label>
         </div>
         <div class="form-group">
-          <label> <span class="font-weight-bold">Tipo de Evento: </span> </label>
+          <label> <span id= tipoevento class="font-weight-bold">Tipo de Evento: </span> </label>
         </div>
         <div class="form-group">
-          <label> <span class="font-weight-bold">Cantidad de Personas: </span> </label>
+          <label> <span id= cantperson class="font-weight-bold">Cantidad de Personas: </span> </label>
         </div>
         <div class="form-group">
-          <label> <span class="font-weight-bold">Descripción: </span> </label>
+          <label> <span id= descripcion class="font-weight-bold">Descripción: </span> </label>
         </div>
 
       </div>

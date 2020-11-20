@@ -24,7 +24,7 @@
 
         </div>
         <h2>DICOMES</h2>
-        <h6>Sistema para comunicación y prensa para eventos en la UTP.</h6>
+        <h6>Sistema para comunicación y prensa para eventos en la UTP</h6>
         <div id="login" class="formulario">
             <img src="images/logo_utp.jpg" class="logo">
             

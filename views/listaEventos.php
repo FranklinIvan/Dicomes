@@ -9,9 +9,9 @@ require('../views/sections/superior.php');
 
 
     <?php
-        $datosServicio = $conex->query("SELECT id_servicio,
+        $datosServicio = $conex->query("SELECT id,
                                                 cantidad_personas,
-                                                fecha,
+                                                start,
                                                 TIME_FORMAT(hora_inicio,'%H:%i') AS hora_inicio,
                                                 TIME_FORMAT(hora_final,'%H:%i') AS hora_final,
                                                 ubicacion,
@@ -65,9 +65,9 @@ require('../views/sections/superior.php');
                   $clientes = $datosCliente->fetch(PDO::FETCH_ASSOC);
 
                   
-                  $datosMostrar=$datos['id_servicio']."||".
+                  $datosMostrar=$datos['id']."||".
                                 $clientes['nombre']." ".$clientes['apellido']."||".
-                                $datos['fecha']."||".   
+                                $datos['start']."||".   
                                 $datos['ubicacion']."||".
                                 $datos['hora_inicio']."||".
                                 $datos['hora_final']."||".
@@ -76,19 +76,19 @@ require('../views/sections/superior.php');
                                 $datos['descripcion'];
 
 
-                  $datosActualizar= $datos['id_servicio']."||".
-                                    $datos['fecha']."||".   
+                  $datosActualizar= $datos['id']."||".
+                                    $datos['start']."||".   
                                     $datos['ubicacion']."||".
                                     $datos['hora_inicio']."||".
                                     $datos['hora_final']."||".
                                     $datos['descripcion'];
                                     
-                  $datosEliminar=$datos['id_servicio'];
+                  $datosEliminar=$datos['id'];
                   ?>                    
 
             <tr>
                   <td role="button" data-toggle="modal" data-target="#ModalInfo" onclick="verEvento('<?php echo $datosMostrar; ?>')" class="ModalInfo"> <i class="fas fa-search fa-fw ModalInfo"></i> </td>
-                  <td><?php echo $datos['fecha']; ?></td>
+                  <td><?php echo $datos['start']; ?></td>
                   <td><?php echo $clientes['nombre']." ".$clientes['apellido']; ?></td>
                   <td><?php echo $datos['descripcion']; ?></td>
               <td>

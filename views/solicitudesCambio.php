@@ -39,13 +39,13 @@ $contador = 0;
             <?php foreach($cambios as $fila){ ?>
             <tr>
               <td id="<?php echo $contador?>" role="button" data-toggle="modal" data-target="#ModalInfo" onclick="seleccionID(<?php echo $contador?>)"> <i class="fas fa-search fa-fw"></i> </td>
-              <td><?php echo $fila['fecha']; ?></td>
+              <td><?php echo $fila['start']; ?></td>
               <td><?php echo $fila['nombre']." ".$fila['apellido']; ?></td>
               <td><?php echo $fila['a_descripcion'];?></td>
             </tr>
             <!-- Registrando los datos de cada solicitud listada-->
             <input type="hidden" id="idCliente<?php echo $contador?>" value="<?php echo $fila['id_cliente']; ?>">
-            <input type="hidden" id="idServicio<?php echo $contador?>" value="<?php echo $fila['id_servicio']; ?>">
+            <input type="hidden" id="idServicio<?php echo $contador?>" value="<?php echo $fila['id']; ?>">
             <input type="hidden" id="idSolicitud<?php echo $contador?>" value="<?php echo $fila['id_solicitud']; ?>">
             <input type="hidden" id="correo<?php echo $contador?>" value="<?php echo $fila['correo']; ?>">
             <input type="hidden" id="nombre<?php echo $contador?>" value="<?php echo $fila['nombre']; ?>">
@@ -55,7 +55,7 @@ $contador = 0;
             <input type="hidden" id="a_hora_final<?php echo $contador?>" value="<?php echo $fila['a_hora_final']; ?>">
             <input type="hidden" id="a_ubicacion<?php echo $contador?>" value="<?php echo $fila['a_ubicacion']; ?>">
             <input type="hidden" id="a_descripcion<?php echo $contador?>" value="<?php echo $fila['a_descripcion']; ?>">
-            <input type="hidden" id="fecha<?php echo $contador?>" value="<?php echo $fila['fecha']; ?>">
+            <input type="hidden" id="fecha<?php echo $contador?>" value="<?php echo $fila['start']; ?>">
             <input type="hidden" id="hora_inicio<?php echo $contador?>" value="<?php echo $fila['hora_inicio']; ?>">
             <input type="hidden" id="hora_final<?php echo $contador?>" value="<?php echo $fila['hora_final']; ?>">
             <input type="hidden" id="ubicacion<?php echo $contador?>" value="<?php echo $fila['ubicacion']; ?>"> 

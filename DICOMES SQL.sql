@@ -29,9 +29,9 @@ sede varchar(50) not null
 
 create table servicio(
 
-id_servicio int primary key AUTO_INCREMENT,
+id int primary key AUTO_INCREMENT,
 cantidad_personas int not null,
-fecha date not null,
+start date not null,
 hora_inicio time(6) not null,
 hora_final time(6) not null,
 ubicacion varchar(100) not null,
@@ -40,6 +40,8 @@ descripcion varchar(100) not null,
 estado int not NULL,
 id_personal INT ,
 id_cliente INT,
+color VARCHAR(50),
+title VARCHAR(50),
 FOREIGN KEY (id_personal) REFERENCES personal(id_personal),
 FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
 
@@ -67,16 +69,14 @@ FOREIGN KEY (id_servicio) REFERENCES servicio(id_servicio)
 
 )
 
-
 create table atiende (
-
-id_cliente INT,
+id_servicio INT,
 id_personal int,
 cod_tipo INT ,
-FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente),
+FOREIGN KEY (id_servicio) REFERENCES servicio(id),
 FOREIGN KEY (id_personal) REFERENCES personal(id_personal),
 FOREIGN KEY (cod_tipo) REFERENCES tipo_servicio(cod_tipo),
-primary key (id_cliente,id_personal)
+primary key (id_servicio,id_personal)
 )
 
 ------------------------- COSAS AGREGADAS -----------------------

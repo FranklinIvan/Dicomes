@@ -17,7 +17,7 @@
                                                 descripcion='$descripcion'
                                                 WHERE id_servicio='$id_servicio' ");   
                 if($sql==true){
-                        header("Location:../views/listaEventos.php");
+                        header("Location:../views/listaEventos.php?msgActualizado=Actualizado");
 
                 }else{
                         echo  "Error en la actualizacion";

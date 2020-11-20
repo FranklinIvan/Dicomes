@@ -26,6 +26,22 @@ require('../views/sections/superior.php');
 
   <h2>Lista de Eventos</h2><br>
 
+
+  <?php if (isset($_GET['msgEliminado'])) { ?>
+        <div class="alert alert-danger alert-dismissible fade show">
+            <h5>El evento ha sido Eliminado</h5>
+            <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
+            </button>
+        </div>
+    <?php } else if (isset($_GET['msgActualizacion'])) { ?>
+        <div class="alert alert-danger alert-dismissible fade show">
+            <span>El evento ha sido actualizado</span>
+            <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
+            </button>
+        </div>
+    <?php } ?>
+
+
   <!-- Table of Users DB -->
   <div class="card shadow mb-4">
     <div class="card-body">

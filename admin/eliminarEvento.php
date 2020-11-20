@@ -9,7 +9,8 @@
 
         if($sentencia=true){
             
-            return header ("Location:../views/listaEventos.php");
+            return header ("Location:../views/listaEventos.php?msgEliminado=Eliminado");
+
         }else{
             echo"Error al eliminar";
         }

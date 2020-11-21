@@ -22,7 +22,15 @@
 
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
+    <style>
+        #solicitudesCobertura,#listaDeEventos, #solicitudCambio, #agenda, #sobreNosotros, #contacto{
+            transition: background-color 0.2s ease;
+        }
+        #solicitudesCobertura:hover, #listaDeEventos:hover, #solicitudCambio:hover,#agenda:hover, #sobreNosotros:hover, #contacto:hover{
+            background-color: #920896;
+        }
 
+    </style>
 
 </head>
 
@@ -49,10 +57,10 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item">
+            <li class="nav-item" id="agenda">
                 <a class="nav-link" href="../views/bienvenido.php">
-                    <i class="fas fa-fw fa-calendar-alt"></i>
-                    <span>Agenda</span></a>
+                    <i id="agendaIcon" class="fas fa-fw fa-calendar-alt"></i>
+                    <span id="agendaTitulo">Agenda</span></a>
             </li>
 
             <!-- Divider -->
@@ -64,16 +72,16 @@
             </div>
 
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <li class="nav-item" id="solicitudesCobertura">
                 <a class="nav-link" href="../views/solicitudesCobertura.php">
-                    <i class="fas fa-fw fa-envelope"></i>
-                    <span>Solicitudes de cobertura</span></a>
+                    <i class="fas fa-fw fa-envelope" id="solicitudesCoberturaIcon"></i>
+                    <span id="solicitudesCoberturaTitulo">Solicitudes de cobertura</span></a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item" id="listaDeEventos">
                 <a class="nav-link" href="../views/listaEventos.php">
-                    <i class="fas fa-fw fa-calendar-check"></i>
-                    <span>Lista de eventos</span></a>
+                    <i class="fas fa-fw fa-calendar-check" id="listaDeEventosIcon"></i>
+                    <span id="listaDeEventosTitulo">Lista de eventos</span></a>
             </li>
 
             <li class="nav-item" id="solicitudCambio"> 
@@ -90,16 +98,16 @@
                 Información
             </div>
 
-            <li class="nav-item">
-                <a class="nav-link" href="../views/sobreNosotros.php">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Sobre Nosotros</span></a>
+            <li class="nav-item" id="sobreNosotros">
+                <a class="nav-link" href="../views/sobreNosotros.php" >
+                    <i class="fas fa-fw fa-table" id="sobreNosotrosIcon"></i>
+                    <span id="sobreNosotrosTitulo">Sobre Nosotros</span></a>
             </li>
 
-            <li class="nav-item">
+            <li class="nav-item" id="contacto">
                 <a class="nav-link" href="../views/contacto.php">
-                    <i class="fas fa-fw fa-address-card"></i>
-                    <span>Contacto</span></a>
+                    <i class="fas fa-fw fa-address-card" id="contactoIcon"></i>
+                    <span id="contactoTitulo">Contacto</span></a>
             </li>
 
             <!-- Divider -->

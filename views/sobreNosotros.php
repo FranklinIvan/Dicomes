@@ -72,7 +72,13 @@ require('../views/sections/superior.php');
     </div>
 
 </div>
+<script>
 
+document.getElementById("sobreNosotros").style.backgroundColor = "#920896";
+document.getElementById("sobreNosotrosTitulo").style.color = "white";
+document.getElementById("sobreNosotrosIcon").style.color = "white";
+
+</script>
 <?php
 require('../views/sections/inferior.php');
 ?>

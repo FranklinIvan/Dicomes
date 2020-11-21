@@ -93,9 +93,11 @@ mensaje VARCHAR(100),
 id_cliente INT,
 FOREIGN KEY (id_cliente) REFERENCES cliente(id_cliente)
 )
--- AGREGAR id_solicitud Primary Key A LA TABLA ACTUALIZAR
 
+-- Añadir on delete cascade de la tabla servicio a las solicitudes de actualizar.
+ALTER TABLE actualizar DROP FOREIGN KEY `actualizar_ibfk_2` ;
 
+ALTER TABLE actualizar ADD CONSTRAINT `actualizar_ibfk_2` FOREIGN KEY (id_servicio) REFERENCES servicio(id) ON DELETE CASCADE;
 
 
 

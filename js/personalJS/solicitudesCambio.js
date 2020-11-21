@@ -1,6 +1,6 @@
-document.getElementById("solicitudCambio").style.backgroundColor = "rgb(248,249,252)";
-document.getElementById("solicitudCambioTitulo").style.color = "black";
-document.getElementById("solicitudCambioIcono").style.color = "black";
+document.getElementById("solicitudCambio").style.backgroundColor = "#920896";
+document.getElementById("solicitudCambioTitulo").style.color = "white";
+document.getElementById("solicitudCambioIcono").style.color = "white";
 
 function seleccionID(id){
   //Capturando los valores de la solicitud seleccionada

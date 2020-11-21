@@ -257,6 +257,13 @@ require('../views/sections/superior.php');
         });
 
       });
+    </script>
+
+    <script>
+
+      document.getElementById("listaDeEventos").style.backgroundColor = "#920896";
+      document.getElementById("listaDeEventosTitulo").style.color = "white";
+      document.getElementById("listaDeEventosIcon").style.color = "white";
 
     </script>
 

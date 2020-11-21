@@ -20,7 +20,13 @@ require('../views/sections/superior.php');
     </div>
 
 </div>
+<script>
 
+document.getElementById("contacto").style.backgroundColor = "#920896";
+document.getElementById("contactoTitulo").style.color = "white";
+document.getElementById("contactoIcon").style.color = "white";
+
+</script>
 <?php
 require('../views/sections/inferior.php');
 ?>

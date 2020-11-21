@@ -150,7 +150,13 @@ require('../views/sections/superior.php');
 </div>
 
 <!-- End of Main Content -->
+<script>
 
+document.getElementById("agenda").style.backgroundColor = "#920896";
+document.getElementById("agendaTitulo").style.color = "white";
+document.getElementById("agendaIcon").style.color = "white";
+
+</script>
 
 <?php
 require('../views/sections/inferior.php');

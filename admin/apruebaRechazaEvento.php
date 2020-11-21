@@ -12,20 +12,28 @@
 
         if( $_POST['submit'] =='Aceptar') 
         {
-            $estado = 1;
+            $estado = "aceptado";
+            try {
+
+                $sql=$conex->exec("UPDATE servicio SET estado='$estado' WHERE id ='$id_servicio'"); 
+        
+                } catch (PDOException $e) {
+                    throw $e;
+                }
+
         }else {
-            $estado = 2;
+                    try {
+
+                        $sql=$conex->exec("DELETE FROM servicio WHERE id ='$id_servicio'"); 
+
+                    } catch (PDOException $e) {
+                        throw $e;
+                    }
         }
         
         echo $_POST['submit'].$estado;
 
-        try {
 
-        $sql=$conex->exec("UPDATE servicio SET estado='$estado' WHERE id ='$id_servicio'"); 
-
-        } catch (mysqli_sql_exception $e) {
-            throw $e;
-        }
 
                 if($sql==true){
                         header("Location:../views/solicitudesCobertura.php");

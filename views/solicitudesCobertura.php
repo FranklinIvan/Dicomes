@@ -1,7 +1,6 @@
 <?php
 
 require('../views/sections/superior.php');
-require('../admin/conexionDB.php');
 
 $solicitudes=$conex->query("SELECT * FROM solicitudes ");
 

@@ -101,3 +101,9 @@ ALTER TABLE actualizar ADD CONSTRAINT `actualizar_ibfk_2` FOREIGN KEY (id_servic
 
 SELECT*FROM solicitudactualizar
 
+
+create view solicitudes as SELECT nombre, apellido, id, cantidad_personas, start, hora_inicio, hora_final, ubicacion, tipo_evento,descripcion, estado, id_personal, servicio.id_cliente FROM cliente JOIN servicio on cliente.id_cliente=servicio.id_cliente WHERE estado="pendiente"
+
+DROP VIEW solicitudes
+
+SELECT*FROM servicio

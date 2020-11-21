@@ -50,17 +50,18 @@
                             <div class="status-indicator bg-success"></div>
                         </div>
                         <div class="font-weight-bold">
-                            <div class="text-truncate">En línea.</div>
+                            <div class="text-truncate">Activo</div>
                             <div class="small text-gray-500">Enviado hace · 58m</div>
                         </div>
                     </a>
                 </div>
                 <div class="form-group">
-                    <label><span class="font-weight-bold">Nombre: </span>Conor Mcgregor</label>
+                    <label class="font-weight-bold">Nombre: </label>
+                    <label id="msjNombre"></label>
                 </div>
                 <div class="form-group">
                     <label class="font-weight-bold">Mensaje:</label>
-                    <label>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aut, a aliquam, et mollitia dolore repudiandae quas iusto nulla, id at natus dolorem consequatur assumenda deleniti veniam vel porro minus eius!</label>
+                    <label id="msjMensaje"></label>
                 </div>
             </div>
 

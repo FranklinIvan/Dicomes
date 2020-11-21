@@ -10,12 +10,12 @@
         $hora_final=$_REQUEST['nuevaHoraFinal'];
         $descripcion=$_REQUEST['nuevaDescripcion'];
 
-        $sql=$conex->exec("UPDATE servicio SET fecha='$fecha', 
+        $sql=$conex->exec("UPDATE servicio SET start='$fecha', 
                                                 ubicacion='$ubicacion', 
                                                 hora_inicio='$hora_inicial', 
                                                 hora_final='$hora_final', 
                                                 descripcion='$descripcion'
-                                                WHERE id_servicio='$id_servicio' ");   
+                                                WHERE id='$id_servicio' ");   
                 if($sql==true){
                         header("Location:../views/listaEventos.php?msgActualizado=Actualizado");
 

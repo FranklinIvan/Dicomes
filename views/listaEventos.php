@@ -1,6 +1,4 @@
 <?php
-//include("../admin/conexionDB.php");
-require("../admin/mostrarEvento.php");
 require('../views/sections/superior.php');
 ?>
 

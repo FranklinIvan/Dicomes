@@ -1,5 +1,4 @@
 <?php
-require('../admin/conexionDB.php');
 require('../views/sections/superior.php');
 $cambios = $conex->query("SELECT * FROM solicitudActualizar");
 $contador = 0;

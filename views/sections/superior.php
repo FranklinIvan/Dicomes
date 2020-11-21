@@ -1,5 +1,8 @@
 <?php
 //include('../admin/verificarSesion.php');
+require('../admin/conexionDB.php');
+$sql = $conex->query("SELECT * FROM v_notificacion");
+$sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0")->rowCount();
 ?>
 
 <!DOCTYPE html>
@@ -14,6 +17,9 @@
     <meta name="author" content="">
     <!-- Icon UTP -->
     <link rel="shortcut icon" href="https://utp.ac.pa/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon" />
+
+    <!-- Assets JS -->
+    <script src="../js/personalJS/funciones.js"></script>
 
     <title>Dirección de Comunicación Estratégica</title>
 
@@ -76,7 +82,7 @@
                     <span>Lista de eventos</span></a>
             </li>
 
-            <li class="nav-item" id="solicitudCambio"> 
+            <li class="nav-item" id="solicitudCambio">
                 <a class="nav-link" href="../views/solicitudesCambio.php">
                     <i class="fas fa-fw fa-exchange-alt" id="solicitudCambioIcono"></i>
                     <span id="solicitudCambioTitulo">Solicitudes de cambio</span></a>
@@ -155,7 +161,7 @@
                         <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-bell fa-fw"></i>
                             <!-- Counter - Messages -->
-                            <span class="badge badge-danger badge-counter">12</span>
+                            <span class="badge badge-danger badge-counter"><?php echo $sinLeer ?></span>
                         </a>
                         <!-- Dropdown - Messages -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
@@ -163,46 +169,25 @@
                                 Mensajes
                             </h6> -->
                             <div class="dropdown-item text-center text-gray-500">Mensajes</div>
-                            <a data-toggle="modal" data-target="#messageModal" class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="../images/imagesDB/5.png" alt="">
-                                    <div class="status-indicator bg-success"></div>
-                                </div>
-                                <div class="font-weight-bold">
-                                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                                    <div class="small text-gray-500">Conor Mcgregor · 58m</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="../images/imagesDB/3.png" alt="">
-                                    <div class="status-indicator"></div>
-                                </div>
-                                <div>
-                                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="../images/joker.jpeg" alt="">
-                                    <div class="status-indicator bg-warning"></div>
-                                </div>
-                                <div>
-                                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                                </div>
-                            </a>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
-                                <div class="dropdown-list-image mr-3">
-                                    <img class="rounded-circle" src="../images/joker.jpeg" alt="">
-                                    <div class="status-indicator bg-success"></div>
-                                </div>
-                                <div>
-                                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                                </div>
-                            </a>
+                            <?php
+                            foreach ($sql as $noti) {
+                                $datos = $noti['nombre'] . "/" .
+                                    $noti['apellido'] . "/" .
+                                    $noti['mensaje'];
+                            ?>
+                                <a onclick="mostrarNoti('<?php echo $datos ?>')" data-toggle="modal" data-target="#messageModal" class="dropdown-item d-flex align-items-center" href="#">
+                                    <div class="dropdown-list-image mr-3">
+                                        <img class="rounded-circle" src="../images/imagesDB/5.png" alt="">
+                                        <div class="status-indicator bg-success"></div>
+                                    </div>
+                                    <div class="font-weight-bold">
+                                        <div class="text-truncate"><?php echo $noti['mensaje'] ?></div>
+                                        <div class="small text-gray-500"><?php echo $noti['nombre'] . $noti['apellido'] ?></div>
+                                    </div>
+                                </a>
+                            <?php
+                            }
+                            ?>
                             <a class="dropdown-item text-center small text-gray-500" href="#">Leer más mensajes</a>
                         </div>
                     </li>

@@ -7,17 +7,21 @@ $solicitudes=$conex->query("SELECT * FROM solicitudes ");
 
 ?>
 
-<!-- Main Content -->
+
+<script src="../js/solicitudesCobertura.js"></script>
+
+
+
 <div class="container text-gray-900">
 
   <h2>Solicitudes de Coberturas</h2><br>
 
-  <!-- Table of Users DB -->
+
   <div class="card shadow mb-4">
     <div class="card-header py-3">
       <h6 class="text-gray-900 d-inline">Lista con las solicitudes de cobertura para eventos</h6>
       <span type="button" data-toggle="modal" data-target="#QCoberturas" class="font-weight-bold float-right">?</span>
-      <!-- <span class="font-weight-bold">?</span> -->
+  
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -31,9 +35,20 @@ $solicitudes=$conex->query("SELECT * FROM solicitudes ");
             </tr>
           </thead>
           <tbody class="text-gray-900">
-          <?php foreach($solicitudes as $fila){ ?>
+          <?php foreach($solicitudes as $fila){ 
+
+                      $datosMostrar=$fila['id']."||".
+                      $fila['nombre']." ".$fila['apellido']."||".
+                      $fila['start']."||".   
+                      $fila['ubicacion']."||".
+                      $fila['hora_inicio']."||".
+                      $fila['hora_final']."||".
+                      $fila['tipo_evento']."||".
+                      $fila['cantidad_personas']."||".
+                      $fila['descripcion'];
+            ?>
           <tr>
-              <td role="button" data-toggle="modal" data-target="#ModalInfo"> <i class="fas fa-search fa-fw"></i> </td>
+              <td role="button" data-toggle="modal" data-target="#ModalInfo"  onclick="verEvento('<?php echo $datosMostrar; ?>')" class="ModalInfo"> <i class="fas fa-search fa-fw"></i> </td>
               <td>  <?php echo $fila["start"]?> </td>
               <td><?php echo $fila["nombre"] .$fila[ "apellido"] ?></td>
               <td><?php echo $fila["descripcion"]?></td>
@@ -45,41 +60,10 @@ $solicitudes=$conex->query("SELECT * FROM solicitudes ");
     </div>
   </div>
 
-  <!-- End Table of Users DB -->
+
 
 </div>
 
-<!-- End of Main Content -->
-
-
-<!-- Modals -->
-
-<!-- Modal QCoberturas -->
-
-<div class="modal fade text-gray-900" id="QCoberturas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">¿Coberturas?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>
-          Las solicitudes de cobeturas son peticiones enviadas por algún miembro de la comunidad de la Universidad Tecnológica de Panamá, desde administrativos hasta estudiantes.<br>---<br>
-          Usted puede puede aprobar o rechazar la solitud, independientemente de lo elegido, se le comunicará al solicitante.
-        </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn text-white" data-dismiss="modal" style="background-color: #68086c;">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End Modal QCoberturas -->
-
-<!-- Modal info -->
 
 <div class="modal fade text-gray-900" id="ModalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -91,33 +75,39 @@ $solicitudes=$conex->query("SELECT * FROM solicitudes ");
         </button>
       </div>
       <div class="modal-body">
-
+      <input type="hidden" id="id_servicio" name="id_servicio"></input>
         <div class="form-group">
           <label> <span class="font-weight-bold">De:</span> </label>
+          <input class="form-control font-italic" id="verNombre" disabled> 
         </div>
         <div class="form-group">
-          <label> <span id= "fecha" class="font-weight-bold">Fecha:</span> </label>
+          <label> <span class="font-weight-bold">Fecha:</span> </label>
+          <input class="form-control font-italic" id="verFecha" disabled> 
         </div>
         <div class="form-group">
-          <label> <span id= "ubicacion" class="font-weight-bold">Ubicación:</span> </label>
+          <label> <span class="font-weight-bold">Ubicación:</span> </label>
+          <input class="form-control font-italic" id="verUbicacion" disabled> 
         </div>
         <div class="form-group">
-          <label> <span id= "horainicio"  class="font-weight-bold">Hora inicio:</span> </label>
+          <label> <span class="font-weight-bold">Hora inicio:</span> </label>
+          <input class="form-control font-italic" id="verHoraInicial" disabled> 
         </div>
         <div class="form-group">
-          <label> <span  id= "horafinal"  class="font-weight-bold">Hora final:</span> </label>
+          <label> <span class="font-weight-bold">Hora final:</span> </label>
+          <input class="form-control font-italic" id="verHoraFinal" disabled> 
         </div>
         <div class="form-group">
-          <label> <span id= "tiposervicio" class="font-weight-bold">Tipo de Servicio: </span> </label>
+          <label> <span class="font-weight-bold">Tipo de Evento: </span> </label>
+          <input class="form-control font-italic" id="verTipoEvento" disabled> 
         </div>
         <div class="form-group">
-          <label> <span id= "tipoevento" class="font-weight-bold">Tipo de Evento: </span> </label>
+          <label> <span class="font-weight-bold">Cantidad de Personas: </span> </label>
+          <input class="form-control font-italic" id="verCantidadPersonas" disabled> 
         </div>
         <div class="form-group">
-          <label> <span id= "cantperson" class="font-weight-bold">Cantidad de Personas: </span> </label>
-        </div>
-        <div class="form-group">
-          <label> <span id= "descripcion" class="font-weight-bold">Descripción: </span> </label>
+          <label> <span class="font-weight-bold">Descripción: </span> </label>
+  
+          <textarea  id="verDescripcion" cols="57" rows=5 disabled></textarea>
         </div>
 
       </div>
@@ -129,7 +119,6 @@ $solicitudes=$conex->query("SELECT * FROM solicitudes ");
     </div>
   </div>
 </div>
-<!-- End Modal info -->
 
 <?php
 require('../views/sections/inferior.php');

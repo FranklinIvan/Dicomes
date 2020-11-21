@@ -8,7 +8,7 @@ if(isset($_REQUEST['idSolicitud'])){
     $color = "";
     //Si fue ACEPTADA
     if($_REQUEST['accion'] == 'aceptar' ){
-        $sql = "UPDATE servicio SET fecha=?, hora_inicio=?, hora_final=?, ubicacion=?, descripcion=? WHERE id_servicio=?";
+        $sql = "UPDATE servicio SET start=?, hora_inicio=?, hora_final=?, ubicacion=?, descripcion=? WHERE id=?";
         $stmt= $conex->prepare($sql);
         $stmt->execute([$_REQUEST['a_fechaForm'], $_REQUEST['a_hora_inicioForm'], $_REQUEST['a_hora_finalForm'], 
         $_REQUEST['a_ubicacionForm'],  $_REQUEST['a_descripcionForm'],  $_REQUEST['idServicio']]);
@@ -31,9 +31,9 @@ if(isset($_REQUEST['idSolicitud'])){
     }
 
     //Se manda el mensaje al cliente.
-    $sql = "INSERT INTO NotificacionesActualizar (mensaje,id_cliente) VALUES (?,?)";
+    $sql = "INSERT INTO notificaciones (mensaje,id_cliente,leido) VALUES (?,?,?)";
     $stmt= $conex->prepare($sql);
-    $stmt->execute([$_REQUEST['mensaje'],$_REQUEST['idCliente']]);
+    $stmt->execute([$_REQUEST['mensaje'],$_REQUEST['idCliente'],0]);
     //Se vuelve a la pagina anterior con los mensajes.
     header("location: ../views/solicitudesCambio.php?msg=". $mensaje .".&color=".$color);
     exit;

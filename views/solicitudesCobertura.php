@@ -1,18 +1,27 @@
 <?php
+
 require('../views/sections/superior.php');
+require('../admin/conexionDB.php');
+
+$solicitudes=$conex->query("SELECT * FROM solicitudes ");
+
 ?>
 
-<!-- Main Content -->
+
+<script src="../js/solicitudesCobertura.js"></script>
+
+
+
 <div class="container text-gray-900">
 
   <h2>Solicitudes de Coberturas</h2><br>
 
-  <!-- Table of Users DB -->
+
   <div class="card shadow mb-4">
     <div class="card-header py-3">
       <h6 class="text-gray-900 d-inline">Lista con las solicitudes de cobertura para eventos</h6>
       <span type="button" data-toggle="modal" data-target="#QCoberturas" class="font-weight-bold float-right">?</span>
-      <!-- <span class="font-weight-bold">?</span> -->
+  
     </div>
     <div class="card-body">
       <div class="table-responsive">
@@ -26,66 +35,36 @@ require('../views/sections/superior.php');
             </tr>
           </thead>
           <tbody class="text-gray-900">
-            <tr>
-              <td role="button" data-toggle="modal" data-target="#ModalInfo"> <i class="fas fa-search fa-fw"></i> </td>
-              <td>29/11/20</td>
-              <td>Franklin Iván</td>
-              <td>Mira, te voy a decir algo, pero sólo te lo voy a decir una sola vez ¿ok?, cha el barca está mal loco y eso cómo me molesta, ya era eso jaja.</td>
+          <?php foreach($solicitudes as $fila){ 
+
+                      $datosMostrar=$fila['id']."||".
+                      $fila['nombre']." ".$fila['apellido']."||".
+                      $fila['start']."||".   
+                      $fila['ubicacion']."||".
+                      $fila['hora_inicio']."||".
+                      $fila['hora_final']."||".
+                      $fila['tipo_evento']."||".
+                      $fila['cantidad_personas']."||".
+                      $fila['descripcion'];
+            ?>
+          <tr>
+              <td role="button" data-toggle="modal" data-target="#ModalInfo"  onclick="verEvento('<?php echo $datosMostrar; ?>')" class="ModalInfo"> <i class="fas fa-search fa-fw"></i> </td>
+              <td>  <?php echo $fila["start"]?> </td>
+              <td><?php echo $fila["nombre"] .$fila[ "apellido"] ?></td>
+              <td><?php echo $fila["descripcion"]?></td>
             </tr>
-            <tr>
-              <td role="button" data-toggle="modal" data-target="#ModalInfo"> <i class="fas fa-search fa-fw"></i> </td>
-              <td>01/12/20</td>
-              <td>Jabier Harrue</td>
-              <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet maxime qui excepturi esse natus quos temporibus distinctio minus, similique error dolores..</td>
-            </tr>
-            <tr>
-              <td role="button" data-toggle="modal" data-target="#ModalInfo"> <i class="fas fa-search fa-fw"></i> </td>
-              <td>14/12/20</td>
-              <td>Rikardo Ñañes</td>
-              <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet maxime qui excepturi esse natus quos temporibus distinctio minus.</td>
-            </tr>
+            <?php }?>
           </tbody>
         </table>
       </div>
     </div>
   </div>
 
-  <!-- End Table of Users DB -->
+
 
 </div>
 
-<!-- End of Main Content -->
-
-
-<!-- Modals -->
-
-<!-- Modal QCoberturas -->
-
-<div class="modal fade text-gray-900" id="QCoberturas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">¿Coberturas?</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <p>
-          Las solicitudes de cobeturas son peticiones enviadas por algún miembro de la comunidad de la Universidad Tecnológica de Panamá, desde administrativos hasta estudiantes.<br>---<br>
-          Usted puede puede aprobar o rechazar la solitud, independientemente de lo elegido, se le comunicará al solicitante.
-        </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn text-white" data-dismiss="modal" style="background-color: #68086c;">Cerrar</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- End Modal QCoberturas -->
-
-<!-- Modal info -->
-
+<form  method="POST" action="../admin/apruebarechazaEvento.php"  > 
 <div class="modal fade text-gray-900" id="ModalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -96,45 +75,51 @@ require('../views/sections/superior.php');
         </button>
       </div>
       <div class="modal-body">
-
+      <input type='hidden'  id="id_servicio" name="id_servicio" >
         <div class="form-group">
           <label> <span class="font-weight-bold">De:</span> </label>
+          <input class="form-control font-italic" id="verNombre" disabled> 
         </div>
         <div class="form-group">
           <label> <span class="font-weight-bold">Fecha:</span> </label>
+          <input class="form-control font-italic" id="verFecha" disabled> 
         </div>
         <div class="form-group">
           <label> <span class="font-weight-bold">Ubicación:</span> </label>
+          <input class="form-control font-italic" id="verUbicacion" disabled> 
         </div>
         <div class="form-group">
           <label> <span class="font-weight-bold">Hora inicio:</span> </label>
+          <input class="form-control font-italic" id="verHoraInicial" disabled> 
         </div>
         <div class="form-group">
           <label> <span class="font-weight-bold">Hora final:</span> </label>
-        </div>
-        <div class="form-group">
-          <label> <span class="font-weight-bold">Tipo de Servicio: </span> </label>
+          <input class="form-control font-italic" id="verHoraFinal" disabled> 
         </div>
         <div class="form-group">
           <label> <span class="font-weight-bold">Tipo de Evento: </span> </label>
+          <input class="form-control font-italic" id="verTipoEvento" disabled> 
         </div>
         <div class="form-group">
           <label> <span class="font-weight-bold">Cantidad de Personas: </span> </label>
+          <input class="form-control font-italic" id="verCantidadPersonas" disabled> 
         </div>
         <div class="form-group">
           <label> <span class="font-weight-bold">Descripción: </span> </label>
+  
+          <textarea  id="verDescripcion" cols="57" rows=5 disabled></textarea>
         </div>
 
       </div>
       <div class="modal-footer">
-        <button id="btnAgregar" class="btn text-white" style="background-color: #0f9bd0;">Aceptar</button>
-        <button id="btnEliminar" class="btn text-white" style="background-color: #b9181f;">Rechazar</button>
+        <button  type="submit" id="Aceptar-submit" class="btn text-white" style="background-color: #0f9bd0;" value='Aceptar' name="submit">Aceptar</button>
+        <button type="submit" id="Rechazar-submit" class="btn text-white" style="background-color: #b9181f;" value='Rechazar' name="submit">  Rechazar</button>
         <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
 </div>
-<!-- End Modal info -->
+</form>
 
 <?php
 require('../views/sections/inferior.php');

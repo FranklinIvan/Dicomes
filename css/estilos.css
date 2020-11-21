@@ -39,6 +39,7 @@ body:before{
     border-radius: 5px;
     position: absolute;
     padding: 40px;
+
    
 }
 .contenedor-form .toggle{
@@ -54,6 +55,7 @@ body:before{
     position: absolute;
     transition: all .5s ease;
     cursor: pointer;
+
 
 }
 .contenedor-form .toggle span{

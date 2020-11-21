@@ -3,7 +3,7 @@ function verEvento(datosMostrar){
     
    
     informacion=datosMostrar.split('||');
-    $('#id').val(informacion[0]);
+    $('#id_servicio').val(informacion[0]);
     $('#verNombre').val(informacion[1]);
     $('#verFecha').val(informacion[2]);
     $('#verUbicacion').val(informacion[3]);

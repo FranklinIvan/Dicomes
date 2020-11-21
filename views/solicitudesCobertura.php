@@ -64,7 +64,7 @@ $solicitudes=$conex->query("SELECT * FROM solicitudes ");
 
 </div>
 
-
+<form  method="POST" action="../admin/apruebarechazaEvento.php"  > 
 <div class="modal fade text-gray-900" id="ModalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -75,7 +75,7 @@ $solicitudes=$conex->query("SELECT * FROM solicitudes ");
         </button>
       </div>
       <div class="modal-body">
-      <input type="hidden" id="id_servicio" name="id_servicio"></input>
+      <input type='hidden'  id="id_servicio" name="id_servicio" >
         <div class="form-group">
           <label> <span class="font-weight-bold">De:</span> </label>
           <input class="form-control font-italic" id="verNombre" disabled> 
@@ -112,13 +112,14 @@ $solicitudes=$conex->query("SELECT * FROM solicitudes ");
 
       </div>
       <div class="modal-footer">
-        <button id="btnAgregar" class="btn text-white" style="background-color: #0f9bd0;">Aceptar</button>
-        <button id="btnEliminar" class="btn text-white" style="background-color: #b9181f;">Rechazar</button>
+        <button  type="submit" id="Aceptar-submit" class="btn text-white" style="background-color: #0f9bd0;" value='Aceptar' name="submit">Aceptar</button>
+        <button type="submit" id="Rechazar-submit" class="btn text-white" style="background-color: #b9181f;" value='Rechazar' name="submit">  Rechazar</button>
         <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
 </div>
+</form>
 
 <?php
 require('../views/sections/inferior.php');

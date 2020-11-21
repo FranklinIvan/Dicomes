@@ -99,5 +99,5 @@ ALTER TABLE actualizar DROP FOREIGN KEY `actualizar_ibfk_2` ;
 
 ALTER TABLE actualizar ADD CONSTRAINT `actualizar_ibfk_2` FOREIGN KEY (id_servicio) REFERENCES servicio(id) ON DELETE CASCADE;
 
-
+SELECT*FROM solicitudactualizar
 

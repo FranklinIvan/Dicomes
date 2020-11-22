@@ -14,7 +14,8 @@ require('../views/sections/superior.php');
                                                 TIME_FORMAT(hora_final,'%H:%i') AS hora_final,
                                                 ubicacion,
                                                 tipo_evento,
-                                                descripcion 
+                                                descripcion,
+                                                tipo_servicio 
                                                 FROM servicio");   
         
         
@@ -73,7 +74,8 @@ require('../views/sections/superior.php');
                                 $datos['hora_final']."||".
                                 $datos['tipo_evento']."||".
                                 $datos['cantidad_personas']."||".
-                                $datos['descripcion'];
+                                $datos['descripcion']."||".
+                                $datos['tipo_servicio'];
 
 
                   $datosActualizar= $datos['id']."||".
@@ -153,8 +155,16 @@ require('../views/sections/superior.php');
           </div>
         </div>
         <div class="form-group">
+         <div class="row">
+            <div class="col-md-6">
           <label class="font-weight-bold">Tipo de Evento: </label>
           <input class="form-control font-italic bg-white" id="verTipoEvento" readonly> 
+           </div>
+        <div class="col-md-6">
+          <label class="font-weight-bold">Tipo de Servicio: </label>
+          <input class="form-control font-italic bg-white" id="verTipoServicio" readonly> 
+        </div>
+        </div>
         </div>
         <div class="form-group">
           <label class="font-weight-bold">Cantidad de Personas: </label>

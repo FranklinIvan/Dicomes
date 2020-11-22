@@ -14,6 +14,7 @@ function verEvento(datosMostrar){
     $('#verTipoEvento').val(informacion[6]);
     $('#verCantidadPersonas').val(informacion[7]);
     $('#verDescripcion').val(informacion[8]);
+    $('#verTipoServicio').val(informacion[9]);
 }
 
 //OBTENER LOS DATOS Y AGREGARLOS AL MODAL PARA ACTUALIZAR LOS EVENTOS

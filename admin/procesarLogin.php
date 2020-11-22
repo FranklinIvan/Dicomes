@@ -34,7 +34,7 @@
                 $tipoUsuario = 1;
                 $_SESSION['tipoUsuario'] = $tipoUsuario;
                 //$_SESSION['foto'] = $resultados['foto'];
-                header("location: ../views/Cli_bienvenido.php");
+                header("location: ../views/bienvenido.php");
                 
                 exit;
             }else{

@@ -3,11 +3,6 @@ include('../admin/verificarSesion.php');
 require('../admin/conexionDB.php');
 $sql = $conex->query("SELECT * FROM v_notificacion");
 $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0")->rowCount();
-if($tipoUsuario == 1){
-    $bienvenido = "Cli_bienvenido.php";
-}else{
-    $bienvenido = "bienvenido.php";
-}
 ?>
 
 <!DOCTYPE html>
@@ -54,7 +49,7 @@ if($tipoUsuario == 1){
         <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #68086c;">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../views/<?php echo $bienvenido; ?>">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="../views/bienvenido.php">
 
 
                 <div class="sidebar-brand-icon">
@@ -69,7 +64,7 @@ if($tipoUsuario == 1){
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item" id="agenda">
-                <a class="nav-link" href="../views/<?php echo $bienvenido; ?>">
+                <a class="nav-link" href="../views/bienvenido.php">
                     <i id="agendaIcon" class="fas fa-fw fa-calendar-alt"></i>
                     <span id="agendaTitulo">Agenda</span></a>
             </li>

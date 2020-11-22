@@ -12,13 +12,37 @@ require('../views/sections/superior.php');
   <h2>Calendario de Eventos</h2>
   <br>
 
-  <!-- Calendar -->
+  <!-- Message -->
+  <?php
+  if ($tipoUsuario == 1) {
+
+    if (isset($_GET['solicitudEnviada'])) { ?>
+      <div class="alert alert-success alert-dismissible fade show">
+        <h5>Tus datos han sido procesados correctamente</h5>
+        <small>Ahora debes esperar la confirmación de tu evento por parte de DICOMES.</small>
+        <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
+        </button>
+      </div>
+    <?php } else if (isset($_GET['error'])) { ?>
+      <div class="alert alert-danger alert-dismissible fade show">
+        <span>¡Ups, ha ocurrido un error!</span>
+        <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
+        </button>
+      </div>
+  <?php
+    }
+  }
+  ?>
 
   <!-- Assets FullCalender -->
   <link href='../fullCalendar/lib/main.css' rel='stylesheet' />
   <script src='../fullCalendar/lib/main.js'></script>
 
+  <?php if($tipoUsuario == 1){ ?>
+  <script src="../js/personalJS/calendarClient.js"></script>
+  <?php }else{ ?>
   <script src="../js/personalJS/calendarAdmin.js"></script>
+  <?php } ?>
 
   <!-- Calendar -->
   <div id='calendar' style="font-family:Arial, Helvetica, sans-serif"></div>

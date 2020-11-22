@@ -265,7 +265,7 @@ require('../views/sections/superior.php');
 
     <script>
 
-      document.getElementById("listaDeEventos").style.backgroundColor = "#920896";
+      document.getElementById("listaDeEventos").style.backgroundColor = "#91089669";
       document.getElementById("listaDeEventosTitulo").style.color = "white";
       document.getElementById("listaDeEventosIcon").style.color = "white";
 

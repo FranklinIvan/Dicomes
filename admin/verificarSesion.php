@@ -7,6 +7,7 @@
         $nombre = $_SESSION['nombre'];
         $apellido = $_SESSION['apellido'];
         $correo = $_SESSION['correo'];
-        $foto = $_SESSION['foto'];
+        $tipoUsuario = $_SESSION['tipoUsuario'];
+        //$foto = $_SESSION['foto'];
     }
 ?>

@@ -18,64 +18,101 @@ require('../views/sections/superior.php');
   <link href='../fullCalendar/lib/main.css' rel='stylesheet' />
   <script src='../fullCalendar/lib/main.js'></script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var calendarEl = document.getElementById('calendar');
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        // Custom
-        selectable: true,
-        dayMaxEvents: true,
-        businessHours: true,
-        navLinks: true,
-        headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,dayGridWeek,dayGridDay ayuda'
-        },
-        customButtons: {
-          ayuda: {
-            text: "help",
-            click: function() {
-              $('#QAyuda').modal();
-            }
-          }
-        },
-        
-        // Mostrar datos al seleccionar evento
-        eventClick: function(info) {
-          day = (info.event.start.getDate());
-          month = (info.event.start.getMonth() + 1);
-          year = (info.event.start.getFullYear());
-
-          $('#tituloEvento').html(info.event.title);
-          $('#fechaEvento').html(month + "/" + day + "/" + year);
-          $('#ubicacionEvento').html(info.event.extendedProps.ubicacion);
-          $('#horaIniEvento').html(info.event.extendedProps.hora_inicio);
-          $('#horaFinEvento').html(info.event.extendedProps.hora_final);
-          $('#tipoServEvento').html(info.event.extendedProps.tipo_servicio);
-          $('#tipoEvenEvento').html(info.event.extendedProps.tipo_evento);
-          $('#cantidadPerEvento').html(info.event.extendedProps.cantidad_personas);
-          $('#tituloEventoDes').html(info.event.title);
-          $('#descripcionEvento').html(info.event.extendedProps.descripcion);
-          $('#eventsModal').modal();
-        },
-
-        // Listar eventos desde la BD
-        events: '../admin/calendar/eventos.php',
-        //Color para en espera: lightslategray
-        //Color para aceptados: mediumseagreen
-
-        initialView: 'dayGridMonth'
-        // End of Custom
-      });
-      calendar.setOption('locale', 'es');
-      calendar.render();
-
-    });
-  </script>
+  <script src="../js/personalJS/calendarAdmin.js"></script>
 
   <!-- Calendar -->
   <div id='calendar' style="font-family:Arial, Helvetica, sans-serif"></div>
+
+  <!-- Day Modal -->
+  <div class="modal fade" id="dayModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #68086c;">
+          <h5 class="modal-title text-white" id="dayModal">Agendar</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span class="text-white" aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <form action="../admin/calendar/eventos.php?accion=agregar" method="post">
+
+          <div class="modal-body">
+
+            <div class="form-group">
+              <label> <span class="font-weight-bold">De: </span>Franklin Iván</label>
+              <input type="hidden" name="nombre" id="nombre" value="Fraklooon loco">
+            </div>
+            <div class="form-group">
+              <label class="font-weight-bold">Fecha del Evento:</label>
+              <input type="date" class="form-control font-italic" name="fecha" id="fecha" readonly>
+            </div>
+            <div class="form-group">
+              <label class="font-weight-bold">Ubicación:</label>
+              <input type="text" class="form-control font-italic" name="ubicacion" id="ubicacion" placeholder="ubicación..." required>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="font-weight-bold">Hora Inicio:</label>
+                  <input type="time" class="form-control font-italic" name="horaInicio" id="horaInicio" placeholder="hora inicial..." required>
+                </div>
+                <div class="col-md-6">
+                  <label class="font-weight-bold">Hora Final:</label>
+                  <input type="time" class="form-control font-italic" name="horaFinal" id="horaFinal" placeholder="hora final..." required>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-6">
+                  <label class="font-weight-bold">Tipo de Servicio:</label>
+                  <div class="input-group mb-3">
+                    <select name="tipoServicio" class="custom-select">
+                      <option value="Graduación">Graduación</option>
+                      <option value="Congreso">Congreso</option>
+                      <option value="seminario">Seminario</option>
+                      <option value="Presentación">Presentación</option>
+                      <option value="Evento">Evento</option>
+                      <option value="Otro">Otro</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="font-weight-bold">Tipo de evento:</label>
+                  <div class="input-group mb-3">
+                    <select name="tipoEvento" class="custom-select">
+                      <option value="Público">Público</option>
+                      <option value="Privado">Privado</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="font-weight-bold">Cantidad de personas:</label>
+              <input type="number" min="1" class="form-control font-italic" name="cantidadPersonas" id="cantidadPersonas" placeholder="cantidad..." required>
+            </div>
+            <div class="form-group">
+              <label class="font-weight-bold">Título Evento:</label><br>
+              <input type="text" class="form-control font-italic" name="titulo" id="titulo" required>
+            </div>
+            <div class="form-group">
+              <label class="font-weight-bold">Descripción:</label><br>
+              <textarea name="descripcion" id="descripcion" id="" cols="57" rows=5 required></textarea>
+            </div>
+
+          </div>
+
+          <div class="modal-footer">
+            <button class="btn text-white" name="btnEnviar" id="btnEnviar" style="background-color: #0f9bd0;">Enviar</button>
+            <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
+          </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
 
   <!-- Events Modal -->
   <div class="modal fade" id="eventsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -163,7 +200,8 @@ require('../views/sections/superior.php');
 
 <!-- End of Main Content -->
 <script>
-  document.getElementById("agenda").style.backgroundColor = "#920896";
+  /* document.getElementById("agenda").style.backgroundColor = "#920896"; */
+  document.getElementById("agenda").style.fontWeight = "bold"
   document.getElementById("agendaTitulo").style.color = "white";
   document.getElementById("agendaIcon").style.color = "white";
 </script>

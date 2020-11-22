@@ -16,7 +16,7 @@ require('../views/sections/superior.php');
                                                 tipo_evento,
                                                 descripcion,
                                                 tipo_servicio 
-                                                FROM servicio");   
+                                                FROM servicio Where estado='aceptado'");   
         
         
         $datosCliente = $conex->query( "SELECT nombre,apellido FROM cliente JOIN servicio ON servicio.id_cliente = cliente.id_cliente");

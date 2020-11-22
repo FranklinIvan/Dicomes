@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    if(isset($_SESSION['sesionActiva']) == true){
+        header('location: views/bienvenido.php');
+    }
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -10,7 +16,6 @@
   <!-- Icon UTP -->
   <link rel="shortcut icon" href="https://utp.ac.pa/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon" />
   <!-- Css Rocio -->
-  <title>LoginRegistro</title>
 <link rel="stylesheet" href="css/estilos.css">
 <!-- Css Hi Rocio -->
 

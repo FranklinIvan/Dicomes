@@ -1,20 +1,6 @@
 
-//OBTENER LOS DATOS Y AGREGARLOS AL MODAL PARA ACTUALIZAR LOS EVENTOS
-function obtenerEvento(datosActualizar){
-    
-    //DESCONCATENAR
-    d=datosActualizar.split('||');
-    $('#id_servicioA').val(d[0]);
-    $('#nuevaFecha').val(d[1]);
-    $('#nuevaUbicacion').val(d[2]);
-    $('#nuevaHoraInicial').val(d[3]);
-    $('#nuevaHoraFinal').val(d[4]);
-    $('#nuevaDescripcion').val(d[5]);
 
-}
-
-
-//OBTENER TODOS LOS DATOS Y MOSTRARLOS AL MODAL
+//OBTENER TODOS LOS DATOS Y MOSTRARLOS AL MODAL DE LA LUPA
 function verEvento(datosMostrar){
     
     //DESCONCATENAR
@@ -30,7 +16,21 @@ function verEvento(datosMostrar){
     $('#verDescripcion').val(informacion[8]);
 }
 
+//OBTENER LOS DATOS Y AGREGARLOS AL MODAL PARA ACTUALIZAR LOS EVENTOS
+function obtenerEvento(datosActualizar){
+    
+    //DESCONCATENAR
+    d=datosActualizar.split('||');
+    $('#id_servicioA').val(d[0]);
+    $('#nuevaFecha').val(d[1]);
+    $('#nuevaUbicacion').val(d[2]);
+    $('#nuevaHoraInicial').val(d[3]);
+    $('#nuevaHoraFinal').val(d[4]);
+    $('#nuevaDescripcion').val(d[5]);
 
+}
+
+//ASIGNAR LOS VALORES A CADA ID
 function actualizarEvento(){
     id_servicio=$('#id_servicioA').val();
     fecha=$('#nuevaFecha').val();
@@ -40,6 +40,7 @@ function actualizarEvento(){
     descripcion=$('#nuevaDescripcion').val();
 }
 
+//ASIGNAR EL ID AL MODAL DE ELIMINAR EVENTO
 function eliminaEvento(id_servicio){
     id=id_servicio;
     $('#id_servicioE').val(id);

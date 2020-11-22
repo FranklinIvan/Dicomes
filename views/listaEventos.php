@@ -129,37 +129,41 @@ require('../views/sections/superior.php');
       <div class="modal-body">
       <input type="hidden" id="id_servicio" name="id_servicio"></input>
         <div class="form-group">
-          <label> <span class="font-weight-bold">De:</span> </label>
-          <input class="form-control font-italic" id="verNombre" disabled> 
+          <label class="font-weight-bold">De: </label>
+          <input class="form-control font-italic bg-white" id="verNombre" readonly> 
         </div>
         <div class="form-group">
-          <label> <span class="font-weight-bold">Fecha:</span> </label>
-          <input class="form-control font-italic" id="verFecha" disabled> 
+          <label class="font-weight-bold">Fecha: </label>
+          <input class="form-control font-italic bg-white" id="verFecha" readonly> 
         </div>
         <div class="form-group">
-          <label> <span class="font-weight-bold">Ubicación:</span> </label>
-          <input class="form-control font-italic" id="verUbicacion" disabled> 
+          <label class="font-weight-bold">Ubicación: </label>
+          <input class="form-control font-italic bg-white" id="verUbicacion" readonly> 
         </div>
         <div class="form-group">
-          <label> <span class="font-weight-bold">Hora inicio:</span> </label>
-          <input class="form-control font-italic" id="verHoraInicial" disabled> 
+          <div class="row">
+            <div class="col-md-6">
+          <label class="font-weight-bold">Hora inicio: </label>
+          <input class="form-control font-italic bg-white" id="verHoraInicial" readonly> 
+            </div>
+            <div class="col-md-6">
+          <label class="font-weight-bold">Hora final: </label>
+          <input class="form-control font-italic bg-white" id="verHoraFinal" readonly> 
+            </div>
+          </div>
         </div>
         <div class="form-group">
-          <label> <span class="font-weight-bold">Hora final:</span> </label>
-          <input class="form-control font-italic" id="verHoraFinal" disabled> 
+          <label class="font-weight-bold">Tipo de Evento: </label>
+          <input class="form-control font-italic bg-white" id="verTipoEvento" readonly> 
         </div>
         <div class="form-group">
-          <label> <span class="font-weight-bold">Tipo de Evento: </span> </label>
-          <input class="form-control font-italic" id="verTipoEvento" disabled> 
+          <label class="font-weight-bold">Cantidad de Personas: </label>
+          <input class="form-control font-italic bg-white" id="verCantidadPersonas" readonly> 
         </div>
         <div class="form-group">
-          <label> <span class="font-weight-bold">Cantidad de Personas: </span> </label>
-          <input class="form-control font-italic" id="verCantidadPersonas" disabled> 
-        </div>
-        <div class="form-group">
-          <label> <span class="font-weight-bold">Descripción: </span> </label>
+          <label class="font-weight-bold">Descripción: </label>
       <!--    <label class="form-control font-italic" id="verDescripcion">-->
-          <textarea  id="verDescripcion" cols="57" rows=5 disabled></textarea>
+          <textarea  id="verDescripcion" cols="57" rows=5 readonly></textarea>
         </div>
 
       </div>
@@ -261,7 +265,7 @@ require('../views/sections/superior.php');
 
     <script>
 
-      document.getElementById("listaDeEventos").style.backgroundColor = "#920896";
+      document.getElementById("listaDeEventos").style.backgroundColor = "#91089669";
       document.getElementById("listaDeEventosTitulo").style.color = "white";
       document.getElementById("listaDeEventosIcon").style.color = "white";
 

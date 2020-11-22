@@ -119,8 +119,6 @@ $solicitudes=$conex->query("SELECT * FROM solicitudes ");
   </div>
 </div>
 </form>
-
-
 <!-- QEstado Modal -->
 <div class="modal fade text-gray-900" id="QCoberturas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -143,6 +141,14 @@ $solicitudes=$conex->query("SELECT * FROM solicitudes ");
     </div>
   </div>
 </div>
+
+<script>
+
+  document.getElementById("solicitudesCobertura").style.backgroundColor = "#91089669";
+  document.getElementById("solicitudesCoberturaTitulo").style.color = "white";
+  document.getElementById("solicitudesCoberturaIcon").style.color = "white";
+
+</script>
 
 <?php
 require('../views/sections/inferior.php');

@@ -31,13 +31,13 @@ require('../views/sections/superior.php');
             <img class="rounded-circle" src="../images/imagesDB/6.png" alt="Fotografía" style="width: 150px; height: 150px">
         </div>
         <div class="form-group">
-            <label> <span class="font-weight-bold">Nombre:</span> Admin </label>
+            <label> <span class="font-weight-bold">Nombre:</span> <?php echo $nombre; ?> </label>
         </div>
         <div class="form-group">
-            <label> <span class="font-weight-bold">Apellido:</span> UTP </label>
+            <label> <span class="font-weight-bold">Apellido:</span> <?php echo $apellido; ?> </label>
         </div>
         <div class="form-group">
-            <label> <span class="font-weight-bold">Correo:</span> admin@utp.ac.pa </label>
+            <label> <span class="font-weight-bold">Correo:</span> <?php echo $correo; ?> </label>
         </div>
         <hr>
     </div>
@@ -63,10 +63,13 @@ require('../views/sections/superior.php');
                     <label class="font-weight-bold">Apellido</label>
                     <input type="text" class="form-control" name="apellido" value="UTP" required>
                 </div>
+
+                <?php if($tipoUsuario == 1){ ?> 
                 <div class="form-group">
                     <label class="font-weight-bold">Correo</label>
                     <input type="email" class="form-control" name="correo" value="admin@utp.ac.pa" required>
                 </div>
+                <?php } ?> 
 
                 <!-- <div class="form-group">
                 <label class="font-weight-bold">Foto</label><br>

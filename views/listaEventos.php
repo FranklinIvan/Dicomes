@@ -173,7 +173,7 @@ require('../views/sections/superior.php');
         <div class="form-group">
           <label class="font-weight-bold">Descripción: </label>
       <!--    <label class="form-control font-italic" id="verDescripcion">-->
-          <textarea  id="verDescripcion" cols="62" rows=5 readonly></textarea>
+          <textarea  id="verDescripcion" cols="57" rows=5 readonly></textarea>
         </div>
 
       </div>
@@ -275,7 +275,7 @@ require('../views/sections/superior.php');
 
     <script>
 
-      document.getElementById("listaDeEventos").style.backgroundColor = "#920896";
+      document.getElementById("listaDeEventos").style.backgroundColor = "#91089669";
       document.getElementById("listaDeEventosTitulo").style.color = "white";
       document.getElementById("listaDeEventosIcon").style.color = "white";
 

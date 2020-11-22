@@ -1,5 +1,5 @@
 <?php
-//include('../admin/verificarSesion.php');
+include('../admin/verificarSesion.php');
 require('../admin/conexionDB.php');
 $sql = $conex->query("SELECT * FROM v_notificacion");
 $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0")->rowCount();
@@ -33,7 +33,7 @@ $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0")->rowCou
             transition: background-color 0.2s ease;
         }
         #solicitudesCobertura:hover, #listaDeEventos:hover, #solicitudCambio:hover,#agenda:hover, #sobreNosotros:hover, #contacto:hover{
-            background-color: #920896;
+            background-color: #91089669;
         }
 
     </style>
@@ -77,7 +77,20 @@ $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0")->rowCou
                 Visualizar
             </div>
 
+            <?php if($tipoUsuario == 1) { ?>
             <!-- Nav Item - Tables -->
+            <li class="nav-item" id="">
+                <a class="nav-link" href="../views/Cli_misSolicitudes.php">
+                    <i class="fas fa-fw fa-envelope" id=""></i>
+                    <span id="">Mis Solicitudes</span></a>
+            </li>
+
+            <li class="nav-item" id="">
+                <a class="nav-link" href="#">
+                    <i class="fas fa-fw fa-envelope" id=""></i>
+                    <span id="">Preguntas Frecuentes</span></a>
+            </li>
+            <?php } else { ?>
             <li class="nav-item" id="solicitudesCobertura">
                 <a class="nav-link" href="../views/solicitudesCobertura.php">
                     <i class="fas fa-fw fa-envelope" id="solicitudesCoberturaIcon"></i>
@@ -95,6 +108,7 @@ $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0")->rowCou
                     <i class="fas fa-fw fa-exchange-alt" id="solicitudCambioIcono"></i>
                     <span id="solicitudCambioTitulo">Solicitudes de cambio</span></a>
             </li>
+            <?php } ?>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -205,7 +219,7 @@ $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0")->rowCou
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-dark small">Admin UTP</span>
+                            <span class="mr-2 d-none d-lg-inline text-dark small"><?php echo $nombre." ".$apellido ?></span>
                             <img class="img-profile rounded-circle" src="../images/imagesDB/6.png">
                         </a>
                         <!-- Dropdown - User Information -->

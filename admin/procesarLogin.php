@@ -7,7 +7,7 @@
     if(isset($_POST['email']) and isset($_POST['password'])){
 
         $email = $_POST['email'];
-        $contrasena = md5($_POST['password']);
+        $contrasena = $_POST['password'];
         //Consulta inicial para ver si existe el usuario CLIENTE.
         $sql = $conex->prepare('SELECT id_cliente, nombre, apellido, correo FROM cliente WHERE correo=:correo AND contrasena=:contrasena');
         $sql->bindParam(':correo',$email);
@@ -31,8 +31,10 @@
                 $_SESSION['correo'] = $resultados['correo'];
                 $_SESSION['nombre'] = $resultados['nombre'];
                 $_SESSION['apellido'] = $resultados['apellido'];
+                $tipoUsuario = 1;
+                $_SESSION['tipoUsuario'] = $tipoUsuario;
                 //$_SESSION['foto'] = $resultados['foto'];
-                header("location: http://prensautp.ds507.online/Prototipo/ClienteDicomes/views/bienvenido.php");
+                header("location: ../views/bienvenido.php");
                 
                 exit;
             }else{
@@ -56,6 +58,8 @@
                 $_SESSION['correo'] = $resultados['correo'];
                 $_SESSION['nombre'] = $resultados['nombre'];
                 $_SESSION['apellido'] = $resultados['apellido'];
+                $tipoUsuario = 2;
+                $_SESSION['tipoUsuario'] = $tipoUsuario;
                 //$_SESSION['foto'] = $resultados['foto'];
                 header("location: ../views/bienvenido.php");
                 exit;

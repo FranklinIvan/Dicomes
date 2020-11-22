@@ -1,20 +1,20 @@
 <?php
-        include("conexionDB.php");
+    include("conexionDB.php");
 
-        if (isset ($_REQUEST['id_servicioE']))
-        {
-        $id_servicio=$_REQUEST['id_servicioE'];
+    if (isset ($_REQUEST['id_servicioE']))
+    {
+    $id_servicio=$_REQUEST['id_servicioE'];
 
-        $sentencia=$conex->exec("DELETE FROM servicio WHERE id='$id_servicio'");
+    $sentencia=$conex->exec("DELETE FROM servicio WHERE id='$id_servicio'");
 
-        if($sentencia=true){
-            
-            return header ("Location:../views/listaEventos.php?msgEliminado=Eliminado");
+    if($sentencia=true){
+        
+        return header ("Location:../views/listaEventos.php?msgEliminado=Eliminado");
 
-        }else{
-            echo"Error al eliminar";
+    }else{
+        echo"Error al eliminar";
+    }
+    }else{
+            echo "La variable no esta definida";
         }
-        }else{
-             echo "La variable no esta definida";
-            }
 ?>

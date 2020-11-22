@@ -11,13 +11,13 @@
         
         <table width="80%" border="0" align="center" cellpadding="5" cellspacing="5">
           <tr>
-            <td><div align="center"><img src="http://prensautp.ds507.online/PruebasCorreo/images/logo_utp.jpg" width="100" height="100" alt="UTP" longdesc="UTP"></div></td>
+            <td><div align="center"><img src="http://prensautp.ds507.online/Pruebas/images/logo_utp.jpg" width="100" height="100" alt="UTP" longdesc="UTP"></div></td>
           </tr>
           <tr>
             <td bgcolor="#F4FAFF"><p align="center"><strong>'.$nombre.' '.$apellido.'</strong> <br>
               Gracias por registrarse a nuestro sistema<br>
                 Para acceder seleccione el siguiente link </p>
-              <p align="center"><<a href="http://localhost/AdminDicomes/admin/activarUser.php?e='.$email.'&a='.$hash.'" target="_blank"> Activar Cuenta </a>"></a><br>
+              <p align="center"><<a href="http://localhost/AdminDicomes/admin/activarUser.php?e='.$email.'&a='.$hash.'" target="_blank"> Activar Cuenta </a></a><br>
             </p>    </td>
           </tr>
           <tr>

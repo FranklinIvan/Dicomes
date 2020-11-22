@@ -50,8 +50,8 @@
         </div>
         <div id="registro" class="formulario">
             <!--<img src="images/logo_utp.jpg" class="logo" alt="">-->
-            <h2>Crear Usuario</h2>
-            <form action="admin/procesarUsuario.php" method="POST">
+            <h2>Crear Usuario</h2> 
+            <form action="admin/procesarUsuario.php" method="POST"  id="form">
                 <input type="text" placeholder="Nombre"  name="nombre" required>
                 <input type="text" placeholder="Apellido" name="apellido" required>
                 <input type="text" placeholder="Cédula"  name="cedula" required>
@@ -67,8 +67,9 @@
                     </div>
                 </div>
 
-                <input type="password" placeholder="Contraseña" name="password1" required>
-                <input type="password" placeholder="Repetir Contraseña" name="password2" required>
+                <input type="password" placeholder="Contraseña" name="password1" id="password1" required>
+                <div id="error" style="color:red;"></div>
+                <input type="password" placeholder="Repetir Contraseña" name="password2"  id="password2" required>
                 <select name="sede" class="custom-select" required>
                     <option value="" selected>Centro regional</option>
                     <option value="Centro Regional de Veraguas">Centro Regional de Veraguas</option>
@@ -92,8 +93,7 @@
     </div>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/form.js"></script>
-
-    
+    <script defer src="js/personalJS/registro.js"></script>
 </body>
 
 </html>

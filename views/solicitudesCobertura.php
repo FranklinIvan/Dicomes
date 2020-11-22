@@ -120,6 +120,14 @@ $solicitudes=$conex->query("SELECT * FROM solicitudes ");
 </div>
 </form>
 
+<script>
+
+document.getElementById("solicitudesCobertura").style.backgroundColor = "#920896";
+document.getElementById("solicitudesCoberturaTitulo").style.color = "white";
+document.getElementById("solicitudesCoberturaIcon").style.color = "white";
+
+</script>
+
 <?php
 require('../views/sections/inferior.php');
 ?>

@@ -12,8 +12,9 @@
 
     if( $_POST['submit'] =='Aceptar'){
         $estado = "aceptado";
+        $color= "mediumseagreen";
         try {
-            $sql=$conex->exec("UPDATE servicio SET estado='$estado' WHERE id ='$id_servicio'"); 
+            $sql=$conex->exec("UPDATE servicio SET estado='$estado', color='$color' WHERE id ='$id_servicio'"); 
 
             } catch (PDOException $e) {
                 throw $e;

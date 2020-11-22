@@ -1,4 +1,5 @@
 <?php
+    session_start();
     require('../conexionDB.php');
     header('Content-type: application/json');
 
@@ -46,7 +47,7 @@
                 $stmt->bindParam(':estado',$estado);
                 $color = 'lightslategray';
                 $stmt->bindParam(':color',$color);
-                $cliente = 1;
+                $cliente = $_SESSION['id'];
                 $stmt->bindParam(':id_cliente',$cliente);
 
                 $sql2 = "INSERT INTO notificaciones(mensaje,leido,id_cliente) VALUES(:mensaje,:leido,:id_cliente)";
@@ -54,7 +55,7 @@
                 $stmt2 = $conex->prepare($sql2);
                 $mensaje = 'Ha solicitado una cobertura de evento';
                 $leido = 0;
-                $id_cliente = 1;
+                $id_cliente = $_SESSION['id'];
                 $stmt2->bindParam(':mensaje',$mensaje);
                 $stmt2->bindParam(':leido',$leido);
                 $stmt2->bindParam(':id_cliente',$id_cliente);

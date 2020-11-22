@@ -1,7 +1,7 @@
 <?php
 require('../views/sections/superior.php');
 //require('../admin/conexionDB.php');
-$sql = $conex->query("SELECT * FROM misSolicitudes WHERE id_cliente = 1");
+$sql = $conex->query("SELECT * FROM misSolicitudes WHERE id_cliente =".$_SESSION['id']);
 ?>
 <!-- Assets JS -->
 <script src="../js/personalJS/funciones.js"></script>
@@ -87,7 +87,7 @@ $sql = $conex->query("SELECT * FROM misSolicitudes WHERE id_cliente = 1");
                   <td><?php echo $resultados['nombre'] . " " . $resultados['apellido'] ?></td>
                   <td><?php echo $resultados['descripcion'] ?></td>
                   <td><?php echo $resultados['estado'] ?></td>
-                  <?php if ($resultados['estado'] != 'pendiente') { ?>
+                  <?php if ($resultados['estado'] == 'pendiente') { ?>
                     <td>
                       <button data-toggle="modal" data-target="#btnActualizar" disabled class="btn text-white" style="background-color: #0f9bd0;">Actualizar</button>
                     </td>

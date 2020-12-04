@@ -92,13 +92,11 @@
             break;
         
         default:
-            $sql = $conex->prepare("SELECT * FROM servicio");
+            $sql = $conex->prepare("SELECT * FROM v_servicio");
             $sql->execute();
             $result = $sql->fetchAll(PDO::FETCH_ASSOC);
             echo json_encode($result);
             break;
     }
-
-    
 
 ?>

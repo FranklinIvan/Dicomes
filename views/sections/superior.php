@@ -1,8 +1,13 @@
 <?php
 include('../admin/verificarSesion.php');
 require('../admin/conexionDB.php');
-$sql = $conex->query("SELECT * FROM v_notificacion");
-$sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0")->rowCount();
+if ($_SESSION['tipoUsuario'] == 1) {
+    $sql = $conex->query("SELECT * FROM v_notificacion WHERE id_cliente =" . $_SESSION['id']);
+    $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 1 and id_cliente =" . $_SESSION['id'])->rowCount();
+} else {
+    $sql = $conex->query("SELECT * FROM v_notificacion");
+    $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0")->rowCount();
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,13 +34,23 @@ $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0")->rowCou
     <!-- Custom styles for this template-->
     <link href="../css/sb-admin-2.min.css" rel="stylesheet">
     <style>
-        #solicitudesCobertura,#listaDeEventos, #solicitudCambio, #agenda, #sobreNosotros, #contacto{
+        #solicitudesCobertura,
+        #listaDeEventos,
+        #solicitudCambio,
+        #agenda,
+        #sobreNosotros,
+        #contacto {
             transition: background-color 0.2s ease;
         }
-        #solicitudesCobertura:hover, #listaDeEventos:hover, #solicitudCambio:hover,#agenda:hover, #sobreNosotros:hover, #contacto:hover{
+
+        #solicitudesCobertura:hover,
+        #listaDeEventos:hover,
+        #solicitudCambio:hover,
+        #agenda:hover,
+        #sobreNosotros:hover,
+        #contacto:hover {
             background-color: #91089669;
         }
-
     </style>
 
 </head>
@@ -77,37 +92,37 @@ $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0")->rowCou
                 Visualizar
             </div>
 
-            <?php if($tipoUsuario == 1) { ?>
-            <!-- Nav Item - Tables -->
-            <li class="nav-item" id="">
-                <a class="nav-link" href="../views/Cli_misSolicitudes.php">
-                    <i class="fas fa-fw fa-envelope" id=""></i>
-                    <span id="">Mis Solicitudes</span></a>
-            </li>
+            <?php if ($tipoUsuario == 1) { ?>
+                <!-- Nav Item - Tables -->
+                <li class="nav-item" id="">
+                    <a class="nav-link" href="../views/Cli_misSolicitudes.php">
+                        <i class="fas fa-fw fa-envelope" id=""></i>
+                        <span id="">Mis Solicitudes</span></a>
+                </li>
 
-            <li class="nav-item" id="">
-                <a class="nav-link" href="#">
-                    <i class="fas fa-fw fa-envelope" id=""></i>
-                    <span id="">Preguntas Frecuentes</span></a>
-            </li>
+                <li class="nav-item" id="">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-fw fa-envelope" id=""></i>
+                        <span id="">Preguntas Frecuentes</span></a>
+                </li>
             <?php } else { ?>
-            <li class="nav-item" id="solicitudesCobertura">
-                <a class="nav-link" href="../views/solicitudesCobertura.php">
-                    <i class="fas fa-fw fa-envelope" id="solicitudesCoberturaIcon"></i>
-                    <span id="solicitudesCoberturaTitulo">Solicitudes de cobertura</span></a>
-            </li>
+                <li class="nav-item" id="solicitudesCobertura">
+                    <a class="nav-link" href="../views/solicitudesCobertura.php">
+                        <i class="fas fa-fw fa-envelope" id="solicitudesCoberturaIcon"></i>
+                        <span id="solicitudesCoberturaTitulo">Solicitudes de cobertura</span></a>
+                </li>
 
-            <li class="nav-item" id="listaDeEventos">
-                <a class="nav-link" href="../views/listaEventos.php">
-                    <i class="fas fa-fw fa-calendar-check" id="listaDeEventosIcon"></i>
-                    <span id="listaDeEventosTitulo">Lista de eventos</span></a>
-            </li>
+                <li class="nav-item" id="listaDeEventos">
+                    <a class="nav-link" href="../views/listaEventos.php">
+                        <i class="fas fa-fw fa-calendar-check" id="listaDeEventosIcon"></i>
+                        <span id="listaDeEventosTitulo">Lista de eventos</span></a>
+                </li>
 
-            <li class="nav-item" id="solicitudCambio">
-                <a class="nav-link" href="../views/solicitudesCambio.php">
-                    <i class="fas fa-fw fa-exchange-alt" id="solicitudCambioIcono"></i>
-                    <span id="solicitudCambioTitulo">Solicitudes de cambio</span></a>
-            </li>
+                <li class="nav-item" id="solicitudCambio">
+                    <a class="nav-link" href="../views/solicitudesCambio.php">
+                        <i class="fas fa-fw fa-exchange-alt" id="solicitudCambioIcono"></i>
+                        <span id="solicitudCambioTitulo">Solicitudes de cambio</span></a>
+                </li>
             <?php } ?>
 
             <!-- Divider -->
@@ -119,7 +134,7 @@ $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0")->rowCou
             </div>
 
             <li class="nav-item" id="sobreNosotros">
-                <a class="nav-link" href="../views/sobreNosotros.php" >
+                <a class="nav-link" href="../views/sobreNosotros.php">
                     <i class="fas fa-fw fa-table" id="sobreNosotrosIcon"></i>
                     <span id="sobreNosotrosTitulo">Sobre Nosotros</span></a>
             </li>
@@ -181,36 +196,48 @@ $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0")->rowCou
                     <!-- Nav Item - Messages -->
                     <li class="nav-item dropdown no-arrow mx-1">
                         <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-bell fa-fw"></i>
+                            <i class="fas fa-bell fa-fw text-gray-500"></i>
                             <!-- Counter - Messages -->
-                            <span class="badge badge-danger badge-counter"><?php echo $sinLeer ?></span>
+                            <?php if ($sinLeer > 0) {  ?>
+                                <span class="badge badge-danger badge-counter"><?php echo $sinLeer ?></span>
+                            <?php } ?>
                         </a>
                         <!-- Dropdown - Messages -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
                             <!-- <h6 class="dropdown-header" style="background-color: #2f2f2f; border:1px solid #2f2f2f;">
                                 Mensajes
                             </h6> -->
-                            <div class="dropdown-item text-center text-gray-500">Mensajes</div>
                             <?php
-                            foreach ($sql as $noti) {
-                                $datos = $noti['nombre'] . "/" .
-                                    $noti['apellido'] . "/" .
-                                    $noti['mensaje'];
-                            ?>
-                                <a onclick="mostrarNoti('<?php echo $datos ?>')" data-toggle="modal" data-target="#messageModal" class="dropdown-item d-flex align-items-center" href="#">
-                                    <div class="dropdown-list-image mr-3">
-                                        <img class="rounded-circle" src="../images/imagesDB/5.png" alt="">
-                                        <div class="status-indicator bg-success"></div>
-                                    </div>
-                                    <div class="font-weight-bold">
-                                        <div class="text-truncate"><?php echo $noti['mensaje'] ?></div>
-                                        <div class="small text-gray-500"><?php echo $noti['nombre'] . $noti['apellido'] ?></div>
-                                    </div>
-                                </a>
+                            if ($sinLeer == 0) { ?>
+                                <!-- Mensaje cuandono hay notificaciones -->
+                                <div class="font-weight-bold text-center mt-3">
+                                    <p>No tienes mensajes nuevos</p>
+                                </div>
+                            <?php } else { ?>
+                                <div class="dropdown-item text-center text-gray-500">Mensajes</div>
+                                <?php
+                                foreach ($sql as $noti) {
+                                    $datos = $noti['nombre'] . "/" .
+                                        $noti['apellido'] . "/" .
+                                        $noti['mensaje'];
+                                ?>
+                                    <a onclick="mostrarNoti('<?php echo $datos ?>')" data-toggle="modal" data-target="#messageModal" class="dropdown-item d-flex align-items-center" href="#">
+                                        <div class="dropdown-list-image mr-3">
+                                            <img class="rounded-circle" src="../images/imagesDB/5.png" alt="">
+                                            <div class="status-indicator bg-success"></div>
+                                        </div>
+                                        <div class="font-weight-bold">
+                                            <div class="text-truncate"><?php echo $noti['mensaje'] ?></div>
+                                            <div class="small text-gray-500"><?php echo $noti['nombre'] . $noti['apellido'] ?></div>
+                                        </div>
+                                    </a>
+                                <?php
+                                }
+                                ?>
+                                <a class="dropdown-item text-center small text-gray-500" href="#">Leer más mensajes</a>
                             <?php
                             }
                             ?>
-                            <a class="dropdown-item text-center small text-gray-500" href="#">Leer más mensajes</a>
                         </div>
                     </li>
 
@@ -219,7 +246,7 @@ $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0")->rowCou
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-dark small"><?php echo $nombre." ".$apellido ?></span>
+                            <span class="mr-2 d-none d-lg-inline text-dark small"><?php echo $nombre . " " . $apellido ?></span>
                             <img class="img-profile rounded-circle" src="../images/imagesDB/6.png">
                         </a>
                         <!-- Dropdown - User Information -->

@@ -33,7 +33,10 @@ document.addEventListener('DOMContentLoaded', function() {
         day = (info.event.start.getDate());
         month = (info.event.start.getMonth() + 1);
         year = (info.event.start.getFullYear());
+        name = (info.event.extendedProps.nombre);
+        lastname = (info.event.extendedProps.apellido);
 
+        $('#nombreSolicitanteEvento').html(name + " " + apellido);
         $('#tituloEvento').html(info.event.title);
         $('#fechaEvento').html(month + "/" + day + "/" + year);
         $('#ubicacionEvento').html(info.event.extendedProps.ubicacion);
@@ -44,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
         $('#cantidadPerEvento').html(info.event.extendedProps.cantidad_personas);
         $('#tituloEventoDes').html(info.event.title);
         $('#descripcionEvento').html(info.event.extendedProps.descripcion);
+        $('#estadoEvento').html(info.event.extendedProps.estado);
         $('#eventsModal').modal();
       },
 

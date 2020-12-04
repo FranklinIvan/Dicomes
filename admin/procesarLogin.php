@@ -7,7 +7,7 @@
     if(isset($_POST['email']) and isset($_POST['password'])){
 
         $email = $_POST['email'];
-        $contrasena = md5($_POST['password']);
+        $contrasena = $_POST['password'];
         //Consulta inicial para ver si existe el usuario CLIENTE.
         $sql = $conex->prepare('SELECT id_cliente, nombre, apellido, correo FROM cliente WHERE correo=:correo AND contrasena=:contrasena');
         $sql->bindParam(':correo',$email);

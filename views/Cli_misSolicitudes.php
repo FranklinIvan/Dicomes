@@ -17,7 +17,7 @@ $sql = $conex->query("SELECT * FROM misSolicitudes WHERE id_cliente =".$_SESSION
     <div class="">
       <h2>Sin Solicitudes</h2><br>
       <h6 class="mb-5">Para enviar solicitudes de coberturas de tus eventos, <span class="font-weight-bold">¡ve a la agenda y elige un día libre!</span></h6>
-      <img class="img-fluid mx-auto d-block" src="../images/empty.png" alt="Imagen" style="width: 190px; height: 190px;">
+      <img class="img-fluid mx-auto d-block" src="../images/empty.png" alt="Imagen" style="width: 150px; height: 160px;">
     </div>
 
   <?php

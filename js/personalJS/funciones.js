@@ -40,7 +40,7 @@ Notificaciones JS.
 function mostrarNoti(datos){
   d = datos.split('/');
 
-  //Datos para Notidicación
-  $('#msjNombre').html(d[0]+d[1]);
+  //Datos para Notificación
+  $('#msjNombre').html(d[0]+" "+d[1]);
   $('#msjMensaje').html(d[2]);
 }

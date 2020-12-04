@@ -1,20 +1,13 @@
 <?php
-
 require('../views/sections/superior.php');
-
 $solicitudes=$conex->query("SELECT * FROM solicitudes ");
-
 ?>
 
-
 <script src="../js/solicitudesCobertura.js"></script>
-
-
 
 <div class="container text-gray-900">
 
   <h2>Solicitudes de Coberturas</h2><br>
-
 
   <div class="card shadow mb-4">
     <div class="card-header py-3">

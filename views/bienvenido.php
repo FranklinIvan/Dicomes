@@ -63,8 +63,7 @@ require('../views/sections/superior.php');
           <div class="modal-body">
 
             <div class="form-group">
-              <label> <span class="font-weight-bold">De: </span>Franklin Iván</label>
-              <input type="hidden" name="nombre" id="nombre" value="Fraklooon loco">
+              <label> <span class="font-weight-bold">De: </span><?php echo $_SESSION['nombre']." ".$_SESSION['apellido']?></label>
             </div>
             <div class="form-group">
               <label class="font-weight-bold">Fecha del Evento:</label>
@@ -152,8 +151,8 @@ require('../views/sections/superior.php');
         <div class="modal-body">
 
           <div class="form-group">
-            <label> <span class="font-weight-bold">De:</span> Franklin Iván</label>
-            <input type="hidden" name="nombre" id="nombre" value="Fraklooon loco">
+            <label class="font-weight-bold">De:</label>
+            <label id="nombreSolicitanteEvento"></label>
           </div>
           <div class="form-group">
             <div class="row">
@@ -163,7 +162,7 @@ require('../views/sections/superior.php');
               </div>
               <div class="col-md-6">
                 <label class="font-weight-bold">Estado:</label>
-                <label class="form-control font-italic" readonly>Pendiente</label>
+                <label class="form-control font-italic" id="estadoEvento"></label>
               </div>
             </div>
           </div>

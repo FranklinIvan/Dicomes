@@ -166,7 +166,7 @@ $sql = $conex->query("SELECT * FROM misSolicitudes WHERE id_cliente =".$_SESSION
             </div>
             <div class="col-md-6">
               <label class="font-weight-bold">Estado:</label>
-              <input class="form-control font-italic" id="estadoInfo" readonly>
+              <input class="form-control font-italic bg-white" id="estadoInfo" readonly>
             </div>
           </div>
         </div>

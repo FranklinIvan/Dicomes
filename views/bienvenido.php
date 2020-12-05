@@ -38,11 +38,74 @@ require('../views/sections/superior.php');
   <link href='../fullCalendar/lib/main.css' rel='stylesheet' />
   <script src='../fullCalendar/lib/main.js'></script>
 
-  <?php if($tipoUsuario == 1){ ?>
-  <script src="../js/personalJS/calendarClient.js"></script>
-  <?php }else{ ?>
-  <script src="../js/personalJS/calendarAdmin.js"></script>
-  <?php } ?>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        // Custom
+        selectable: true,
+        dayMaxEvents: true,
+        businessHours: true,
+        navLinks: true,
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,dayGridWeek,dayGridDay ayuda'
+        },
+        customButtons: {
+          ayuda: {
+            text: "help",
+            click: function() {
+              $('#QAyuda').modal();
+            }
+          }
+        },
+
+        dateClick: function(info) {
+          if (("<?php echo $tipoUsuario ?>") == 1) {
+            var check = new Date();
+            if (check < info.date) {
+              $('#fecha').val(info.dateStr);
+              $('#dayModal').modal();
+            }
+          }
+        },
+
+        // Mostrar datos al seleccionar evento
+        eventClick: function(info) {
+          day = (info.event.start.getDate());
+          month = (info.event.start.getMonth() + 1);
+          year = (info.event.start.getFullYear());
+          name = (info.event.extendedProps.nombre);
+          lastname = (info.event.extendedProps.apellido);
+
+          $('#nombreSolicitanteEvento').html(name + " " + lastname);
+          $('#tituloEvento').html(info.event.title);
+          $('#fechaEvento').html(month + "/" + day + "/" + year);
+          $('#ubicacionEvento').html(info.event.extendedProps.ubicacion);
+          $('#horaIniEvento').html(info.event.extendedProps.hora_inicio);
+          $('#horaFinEvento').html(info.event.extendedProps.hora_final);
+          $('#tipoServEvento').html(info.event.extendedProps.tipo_servicio);
+          $('#tipoEvenEvento').html(info.event.extendedProps.tipo_evento);
+          $('#cantidadPerEvento').html(info.event.extendedProps.cantidad_personas);
+          $('#tituloEventoDes').html(info.event.title);
+          $('#descripcionEvento').html(info.event.extendedProps.descripcion);
+          $('#estadoEvento').html(info.event.extendedProps.estado);
+          $('#eventsModal').modal();
+        },
+        // Listar eventos desde la BD
+        events: '../admin/calendar/eventos.php',
+        //Color para en espera: lightslategray
+        //Color para aceptados: mediumseagreen
+
+        initialView: 'dayGridMonth'
+        // End of Custom
+      });
+      calendar.setOption('locale', 'es');
+      calendar.render();
+
+    });
+  </script>
 
   <!-- Calendar -->
   <div id='calendar' style="font-family:Arial, Helvetica, sans-serif"></div>
@@ -63,7 +126,7 @@ require('../views/sections/superior.php');
           <div class="modal-body">
 
             <div class="form-group">
-              <label> <span class="font-weight-bold">De: </span><?php echo $_SESSION['nombre']." ".$_SESSION['apellido']?></label>
+              <label> <span class="font-weight-bold">De: </span><?php echo $_SESSION['nombre'] . " " . $_SESSION['apellido'] ?></label>
             </div>
             <div class="form-group">
               <label class="font-weight-bold">Fecha del Evento:</label>

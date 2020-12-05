@@ -7,66 +7,83 @@ $contador = 0;
 <!-- Main Content -->
 <div class="container text-gray-900">
 
-  <h2>Solicitudes de Cambio</h2><br>
-  <?php if (isset($_REQUEST['msg'])) { ?>
-    <div class="alert <?php echo $_REQUEST['color']?> alert-dismissible fade show">
-      <h5><?php echo $_REQUEST['msg']; ?></h5>
-      <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
-      </button>
-    </div>
-  <?php }?>
+  <?php
+  $cantidad = $cambios->rowCount();
+  if ($cantidad <= 0) {
+  ?>
 
-  <!-- Table of Users DB -->
-  <div class="card shadow mb-4">
-    <div class="card-header py-3">
-      <h6 class="text-gray-900 d-inline">Lista con las solicitudes de cambio para eventos</h6>
-      <span type="button" data-toggle="modal" data-target="#QCambios" class="font-weight-bold float-right">?</span>
-      <!-- <span class="font-weight-bold">?</span> -->
+    <div class="">
+      <h2>Sin Solicitudes de Cambio</h2><br>
+      <h6 class="mb-5">Por el momento, no tienes solicitudes de cambios por el momento.</h6>
+      <img class="img-fluid mx-auto d-block" src="../images/empty.png" alt="Imagen" style="width: 150px; height: 160px;">
     </div>
-    <div class="card-body">
-      <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-          <thead class="text-gray-900" style="background-color: #e6e6e7;">
-            <tr>
-              <th>Ver</th>
-              <th>Fecha</th>
-              <th>Solicitante</th>
-              <th>Descripción</th>
-            </tr>
-          </thead>
-          <tbody class="text-gray-900">
-            <?php foreach($cambios as $fila){ ?>
-            <tr>
-              <td id="<?php echo $contador?>" role="button" data-toggle="modal" data-target="#ModalInfo" onclick="seleccionID(<?php echo $contador?>)"> <i class="fas fa-search fa-fw"></i> </td>
-              <td><?php echo $fila['start']; ?></td>
-              <td><?php echo $fila['nombre']." ".$fila['apellido']; ?></td>
-              <td><?php echo $fila['a_descripcion'];?></td>
-            </tr>
-            <!-- Registrando los datos de cada solicitud listada-->
-            <input type="hidden" id="idCliente<?php echo $contador?>" value="<?php echo $fila['id_cliente']; ?>">
-            <input type="hidden" id="idServicio<?php echo $contador?>" value="<?php echo $fila['id']; ?>">
-            <input type="hidden" id="idSolicitud<?php echo $contador?>" value="<?php echo $fila['id_solicitud']; ?>">
-            <input type="hidden" id="correo<?php echo $contador?>" value="<?php echo $fila['correo']; ?>">
-            <input type="hidden" id="nombre<?php echo $contador?>" value="<?php echo $fila['nombre']; ?>">
-            <input type="hidden" id="apellido<?php echo $contador?>" value="<?php echo $fila['apellido']; ?>">
-            <input type="hidden" id="a_fecha<?php echo $contador?>" value="<?php echo $fila['a_fecha']; ?>">
-            <input type="hidden" id="a_hora_inicio<?php echo $contador?>" value="<?php echo $fila['a_hora_inicio']; ?>">
-            <input type="hidden" id="a_hora_final<?php echo $contador?>" value="<?php echo $fila['a_hora_final']; ?>">
-            <input type="hidden" id="a_ubicacion<?php echo $contador?>" value="<?php echo $fila['a_ubicacion']; ?>">
-            <input type="hidden" id="a_descripcion<?php echo $contador?>" value="<?php echo $fila['a_descripcion']; ?>">
-            <input type="hidden" id="fecha<?php echo $contador?>" value="<?php echo $fila['start']; ?>">
-            <input type="hidden" id="hora_inicio<?php echo $contador?>" value="<?php echo $fila['hora_inicio']; ?>">
-            <input type="hidden" id="hora_final<?php echo $contador?>" value="<?php echo $fila['hora_final']; ?>">
-            <input type="hidden" id="ubicacion<?php echo $contador?>" value="<?php echo $fila['ubicacion']; ?>"> 
-            <input type="hidden" id="descripcion<?php echo $contador?>" value="<?php echo $fila['descripcion']; ?>">
 
-            <?php $contador++; }?>
-          </tbody>
-        </table>
+  <?php
+  } else {
+  ?>
+    <h2>Solicitudes de Cambio</h2><br>
+    <?php if (isset($_REQUEST['msg'])) { ?>
+      <div class="alert <?php echo $_REQUEST['color'] ?> alert-dismissible fade show">
+        <h5><?php echo $_REQUEST['msg']; ?></h5>
+        <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
+        </button>
+      </div>
+    <?php } ?>
+
+    <!-- Table of Users DB -->
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="text-gray-900 d-inline">Lista con las solicitudes de cambio para eventos</h6>
+        <span type="button" data-toggle="modal" data-target="#QCambios" class="font-weight-bold float-right">?</span>
+        <!-- <span class="font-weight-bold">?</span> -->
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead class="text-gray-900" style="background-color: #e6e6e7;">
+              <tr>
+                <th>Ver</th>
+                <th>Fecha</th>
+                <th>Solicitante</th>
+                <th>Descripción</th>
+              </tr>
+            </thead>
+            <tbody class="text-gray-900">
+              <?php foreach ($cambios as $fila) { ?>
+                <tr>
+                  <td id="<?php echo $contador ?>" role="button" data-toggle="modal" data-target="#ModalInfo" onclick="seleccionID(<?php echo $contador ?>)"> <i class="fas fa-search fa-fw"></i> </td>
+                  <td><?php echo $fila['start']; ?></td>
+                  <td><?php echo $fila['nombre'] . " " . $fila['apellido']; ?></td>
+                  <td><?php echo $fila['a_descripcion']; ?></td>
+                </tr>
+                <!-- Registrando los datos de cada solicitud listada-->
+                <input type="hidden" id="idCliente<?php echo $contador ?>" value="<?php echo $fila['id_cliente']; ?>">
+                <input type="hidden" id="idServicio<?php echo $contador ?>" value="<?php echo $fila['id']; ?>">
+                <input type="hidden" id="idSolicitud<?php echo $contador ?>" value="<?php echo $fila['id_solicitud']; ?>">
+                <input type="hidden" id="correo<?php echo $contador ?>" value="<?php echo $fila['correo']; ?>">
+                <input type="hidden" id="nombre<?php echo $contador ?>" value="<?php echo $fila['nombre']; ?>">
+                <input type="hidden" id="apellido<?php echo $contador ?>" value="<?php echo $fila['apellido']; ?>">
+                <input type="hidden" id="a_fecha<?php echo $contador ?>" value="<?php echo $fila['a_fecha']; ?>">
+                <input type="hidden" id="a_hora_inicio<?php echo $contador ?>" value="<?php echo $fila['a_hora_inicio']; ?>">
+                <input type="hidden" id="a_hora_final<?php echo $contador ?>" value="<?php echo $fila['a_hora_final']; ?>">
+                <input type="hidden" id="a_ubicacion<?php echo $contador ?>" value="<?php echo $fila['a_ubicacion']; ?>">
+                <input type="hidden" id="a_descripcion<?php echo $contador ?>" value="<?php echo $fila['a_descripcion']; ?>">
+                <input type="hidden" id="fecha<?php echo $contador ?>" value="<?php echo $fila['start']; ?>">
+                <input type="hidden" id="hora_inicio<?php echo $contador ?>" value="<?php echo $fila['hora_inicio']; ?>">
+                <input type="hidden" id="hora_final<?php echo $contador ?>" value="<?php echo $fila['hora_final']; ?>">
+                <input type="hidden" id="ubicacion<?php echo $contador ?>" value="<?php echo $fila['ubicacion']; ?>">
+                <input type="hidden" id="descripcion<?php echo $contador ?>" value="<?php echo $fila['descripcion']; ?>">
+
+              <?php $contador++;
+              } ?>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
-
+  <?php
+  }
+  ?>
   <!-- End Table of Users DB -->
 
 </div>
@@ -114,29 +131,29 @@ $contador = 0;
       <div class="modal-body">
 
         <div class="form-group">
-          <label class="font-weight-bold">Solicitante:</label> <label id="solicitante" ></label> 
+          <label class="font-weight-bold">Solicitante:</label> <label id="solicitante"></label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Correo:</label> <label id="correo" ></label> 
+          <label class="font-weight-bold">Correo:</label> <label id="correo"></label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Nueva Ubicación:</label> <label id="a_ubicacion" ></label> <br>
-          <label class="text-muted">Antigua Ubicación: <label id="ubicacion" ></label> </label>
+          <label class="font-weight-bold">Nueva Ubicación:</label> <label id="a_ubicacion"></label> <br>
+          <label class="text-muted">Antigua Ubicación: <label id="ubicacion"></label> </label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Nueva Fecha del Evento:</label> <label id="a_fecha" ></label><br>
-          <label class=" text-muted">Antigua Fecha del Evento: <label id="fecha" ></label></label>
+          <label class="font-weight-bold">Nueva Fecha del Evento:</label> <label id="a_fecha"></label><br>
+          <label class=" text-muted">Antigua Fecha del Evento: <label id="fecha"></label></label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Nueva Hora Inicio: </label> <label id="a_hora_inicio" ></label><br>
-          <label class=" text-muted">Antigua Hora Inicio:<label id="hora_inicio" ></label> </label> 
+          <label class="font-weight-bold">Nueva Hora Inicio: </label> <label id="a_hora_inicio"></label><br>
+          <label class=" text-muted">Antigua Hora Inicio:<label id="hora_inicio"></label> </label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Nueva Hora Fin:</label> <label id="a_hora_final" ></label> <br>
-          <label class=" text-muted">Antigua Hora Fin:  <label id="hora_final" ></label></label>
+          <label class="font-weight-bold">Nueva Hora Fin:</label> <label id="a_hora_final"></label> <br>
+          <label class=" text-muted">Antigua Hora Fin: <label id="hora_final"></label></label>
         </div>
         <div class="form-group">
-          <label class="font-weight-bold">Nueva Descripción: </label> <label id="a_descripcion" ></label> <br>
+          <label class="font-weight-bold">Nueva Descripción: </label> <label id="a_descripcion"></label> <br>
           <label class=" text-muted">Antigua Descripción: <label id="descripcion"></label></label>
         </div>
 

@@ -12,6 +12,7 @@ function verEvento(datosMostrar){
     $('#verTipoEvento').val(informacion[6]);
     $('#verCantidadPersonas').val(informacion[7]);
     $('#verDescripcion').val(informacion[8]);
+    $('#id_cliente').val(informacion[9]);
 };
 
 

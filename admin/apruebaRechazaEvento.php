@@ -1,10 +1,9 @@
 <?php
-       
     require("conexionDB.php");
-    $estado=0;
-
+    
     if (isset ($_REQUEST['id_servicio'])){
     $id_servicio = $_REQUEST['id_servicio'];
+    $id_cliente =  $_REQUEST['id_cliente'];
     }
     else{
         echo "La variable no esta definida";
@@ -14,7 +13,11 @@
         $estado = "aceptado";
         $color = "mediumseagreen";
         try {
-            $sql=$conex->exec("UPDATE servicio SET estado='$estado', color='$color' WHERE id ='$id_servicio'"); 
+            $sql=$conex->exec("UPDATE servicio SET estado='$estado', color='$color' WHERE id ='$id_servicio'");
+
+            $mensaje = "Motivo";
+            $leido = 1;
+            $sql2=$conex->exec("INSERT INTO notificaciones(mensaje,leido,id_cliente) VALUES('$mensaje','$leido','$id_cliente')");
 
             } catch (PDOException $e) {
                 throw $e;

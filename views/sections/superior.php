@@ -2,10 +2,10 @@
 include('../admin/verificarSesion.php');
 require('../admin/conexionDB.php');
 if ($_SESSION['tipoUsuario'] == 1) {
-    $sql = $conex->query("SELECT * FROM v_notificacion WHERE id_cliente =" . $_SESSION['id']);
+    $sql = $conex->query("SELECT * FROM v_notificacion WHERE leido = 1 and id_cliente =" . $_SESSION['id']);
     $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 1 and id_cliente =" . $_SESSION['id'])->rowCount();
 } else {
-    $sql = $conex->query("SELECT * FROM v_notificacion");
+    $sql = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0");
     $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0")->rowCount();
 }
 ?>
@@ -228,7 +228,7 @@ if ($_SESSION['tipoUsuario'] == 1) {
                                         </div>
                                         <div class="font-weight-bold">
                                             <div class="text-truncate"><?php echo $noti['mensaje'] ?></div>
-                                            <div class="small text-gray-500"><?php echo $noti['nombre'] . $noti['apellido'] ?></div>
+                                            <div class="small text-gray-500"><?php echo $noti['nombre'] ." ". $noti['apellido'] ?></div>
                                         </div>
                                     </a>
                                 <?php

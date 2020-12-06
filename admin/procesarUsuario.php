@@ -11,9 +11,9 @@ if(isset($_REQUEST['emailPrefijo']) && isset($_REQUEST['password1'])){
     $correo = $_REQUEST['emailPrefijo'].$_REQUEST['emailSufijo'];
     $pass = md5($_REQUEST['password1']);
     $sede = $_REQUEST['sede'];
-    $foto = 'default.jpg';
     $activacion = 0;
-    $hash= md5(rand(0,10000));
+    $hash = md5(rand(0,10000));
+    $foto = "profile.png";
 
     //Validar que el correro que se esta insertando no exista en la tabla de personal.
     $result = $conex->prepare("SELECT*FROM personal WHERE correo = ?");
@@ -21,10 +21,10 @@ if(isset($_REQUEST['emailPrefijo']) && isset($_REQUEST['password1'])){
     //Si el correo insertado NO EXISTE en la tabla personal, procede el registro.
     if($result->rowCount()==0){
         try{
-            $sql = "INSERT INTO cliente (cedula, nombre, apellido, correo, contrasena, sede,hash,activacion) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO cliente (cedula, nombre, apellido, correo, contrasena, sede, hash ,activacion, foto) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $stmt = $conex->prepare($sql);
-            if($stmt->execute([$cedula,$nombre, $apellido,$correo, $pass, $sede,$hash, $activacion])){
+            if($stmt->execute([$cedula,$nombre, $apellido,$correo, $pass, $sede, $hash, $activacion, $foto])){
                 header('location: ../views/mensajeActivarCuenta.html');
                 enviarActivacion($correo,$hash,$nombre,$apellido); //Enviar link para activar cuenta
             }

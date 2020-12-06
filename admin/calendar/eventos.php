@@ -49,18 +49,22 @@
                 $stmt->bindParam(':color',$color);
                 $cliente = $_SESSION['id'];
                 $stmt->bindParam(':id_cliente',$cliente);
+                $stmt->execute();
 
-                $sql2 = "INSERT INTO notificaciones(mensaje,leido,id_cliente) VALUES(:mensaje,:leido,:id_cliente)";
+                $sql2 = "INSERT INTO notificaciones(mensaje,leido,id_cliente,id_servicio) VALUES(:mensaje,:leido,:id_cliente,:id_servicio)";
 
                 $stmt2 = $conex->prepare($sql2);
                 $mensaje = 'Ha solicitado una cobertura de evento';
                 $leido = 0;
-                $id_cliente = $_SESSION['id'];
                 $stmt2->bindParam(':mensaje',$mensaje);
                 $stmt2->bindParam(':leido',$leido);
-                $stmt2->bindParam(':id_cliente',$id_cliente);
+                $stmt2->bindParam(':id_cliente',$cliente);
+                $lastInsertId = $conex->lastInsertId($sql);
+                $stmt2->bindParam(':id_servicio',$lastInsertId);
+                $stmt2->execute();
     
-                if($stmt->execute() == true and $stmt2->execute() == true){
+                if($stmt == true and $stmt2 == true){
+                    
                     header("location: ../../views/bienvenido.php?solicitudEnviada");
                     exit;
                 }else{

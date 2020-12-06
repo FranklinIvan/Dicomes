@@ -42,5 +42,6 @@ function mostrarNoti(datos){
 
   //Datos para Notificación
   $('#msjNombre').html(d[0]+" "+d[1]);
-  $('#msjMensaje').html(d[2]);
+  $('#msjFoto').html(d[2]);
+  $('#msjMensaje').html(d[3]);
 }

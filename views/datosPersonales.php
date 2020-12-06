@@ -41,7 +41,7 @@ require('../views/sections/superior.php');
         </div>
         <hr>
     </div>
-    
+
     <!-- Edit Data -->
     <div class="modal-body">
         <a class="font-weight-bold text-gray-900" type="button" onclick="mostrarEditar()">Editar Datos Personales <i class="fas fa-edit fa-sm"></i> </a>
@@ -51,30 +51,23 @@ require('../views/sections/superior.php');
             }
         </script>
     </div>
-            
+
     <form action="../admin/actualizarUsuario.php" method="post" enctype="multipart/form-data">
         <div class="modal-body">
             <div id="mostrarEditar" style="display: none;">
                 <div class="form-group">
                     <label class="font-weight-bold">Nombre</label>
-                    <input type="text" class="form-control" name="nombre" value="Admin" required>
+                    <input type="text" class="form-control" name="nombre" value="<?php echo $nombre ?>" required>
                 </div>
                 <div class="form-group">
                     <label class="font-weight-bold">Apellido</label>
-                    <input type="text" class="form-control" name="apellido" value="UTP" required>
+                    <input type="text" class="form-control" name="apellido" value="<?php echo $apellido ?>" required>
                 </div>
-
-                <?php if($tipoUsuario == 1){ ?> 
                 <div class="form-group">
-                    <label class="font-weight-bold">Correo</label>
-                    <input type="email" class="form-control" name="correo" value="admin@utp.ac.pa" required>
+                    <label class="font-weight-bold">Foto de Perfil</label><br>
+                    <input type="file" name="foto">
                 </div>
-                <?php } ?> 
 
-                <!-- <div class="form-group">
-                <label class="font-weight-bold">Foto</label><br>
-                <input type="file" name="foto">
-                </div> -->
                 <div class="modal-footer">
                     <button type="submit" name="actualizar" class="btn text-light" style="background-color: #0f9bd0;">Actualizar</button>
                     <button class="btn btn-dark" type="reset">Resetear</button>

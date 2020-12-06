@@ -8,6 +8,6 @@
         $apellido = $_SESSION['apellido'];
         $correo = $_SESSION['correo'];
         $tipoUsuario = $_SESSION['tipoUsuario'];
-        //$foto = $_SESSION['foto'];
+        $foto = $_SESSION['foto'];
     }
 ?>

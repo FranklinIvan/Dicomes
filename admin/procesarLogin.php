@@ -7,9 +7,9 @@
     if(isset($_POST['email']) and isset($_POST['password'])){
 
         $email = $_POST['email'];
-        $contrasena = $_POST['password'];
+        $contrasena = md5($_POST['password']);
         //Consulta inicial para ver si existe el usuario CLIENTE.
-        $sql = $conex->prepare('SELECT id_cliente, nombre, apellido, correo FROM cliente WHERE correo=:correo AND contrasena=:contrasena');
+        $sql = $conex->prepare('SELECT id_cliente, nombre, apellido, correo, foto FROM cliente WHERE correo=:correo AND contrasena=:contrasena');
         $sql->bindParam(':correo',$email);
         $sql->bindParam(':contrasena',$contrasena);
         $sql->execute();
@@ -31,6 +31,7 @@
                 $_SESSION['correo'] = $resultados['correo'];
                 $_SESSION['nombre'] = $resultados['nombre'];
                 $_SESSION['apellido'] = $resultados['apellido'];
+                $_SESSION['foto'] = $resultados['foto'];
                 $tipoUsuario = 1;
                 $_SESSION['tipoUsuario'] = $tipoUsuario;
                 //$_SESSION['foto'] = $resultados['foto'];
@@ -58,6 +59,8 @@
                 $_SESSION['correo'] = $resultados['correo'];
                 $_SESSION['nombre'] = $resultados['nombre'];
                 $_SESSION['apellido'] = $resultados['apellido'];
+                $fotoAdmin = "logo_utp.jpg";
+                $_SESSION['foto'] = $fotoAdmin;
                 $tipoUsuario = 2;
                 $_SESSION['tipoUsuario'] = $tipoUsuario;
                 //$_SESSION['foto'] = $resultados['foto'];

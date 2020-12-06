@@ -1,12 +1,14 @@
 <?php
 include('../admin/verificarSesion.php');
 require('../admin/conexionDB.php');
-if ($_SESSION['tipoUsuario'] == 1) {
-    $sql = $conex->query("SELECT * FROM v_notificacion WHERE leido = 1 and id_cliente =" . $_SESSION['id']);
+if ($tipoUsuario == 1) {
+    $sql = $conex->query("SELECT * FROM v_notificacion WHERE leido = 1 and id_cliente = '".$_SESSION['id']."'ORDER BY id_notificacion DESC");
     $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 1 and id_cliente =" . $_SESSION['id'])->rowCount();
+    $situacion = "Para:";
 } else {
-    $sql = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0");
+    $sql = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0 ORDER BY id_notificacion DESC");
     $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 0")->rowCount();
+    $situacion = "De:";
 }
 ?>
 
@@ -219,16 +221,17 @@ if ($_SESSION['tipoUsuario'] == 1) {
                                 foreach ($sql as $noti) {
                                     $datos = $noti['nombre'] . "/" .
                                         $noti['apellido'] . "/" .
+                                        $noti['foto'] . "/" .
                                         $noti['mensaje'];
                                 ?>
                                     <a onclick="mostrarNoti('<?php echo $datos ?>')" data-toggle="modal" data-target="#messageModal" class="dropdown-item d-flex align-items-center" href="#">
                                         <div class="dropdown-list-image mr-3">
-                                            <img class="rounded-circle" src="../images/imagesDB/5.png" alt="">
+                                            <img class="rounded-circle" src="../images/imagesDB/<?php if($tipoUsuario == 1){echo "logo_utp.jpg";}else{ echo $noti['foto']; }?>" alt="">
                                             <div class="status-indicator bg-success"></div>
                                         </div>
                                         <div class="font-weight-bold">
                                             <div class="text-truncate"><?php echo $noti['mensaje'] ?></div>
-                                            <div class="small text-gray-500"><?php echo $noti['nombre'] ." ". $noti['apellido'] ?></div>
+                                            <div class="small text-gray-500"><?php if($tipoUsuario == 1){ echo "DICOMES"; }else{ echo $noti['nombre'] ." ". $noti['apellido']; }?></div>
                                         </div>
                                     </a>
                                 <?php
@@ -247,7 +250,7 @@ if ($_SESSION['tipoUsuario'] == 1) {
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-dark small"><?php echo $nombre . " " . $apellido ?></span>
-                            <img class="img-profile rounded-circle" src="../images/imagesDB/6.png">
+                            <img class="img-profile rounded-circle" src="../images/imagesDB/<?php echo $foto; ?> ">
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

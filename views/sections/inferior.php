@@ -46,7 +46,7 @@
                 <div class="form-group">
                     <a class="d-flex align-items-center">
                         <div class="mr-3">
-                            <img class="rounded-circle" src="../images/imagesDB/5.png" alt="" style="width: 50px; height:50px ;">
+                            <img class="img-profile rounded-circle" src="../images/imagesDB/logo_utp.jpg" alt="" style="width: 50px; height:50px ;">
                             <div class="status-indicator bg-success"></div>
                         </div>
                         <div class="font-weight-bold">
@@ -55,8 +55,16 @@
                         </div>
                     </a>
                 </div>
+                <?php 
+                    if($tipoUsuario == 1){
+                ?>
                 <div class="form-group">
-                    <label class="font-weight-bold">Nombre: </label>
+                    <label class="font-weight-bold">De: </label>
+                    <label>DICOMES</label>
+                </div>
+                <?php } ?>
+                <div class="form-group">
+                    <label class="font-weight-bold"> <?php echo $situacion ?> </label>
                     <label id="msjNombre"></label>
                 </div>
                 <div class="form-group">

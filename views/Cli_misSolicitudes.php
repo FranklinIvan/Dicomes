@@ -251,7 +251,7 @@ $sql = $conex->query("SELECT * FROM misSolicitudes WHERE id_cliente =".$_SESSION
           </div>
           <div class="form-group">
             <label class="font-weight-bold">Descripción:</label>
-            <textarea cols="57" rows=5 id="descripcionU"></textarea>
+            <textarea class="form-control text-dark" cols="57" rows=5 id="descripcionU"></textarea>
           </div>
         </div>
         <div class="modal-footer">

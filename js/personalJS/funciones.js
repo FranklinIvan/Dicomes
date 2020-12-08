@@ -42,6 +42,20 @@ function mostrarNoti(datos){
 
   //Datos para Notificación
   $('#msjNombre').html(d[0]+" "+d[1]);
-  $('#msjFoto').html(d[2]);
+  $('#msjFoto').html("src='../images/imagesDB/"+d[2]+"'");
   $('#msjMensaje').html(d[3]);
 }
+
+/* $(document).ready(function(){
+  $('#busqueda').keyup(function(event){
+    event.preventDefault();
+    let data = $('#formMessage').serializeArray();
+    $.post({
+      url:'../../views/prueba.php',
+      data:data,
+      success: function(response){
+        $('#respuesta').html(response);
+      }
+    });
+  });
+}); */

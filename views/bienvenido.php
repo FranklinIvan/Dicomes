@@ -130,7 +130,7 @@ require('../views/sections/superior.php');
             </div>
             <div class="form-group">
               <label class="font-weight-bold">Fecha del Evento:</label>
-              <input type="date" class="form-control font-italic" name="fecha" id="fecha" readonly>
+              <input type="date" class="form-control font-italic bg-white" name="fecha" id="fecha" readonly>
             </div>
             <div class="form-group">
               <label class="font-weight-bold">Ubicación:</label>
@@ -184,7 +184,7 @@ require('../views/sections/superior.php');
             </div>
             <div class="form-group">
               <label class="font-weight-bold">Descripción:</label><br>
-              <textarea name="descripcion" id="descripcion" id="" cols="57" rows=5 required></textarea>
+              <textarea class="form-control text-dark" name="descripcion" id="descripcion" id="" cols="57" rows=5 required></textarea>
             </div>
 
           </div>
@@ -267,7 +267,7 @@ require('../views/sections/superior.php');
           </div>
           <div class="form-group">
             <label class="font-weight-bold">Descripción:</label><br>
-            <textarea class="form-control font-italic" readonly id="descripcionEvento" cols="57" rows=5></textarea>
+            <textarea class="form-control font-italic bg-white" readonly id="descripcionEvento" cols="57" rows=5></textarea>
           </div>
 
         </div>
@@ -276,6 +276,28 @@ require('../views/sections/superior.php');
           <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
         </div>
 
+      </div>
+    </div>
+  </div>
+
+  <!-- QAyuda Modal -->
+  <div class="modal fade text-gray-900" id="QAyuda" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">¿Calendario de Eventos?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>
+            Este es el calendario de eventos, en donde se listarán todos las coberturas de los eventos por parte de DICOMES.<br>---<br>Para solicitar una cobertura de eventos, seleciona un día libre e ingresa los datos solicitados. Una vez enviado la solicitud, tendrás que esperar la confirmación por parte de DICOMES.<br>---<br>El evento estará en color <span class="text-secondary font-weight-bold">gris</span> si aún no ha sido aceptado.<br>El evento estará en color <span class="text-success font-weight-bold">verde</span> si fue aceptado.
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn text-white" data-dismiss="modal" style="background-color: #68086c;">Cerrar</button>
+        </div>
       </div>
     </div>
   </div>

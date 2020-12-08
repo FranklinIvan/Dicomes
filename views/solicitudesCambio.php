@@ -14,7 +14,7 @@ $contador = 0;
 
     <div class="">
       <h2>Sin Solicitudes de Cambio</h2><br>
-      <h6 class="mb-5">Por el momento, no tienes solicitudes de cambios por el momento.</h6>
+      <h6 class="mb-5">Por el momento, no tienes solicitudes de cambios.</h6>
       <img class="img-fluid mx-auto d-block" src="../images/empty.png" alt="Imagen" style="width: 150px; height: 160px;">
     </div>
 

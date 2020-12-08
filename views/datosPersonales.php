@@ -28,7 +28,7 @@ require('../views/sections/superior.php');
     <!-- Dates -->
     <div class="modal-body">
         <div class="text-center">
-            <img class="rounded-circle" src="../images/imagesDB/6.png" alt="Fotografía" style="width: 150px; height: 150px">
+            <img class="rounded-circle" src="../images/imagesDB/<?php echo $foto; ?>" alt="Fotografía" style="width: 150px; height: 150px">
         </div>
         <div class="form-group">
             <label> <span class="font-weight-bold">Nombre:</span> <?php echo $nombre; ?> </label>

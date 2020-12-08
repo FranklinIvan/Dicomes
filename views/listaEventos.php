@@ -42,8 +42,8 @@ $datosCliente = $conex->query("SELECT nombre,apellido FROM cliente JOIN servicio
     <h2>Lista de Eventos</h2><br>
 
     <?php if (isset($_GET['msgEliminado'])) { ?>
-      <div class="alert alert-danger alert-dismissible fade show">
-        <h5>El evento ha sido Eliminado</h5>
+      <div class="alert alert-success alert-dismissible fade show">
+        <h6>El evento ha sido Eliminado</h6>
         <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
         </button>
       </div>
@@ -133,21 +133,20 @@ $datosCliente = $conex->query("SELECT nombre,apellido FROM cliente JOIN servicio
 <!-- Modals -->
 
 <!-- Modal info -->
-
 <div class="modal fade text-gray-900" id="ModalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
+      <div class="modal-header text-white" style="background-color: #68086c;">
         <h5 class="modal-title" id="exampleModalLabel">Información</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <span class="text-white" aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
         <input type="hidden" id="id_servicio" name="id_servicio"></input>
         <div class="form-group">
           <label class="font-weight-bold">De: </label>
-          <input class="form-control font-italic bg-white" id="verNombre" readonly>
+          <label id="verNombre">
         </div>
         <div class="form-group">
           <label class="font-weight-bold">Fecha: </label>
@@ -187,8 +186,7 @@ $datosCliente = $conex->query("SELECT nombre,apellido FROM cliente JOIN servicio
         </div>
         <div class="form-group">
           <label class="font-weight-bold">Descripción: </label>
-          <!--    <label class="form-control font-italic" id="verDescripcion">-->
-          <textarea id="verDescripcion" cols="57" rows=5 readonly></textarea>
+          <textarea class="form-control bg-white font-italic" id="verDescripcion" cols="57" rows=5 readonly></textarea>
         </div>
 
       </div>
@@ -231,12 +229,8 @@ $datosCliente = $conex->query("SELECT nombre,apellido FROM cliente JOIN servicio
           </div>
           <div class="form-group">
             <label class="font-weight-bold">Descripción:</label><br>
-            <textarea id="nuevaDescripcion" cols="57" rows=5 name="nuevaDescripcion"></textarea>
+            <textarea class="form-control text-dark" id="nuevaDescripcion" cols="57" rows=5 name="nuevaDescripcion"></textarea>
           </div>
-          <!-- <div class="form-group">
-          <label class="font-weight-bold">Color</label>
-          <input type="color" class="form-control font-italic" name="color" placeholder="color..." required>
-        </div> -->
 
         </div>
         <div class="modal-footer">
@@ -250,7 +244,7 @@ $datosCliente = $conex->query("SELECT nombre,apellido FROM cliente JOIN servicio
 <!-- End Modal btnActualizar -->
 
 <!-- Modal btnEliminar -->
-<form method="POST" action="../admin/eliminarEvento.php">
+<form method="POST" action="../admin/calendar/eventos.php?accion=eliminar">
   <div class="modal fade text-gray-900" id="btnEliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -262,7 +256,8 @@ $datosCliente = $conex->query("SELECT nombre,apellido FROM cliente JOIN servicio
         </div>
         <div class="modal-body">
           ¿Estás seguro de que quieres eliminar este evento?
-          <input type="hidden" name="id_servicioE" id="id_servicioE" required>
+          <input type="hidden" name="idEliminar" id="idEliminar">
+          <input type="hidden" name="listaEventos">
         </div>
         <div class="modal-footer">
           <button type="submit" class="btn text-white" style="background-color: #b9181f;">Eliminar</button>

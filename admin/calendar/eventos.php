@@ -54,7 +54,7 @@
                 $sql2 = "INSERT INTO notificaciones(mensaje,leido,id_cliente,id_servicio) VALUES(:mensaje,:leido,:id_cliente,:id_servicio)";
 
                 $stmt2 = $conex->prepare($sql2);
-                $mensaje = 'Ha solicitado una cobertura de evento';
+                $mensaje = 'Ha solicitado una cobertura de evento.';
                 $leido = 0;
                 $stmt2->bindParam(':mensaje',$mensaje);
                 $stmt2->bindParam(':leido',$leido);
@@ -78,16 +78,26 @@
 
         case 'eliminar':
             // Intrucción para eliminar servicio
-            echo "eliminar";
             try{
                 $sql = "DELETE FROM servicio WHERE id =:id";
                 $stmt = $conex->prepare($sql);
                 $stmt->bindParam(':id',$_POST['idEliminar']);
                 if($stmt->execute() == true){
-                    header("location: ../../views/misSolicitudes.php?solicitudEliminada");
+                    if (isset ($_REQUEST['listaEventos'])){
+                        header ("Location: ../../views/listaEventos.php?msgEliminado=Eliminado");
+                    }
+                    else{
+                        header("location: ../../views/Cli_misSolicitudes.php?solicitudEliminada");
+                    }
+                    
                     exit;
                 }else{
-                    header("location: ../../views/misSolicitudes.php?error");
+                    if (isset ($_REQUEST['listaEventos'])){
+                        echo "La variable no esta definida";
+                    }
+                    else{
+                        header("location: ../../views/Cli_misSolicitudes.php?error");
+                    }
                     exit;
                 }
             }catch(PDOException $e){

@@ -2,7 +2,7 @@
 include('../admin/verificarSesion.php');
 require('../admin/conexionDB.php');
 if ($tipoUsuario == 1) {
-    $sql = $conex->query("SELECT * FROM v_notificacion WHERE leido = 1 and id_cliente = '".$_SESSION['id']."'ORDER BY id_notificacion DESC");
+    $sql = $conex->query("SELECT * FROM v_notificacion WHERE leido = 1 and id_cliente = ".$_SESSION['id']);
     $sinLeer = $conex->query("SELECT * FROM v_notificacion WHERE leido = 1 and id_cliente =" . $_SESSION['id'])->rowCount();
     $situacion = "Para:";
 } else {
@@ -183,7 +183,7 @@ if ($tipoUsuario == 1) {
                         <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
                             <form class="form-inline mr-auto w-100 navbar-search">
                                 <div class="input-group">
-                                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
+                                    <input type="text" class="form-control bg-light border-0 small" placeholder="Buscar..." aria-label="Search" aria-describedby="basic-addon2">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary" type="button">
                                             <i class="fas fa-search fa-sm"></i>
@@ -194,11 +194,17 @@ if ($tipoUsuario == 1) {
                         </div>
                     </li>
 
+                    <!-- Nav Item - Send Messages -->
+                    <li class="nav-item dropdown no-arrow mx-1">
+                    <a class="nav-link dropdown-toggle" href="#" id="sendMessages" data-toggle="modal" data-target="#sendMessage" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-comments fa-fw text-gray-600"></i>
+                        </a>
+                    </li>
 
                     <!-- Nav Item - Messages -->
                     <li class="nav-item dropdown no-arrow mx-1">
                         <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-bell fa-fw text-gray-500"></i>
+                            <i class="fas fa-bell fa-fw text-gray-600"></i>
                             <!-- Counter - Messages -->
                             <?php if ($sinLeer > 0) {  ?>
                                 <span class="badge badge-danger badge-counter"><?php echo $sinLeer ?></span>
@@ -206,9 +212,6 @@ if ($tipoUsuario == 1) {
                         </a>
                         <!-- Dropdown - Messages -->
                         <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                            <!-- <h6 class="dropdown-header" style="background-color: #2f2f2f; border:1px solid #2f2f2f;">
-                                Mensajes
-                            </h6> -->
                             <?php
                             if ($sinLeer == 0) { ?>
                                 <!-- Mensaje cuandono hay notificaciones -->
@@ -236,8 +239,16 @@ if ($tipoUsuario == 1) {
                                     </a>
                                 <?php
                                 }
+                                if($tipoUsuario == 1){
                                 ?>
-                                <a class="dropdown-item text-center small text-gray-500" href="#">Leer más mensajes</a>
+                                    <a class="dropdown-item text-center small text-gray-500" href="#">Leer más mensajes</a>
+                                <?php
+                                }else{
+                                ?>
+                                    <a class="dropdown-item text-center small text-gray-500" href="../views/solicitudesCobertura.php">Ver todas las solicitudes</a>
+                                <?php
+                                }
+                                ?>
                             <?php
                             }
                             ?>
@@ -249,7 +260,7 @@ if ($tipoUsuario == 1) {
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-dark small"><?php echo $nombre . " " . $apellido ?></span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-900 small"><?php echo $nombre . " " . $apellido ?></span>
                             <img class="img-profile rounded-circle" src="../images/imagesDB/<?php echo $foto; ?> ">
                         </a>
                         <!-- Dropdown - User Information -->

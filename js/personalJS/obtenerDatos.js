@@ -6,7 +6,7 @@ function verEvento(datosMostrar){
     //DESCONCATENAR
     informacion=datosMostrar.split('||');
     $('#id_servicio').val(informacion[0]);
-    $('#verNombre').val(informacion[1]);
+    $('#verNombre').html(informacion[1]);
     $('#verFecha').val(informacion[2]);
     $('#verUbicacion').val(informacion[3]);
     $('#verHoraInicial').val(informacion[4]);
@@ -44,7 +44,7 @@ function actualizarEvento(){
 //ASIGNAR EL ID AL MODAL DE ELIMINAR EVENTO
 function eliminaEvento(id_servicio){
     id=id_servicio;
-    $('#id_servicioE').val(id);
+    $('#idEliminar').val(id);
 
 /*
   cadena= "id_servicio=" + id_servicio

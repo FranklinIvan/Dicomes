@@ -1,6 +1,6 @@
 <?php
 require('../views/sections/superior.php');
-$solicitudes = $conex->query("SELECT * FROM solicitudes ");
+$solicitudes = $conex->query("SELECT * FROM missolicitudes WHERE estado='pendiente'");
 ?>
 
 <script src="../js/solicitudesCobertura.js"></script>
@@ -52,12 +52,13 @@ $solicitudes = $conex->query("SELECT * FROM solicitudes ");
                   $fila['tipo_evento'] . "||" .
                   $fila['cantidad_personas'] . "||" .
                   $fila['descripcion'] . "||" .
-                  $fila['id_cliente'];
+                  $fila['id_cliente'] . "||" .
+                  $fila['tipo_servicio'];
               ?>
                 <tr>
                   <td role="button" data-toggle="modal" data-target="#ModalInfo" onclick="verEvento('<?php echo $datosMostrar; ?>')" class="ModalInfo"> <i class="fas fa-search fa-fw"></i> </td>
                   <td> <?php echo $fila["start"] ?> </td>
-                  <td><?php echo $fila["nombre"] ." ". $fila["apellido"] ?></td>
+                  <td><?php echo $fila["nombre"] . " " . $fila["apellido"] ?></td>
                   <td><?php echo $fila["descripcion"] ?></td>
                 </tr>
               <?php } ?>
@@ -75,10 +76,10 @@ $solicitudes = $conex->query("SELECT * FROM solicitudes ");
   <div class="modal fade text-gray-900" id="ModalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header text-white" style="background-color: #68086c;">
           <h5 class="modal-title" id="exampleModalLabel">Información</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+            <span class="text-white" aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
@@ -86,36 +87,58 @@ $solicitudes = $conex->query("SELECT * FROM solicitudes ");
           <input type='hidden' id="id_cliente" name="id_cliente">
           <div class="form-group">
             <label> <span class="font-weight-bold">De:</span> </label>
-            <input class="form-control font-italic" id="verNombre" disabled>
+            <label id="verNombre"></label>
           </div>
           <div class="form-group">
             <label> <span class="font-weight-bold">Fecha:</span> </label>
-            <input class="form-control font-italic" id="verFecha" disabled>
+            <input class="form-control font-italic bg-white" id="verFecha" disabled>
           </div>
           <div class="form-group">
             <label> <span class="font-weight-bold">Ubicación:</span> </label>
-            <input class="form-control font-italic" id="verUbicacion" disabled>
+            <input class="form-control font-italic bg-white" id="verUbicacion" disabled>
           </div>
           <div class="form-group">
-            <label> <span class="font-weight-bold">Hora inicio:</span> </label>
-            <input class="form-control font-italic" id="verHoraInicial" disabled>
+            <div class="row">
+              <div class="col-md-6">
+                <label> <span class="font-weight-bold">Hora inicio:</span> </label>
+                <input class="form-control font-italic bg-white" id="verHoraInicial" disabled>
+              </div>
+              <div class="col-md-6">
+                <label> <span class="font-weight-bold">Hora final:</span> </label>
+                <input class="form-control font-italic bg-white" id="verHoraFinal" disabled>
+              </div>
+            </div>
           </div>
           <div class="form-group">
-            <label> <span class="font-weight-bold">Hora final:</span> </label>
-            <input class="form-control font-italic" id="verHoraFinal" disabled>
+            <div class="row">
+              <div class="col-md-6">
+                <label> <span class="font-weight-bold">Tipo de Evento: </span> </label>
+                <input class="form-control font-italic bg-white" id="verTipoEvento" disabled>
+              </div>
+              <div class="col-md-6">
+                <label class="font-weight-bold">Tipo de Servicio: </label>
+                <input class="form-control font-italic bg-white" id="verTipoServicio" readonly>
+              </div>
+            </div>
           </div>
-          <div class="form-group">
-            <label> <span class="font-weight-bold">Tipo de Evento: </span> </label>
-            <input class="form-control font-italic" id="verTipoEvento" disabled>
-          </div>
-          <div class="form-group">
-            <label> <span class="font-weight-bold">Cantidad de Personas: </span> </label>
-            <input class="form-control font-italic" id="verCantidadPersonas" disabled>
+          <div class="row">
+            <div class="col-md-6">
+              <label> <span class="font-weight-bold">Cantidad de Personas: </span> </label>
+              <input class="form-control font-italic bg-white" id="verCantidadPersonas" disabled>
+            </div>
           </div>
           <div class="form-group">
             <label> <span class="font-weight-bold">Descripción: </span> </label>
-
-            <textarea id="verDescripcion" cols="57" rows=5 disabled></textarea>
+            <textarea class="form-control bg-white font-italic" id="verDescripcion" cols="57" rows=5 readonly></textarea>
+          </div>
+          <a class="font-weight-bold text-gray-900" type="button" onclick="Motivo()">Redactar Motivo <i class="fas fa-pen fa-sm"></i><span class="small"> (opcional)</span> </a>
+          <script>
+            function Motivo() {
+              document.getElementById('redactarMotivo').style.display = "block";
+            }
+          </script>
+          <div class="form-group mt-2" id="redactarMotivo" style="display: none;">
+            <textarea class="form-control text-dark" name="motivo" id="motivo" cols="57" rows=5></textarea>
           </div>
 
         </div>
@@ -140,7 +163,7 @@ $solicitudes = $conex->query("SELECT * FROM solicitudes ");
       </div>
       <div class="modal-body">
         <p>
-          Esta lista muestra las solicitudes de cobertura enviadas por parte de la comunidad universitaria.<br>---<br>Las solicitudes podrán ser aceptadas o rechazadas.<br>---<br>Al seleccionar la lupa, se mostrará un cuadro de texto donde deberás redactar el motivo de la aprovación o rechazo.
+          Esta lista muestra las solicitudes de cobertura enviadas por parte de la comunidad universitaria.<br>---<br>Las solicitudes podrán ser aceptadas o rechazadas.<br>---<br>Al seleccionar la lupa, se mostrará un cuadro de texto donde tendrás la opción de redactar el motivo de la aprovación o rechazo.
         </p>
       </div>
       <div class="modal-footer">

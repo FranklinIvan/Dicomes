@@ -44,6 +44,8 @@ function mostrarNoti(datos){
   $('#msjNombre').html(d[0]+" "+d[1]);
   $('#msjFoto').html("src='../images/imagesDB/"+d[2]+"'");
   $('#msjMensaje').html(d[3]);
+  $('#msjId_notificacion').val(d[4]);
+  $('#msjId_cliente').val(d[5]);
 }
 
 /* $(document).ready(function(){

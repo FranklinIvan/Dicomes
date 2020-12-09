@@ -23,6 +23,27 @@ $solicitudes = $conex->query("SELECT * FROM missolicitudes WHERE estado='pendien
   ?>
     <h2>Solicitudes de Coberturas</h2><br>
 
+    <!-- Message -->
+    <?php if (isset($_GET['solicitudAceptada'])) { ?>
+      <div class="alert alert-success alert-dismissible fade show">
+        <h6>La solicitud de cobertura ha sido aceptada con éxito.</h6>
+        <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
+        </button>
+      </div>
+    <?php } else if (isset($_GET['solicitudRechazada'])) { ?>
+      <div class="alert alert-success alert-dismissible fade show">
+        <span>La solicitud de cobertura ha sido rechazada con éxito.</span>
+        <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
+        </button>
+      </div>
+    <?php } else if (isset($_GET['error'])) { ?>
+      <div class="alert alert-danger alert-dismissible fade show">
+        <span>¡Ups, ha ocurrido un error!</span>
+        <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
+        </button>
+      </div>
+    <?php } ?>
+
     <div class="card shadow mb-4">
       <div class="card-header py-3">
         <h6 class="text-gray-900 d-inline">Lista con las solicitudes de cobertura para eventos</h6>
@@ -117,7 +138,7 @@ $solicitudes = $conex->query("SELECT * FROM missolicitudes WHERE estado='pendien
               </div>
               <div class="col-md-6">
                 <label class="font-weight-bold">Tipo de Servicio: </label>
-                <input class="form-control font-italic bg-white" id="verTipoServicio" readonly>
+                <input class="form-control font-italic bg-white" name="verTipoServicio" id="verTipoServicio" readonly>
               </div>
             </div>
           </div>

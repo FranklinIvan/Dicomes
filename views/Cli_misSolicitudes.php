@@ -29,7 +29,7 @@ $sql = $conex->query("SELECT * FROM misSolicitudes WHERE id_cliente =".$_SESSION
     <!-- Message -->
     <?php if (isset($_GET['solicitudEliminada'])) { ?>
       <div class="alert alert-success alert-dismissible fade show">
-        <h6>La solicitud de cobertura ha sido eliminada con éxito</h6>
+        <h6>La solicitud de cobertura ha sido eliminada con éxito.</h6>
         <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
         </button>
       </div>
@@ -269,10 +269,10 @@ $sql = $conex->query("SELECT * FROM misSolicitudes WHERE id_cliente =".$_SESSION
 <div class="modal text-gray-900" tabindex="-1" id="btnEliminar" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header" style="background-color: #68086c;">
-        <h5 class="modal-title text-white">Eliminar</h5>
+      <div class="modal-header">
+        <h5 class="modal-title">Eliminar</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span class="text-white" aria-hidden="true">&times;</span>
+          <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">

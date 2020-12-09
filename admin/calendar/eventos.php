@@ -7,7 +7,7 @@
 
     switch ($accion) {
         case 'agregar':
-            // Instrucción para agregar servicio
+            // Instrucciones para agregar servicio.
             try {
                 $sql = "INSERT INTO servicio (start,
                                             ubicacion,
@@ -64,7 +64,6 @@
                 $stmt2->execute();
     
                 if($stmt == true and $stmt2 == true){
-                    
                     header("location: ../../views/bienvenido.php?solicitudEnviada");
                     exit;
                 }else{
@@ -77,7 +76,7 @@
             break;
 
         case 'eliminar':
-            // Intrucción para eliminar servicio
+            // Intrucciones para eliminar servicio.
             try{
                 $sql = "DELETE FROM servicio WHERE id =:id";
                 $stmt = $conex->prepare($sql);
@@ -104,6 +103,44 @@
                 echo "Error al eliminar datos".$e;
             }
             break;
+
+        case 'notificaciones':
+            // Intrucciones para controlar notificaciones.
+            try{
+                // Apartado de sugerencias
+                if(isset($_REQUEST['sugerencia']) and ($_REQUEST['id_clienteSugerencia'])){
+                    $mensaje = $_REQUEST['sugerencia'];
+                    $id = $_REQUEST['id_clienteSugerencia'];
+                    $leido = 0;
+                    $sql=$conex->exec("INSERT INTO notificaciones (mensaje,leido,id_cliente) VALUES('$mensaje','$leido','$id')");
+                
+                    if($sql == true){
+                        header("location: ../../views/bienvenido.php?sugerenciaEnviada");
+                        exit;
+                    }else{
+                        header("location: ../../views/bienvenido.php?error");
+                        exit;
+                    }
+                // Apartado de mensajes leídos    
+                }else if(isset($_REQUEST['msjId_notificacion']) and ($_REQUEST['msjId_cliente'])){
+                    $idNoti = $_REQUEST['msjId_notificacion'];
+                    $idCli = $_REQUEST['msjId_cliente'];
+                    echo $idNoti;
+                    echo $idCli;
+                    $leido = 2;
+                    $sql=$conex->exec("UPDATE notificaciones SET leido='$leido' WHERE id_cliente='$idCli' and id_notificacion='$idNoti'");
+                    if($sql == true){
+                        header("location: ../../views/bienvenido.php");
+                        exit;
+                    }else{
+                        header("location: ../../views/bienvenido.php");
+                        exit;
+                    }
+                }
+            }catch(PDOException $e){
+                echo "Error al procesar las notificaciones".$e;
+            }
+            break;
         
         default:
             $sql = $conex->prepare("SELECT * FROM v_servicio");
@@ -112,5 +149,3 @@
             echo json_encode($result);
             break;
     }
-
-?>

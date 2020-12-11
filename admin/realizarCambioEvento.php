@@ -31,10 +31,11 @@ if(isset($_REQUEST['idSolicitud'])){
     }
 
     //Se manda el mensaje al cliente.
-    $sql = "INSERT INTO notificaciones (mensaje,id_cliente,leido) VALUES (?,?,?)";
-    $stmt= $conex->prepare($sql);
-    $stmt->execute([$_REQUEST['mensaje'],$_REQUEST['idCliente'],0]);
-    //Se vuelve a la pagina anterior con los mensajes.
+    $mensaje = $_REQUEST['mensaje'];
+    $leido = 1;
+    $id_servicio =  $_REQUEST['idServicio'];
+    $sql2=$conex->exec("UPDATE notificaciones SET mensaje='$mensaje', leido='$leido' WHERE id_servicio = '$id_servicio'" );
+
     header("location: ../views/solicitudesCambio.php?msg=". $mensaje .".&color=".$color);
     exit;
 

@@ -27,6 +27,7 @@ function actualizarInfo(datos) {
   $('#horaIniU').val(d[4]);
   $('#horaFinU').val(d[5]);
   $('#descripcionU').val(d[10]);
+  $('#id_servicioU').val(d[12]);
 }
 
 function eliminarInfo(id){

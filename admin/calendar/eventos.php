@@ -104,6 +104,52 @@
             }
             break;
 
+        case 'actualizar':
+            // Intrucciones para controlar actualizaciones de eventos.
+            try{
+                if(isset($_REQUEST['id_servicioU'])){
+                    $sql = ("INSERT INTO actualizar (fecha,
+                                                    hora_inicio,
+                                                    hora_final,
+                                                    ubicacion,
+                                                    descripcion,
+                                                    id_cliente,
+                                                    id_servicio)
+                                            VALUES  (:fecha,
+                                                    :hora_inicio,
+                                                    :hora_final,
+                                                    :ubicacion,
+                                                    :descripcion,
+                                                    :id_cliente,
+                                                    :id_servicio)");
+                    $stmt = $conex->prepare($sql);
+                    $stmt->bindParam(':fecha',$_POST['fechaU']);
+                    $stmt->bindParam(':hora_inicio',$_POST['horaIniU']);
+                    $stmt->bindParam(':hora_final',$_POST['horaFinU']);
+                    $stmt->bindParam(':ubicacion',$_POST['ubicacionU']);
+                    $stmt->bindParam(':descripcion',$_POST['descripcionU']);
+                    $stmt->bindParam(':id_cliente',$_SESSION['id']);
+                    $stmt->bindParam(':id_servicio',$_POST['id_servicioU']);
+
+                    $mensaje = "Ha solicitado la actualización de su evento.";
+                    $leido = 0;
+                    $id_servicio = $_POST['id_servicioU'];
+
+                    $sql2=$conex->exec("UPDATE notificaciones SET mensaje='$mensaje', leido='$leido' WHERE id_servicio = '$id_servicio'" );
+
+                    if($stmt->execute() == true and $sql2 == true){
+                        header("location: ../../views/Cli_misSolicitudes.php?solicitudActuEnviada");
+                        exit;
+                    }else{
+                        header("location: ../../views/Cli_misSolicitudes.php?error");
+                        exit;
+                    }
+                }
+            }catch(PDOException $e){
+                echo "Error al procesar la actualización".$e;
+            }
+            break;
+
         case 'notificaciones':
             // Intrucciones para controlar notificaciones.
             try{

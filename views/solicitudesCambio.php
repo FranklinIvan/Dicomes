@@ -122,10 +122,10 @@ $contador = 0;
 <div class="modal fade text-gray-900" id="ModalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Información</h5>
+      <div class="modal-header" style="background-color: #68086c;">
+        <h5 class="modal-title text-white" id="exampleModalLabel">Información</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <span class="text-white" aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
@@ -159,7 +159,7 @@ $contador = 0;
 
         <div class="form-group">
           <label class="font-weight-bold">Motivo de la aprovación o rechazo:</label><br>
-          <textarea name="mensaje" id="" cols="57" rows=5 form="formulario" required></textarea>
+          <textarea class="form-control text-dark" name="mensaje" id="" cols="57" rows=5 form="formulario" required></textarea>
         </div>
 
       </div>

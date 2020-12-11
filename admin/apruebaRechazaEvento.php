@@ -4,6 +4,7 @@
     
     if (isset ($_REQUEST['id_servicio'])){
     $id_servicio = $_REQUEST['id_servicio'];
+    $id_cliente = $_REQUEST['id_cliente'];
     $id_personal=  $_REQUEST['id_personal'];
     $tipoSevicio =  $_REQUEST['verTipoServicio'];
     //echo $tipoSevicio;

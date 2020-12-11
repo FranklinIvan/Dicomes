@@ -105,7 +105,7 @@ $solicitudes = $conex->query("SELECT * FROM missolicitudes WHERE estado='pendien
         </div>
         <div class="modal-body">
           <input type='hidden' id="id_servicio" name="id_servicio">
-          <input type='hidden' id="id_cliente" name="id_cliente">
+          <input type='hidden' value="<?php echo $id ?>" name="id_personal">
           <div class="form-group">
             <label> <span class="font-weight-bold">De:</span> </label>
             <label id="verNombre"></label>

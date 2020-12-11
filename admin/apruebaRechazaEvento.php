@@ -4,9 +4,10 @@
     
     if (isset ($_REQUEST['id_servicio'])){
     $id_servicio = $_REQUEST['id_servicio'];
-    $id_cliente =  $_REQUEST['id_cliente'];
+    $id_personal=  $_REQUEST['id_personal'];
     $tipoSevicio =  $_REQUEST['verTipoServicio'];
-    echo $tipoSevicio;
+    //echo $tipoSevicio;
+    //echo $id_personal;
     }
     else{
         echo "La variable no esta definida";
@@ -41,7 +42,7 @@
                 $tipoSevicio = 6;
             }
 
-            $sql3=$conex->exec("INSERT INTO atiende (id_servicio, id_personal, cod_tipo) VALUES('$id_servicio','$id_cliente','$tipoSevicio')");
+            $sql3=$conex->exec("INSERT INTO atiende (id_servicio, id_personal, cod_tipo) VALUES('$id_servicio','$id_personal','$tipoSevicio')");
  
             if($sql == true and $sql2 == true and $sql3 == true){
                 header("Location:../views/solicitudesCobertura.php?solicitudAceptada");

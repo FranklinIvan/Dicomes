@@ -36,7 +36,7 @@ if (isset($_REQUEST['evento'])) {
             <?php }?>
         </select>
  
-        <button class="btn btn-primary" type="submit">Buscar</button>
+        <button class="btn" type="submit" style="background-color: #0f9bd0; color:white;">Buscar</button>
     </form><br>
 
     <?php if (isset($_REQUEST['evento'])) { ?>
@@ -105,12 +105,8 @@ if (isset($_REQUEST['evento'])) {
 
   <?php }; ?>
   <!-- End Table of Users DB -->
-
-
 </div>
 <!-- End of Main Content -->
-
-
 
 <!-- Modal info -->
 <div class="modal fade text-gray-900" id="ModalInfo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -168,7 +164,6 @@ if (isset($_REQUEST['evento'])) {
           <label class="font-weight-bold">Descripción: </label>
           <textarea class="form-control bg-white font-italic" id="verDescripcion" cols="57" rows=5 readonly></textarea>
         </div>
-
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>

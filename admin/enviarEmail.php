@@ -11,7 +11,7 @@
         
         <table width="80%" border="0" align="center" cellpadding="5" cellspacing="5">
           <tr>
-            <td><div align="center"><img src="http://prensautp.ds507.online/Pruebas/images/logo_utp.jpg" width="100" height="100" alt="UTP" longdesc="UTP"></div></td>
+            <td><div align="center"><img src="https://utp.ac.pa/documentos/2015/imagen/logo_utp_1_300.png" width="100" height="100" alt="UTP" longdesc="UTP"></div></td>
           </tr>
           <tr>
             <td bgcolor="#F4FAFF"><p align="center"><strong>'.$nombre.' '.$apellido.'</strong> <br>

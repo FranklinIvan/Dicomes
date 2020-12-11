@@ -215,6 +215,8 @@ if ($tipoUsuario == 1) {
                         </a>
                     </li>
                     <?php } ?>
+
+                    <?php if ($tipoUsuario != 3){ ?>
                     <!-- Nav Item - Messages -->
                     <li class="nav-item dropdown no-arrow mx-1">
                         <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -270,7 +272,7 @@ if ($tipoUsuario == 1) {
                             ?>
                         </div>
                     </li>
-
+                    <?php }?>
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->

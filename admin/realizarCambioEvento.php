@@ -18,7 +18,7 @@ if(isset($_REQUEST['idSolicitud'])){
             $sql = "DELETE FROM actualizar WHERE id_solicitud=?";
             $stmt= $conex->prepare($sql);
             $stmt->execute([$_REQUEST['idSolicitud']]);
-            $mensaje = "Cambios realizados";
+            $mensajeEvento = "Cambios realizados";
             $color = "alert-success";
         }
         //SI FUE RECHAZADA.
@@ -26,7 +26,7 @@ if(isset($_REQUEST['idSolicitud'])){
         $sql = "DELETE FROM actualizar WHERE id_solicitud=?";
         $stmt= $conex->prepare($sql);
         $stmt->execute([$_REQUEST['idSolicitud']]);
-        $mensaje = "Solicitud rechazada";
+        $mensajeEvento = "Solicitud rechazada";
         $color = "alert-warning";
     }
 
@@ -36,7 +36,7 @@ if(isset($_REQUEST['idSolicitud'])){
     $id_servicio =  $_REQUEST['idServicio'];
     $sql2=$conex->exec("UPDATE notificaciones SET mensaje='$mensaje', leido='$leido' WHERE id_servicio = '$id_servicio'" );
 
-    header("location: ../views/solicitudesCambio.php?msg=". $mensaje .".&color=".$color);
+    header("location: ../views/solicitudesCambio.php?msg=". $mensajeEvento .".&color=".$color);
     exit;
 
 }else{

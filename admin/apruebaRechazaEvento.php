@@ -42,7 +42,12 @@
             }else if($tipoSevicio == "Otro"){
                 $tipoSevicio = 6;
             }
-
+                
+            /*
+            $temp = $conex->query("select*from tipo_servicio where tipo_Servicio = '".$tipoSevicio."'");
+            $tipoSevicio = $temp['cod_tipo'];
+            */
+            
             $sql3=$conex->exec("INSERT INTO atiende (id_servicio, id_personal, cod_tipo) VALUES('$id_servicio','$id_personal','$tipoSevicio')");
  
             if($sql == true and $sql2 == true and $sql3 == true){

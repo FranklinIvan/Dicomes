@@ -3,5 +3,5 @@
     define("HOST", "localhost");
     define("USER", "root");
     define("PASSWORD", "");
-    define("DB", "dbprensautp");
+    define("DB", "dbprensautp1");
 ?>

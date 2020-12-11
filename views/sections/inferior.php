@@ -73,6 +73,11 @@
             </div>
 
             <div class="modal-footer">
+            <form action="../admin/calendar/eventos.php?accion=notificaciones" method="POST">
+                <button class="btn text-white"  style="background-color: #68086c;">Leido</button>
+                <input type="hidden" name="msjId_notificacion" id="msjId_notificacion">
+                <input type="hidden" name="msjId_cliente" id="msjId_cliente">
+            </form>
                 <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
             </div>
 
@@ -84,50 +89,36 @@
 <div class="modal fade text-dark" id="sendMessage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Enviar Mensaje</h5>
+            <div class="modal-header text-white" style="background-color: #68086c;">
+                <h5 class="modal-title" id="exampleModalLabel">Envíale sugerencia a DICOMES</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
+                    <span class="text-white" aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="font-weight-bold">De: </label>
-                    <label><?php echo $nombre." ".$apellido ?></label>
+            <form action="../admin/calendar/eventos.php?accion=notificaciones" method="POST">
+                <div class="modal-body">
+                    <div class="text-center">
+                        <img class="rounded-circle" src="../images/imagesDB/logo_utp.jpg" alt="Fotografía" style="width: 140px; height: 140px">
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-bold">De: </label>
+                        <label><?php echo $nombre . " " . $apellido ?></label>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-bold">Para: </label>
+                        <label>DICOMES</label>
+                        <input type="hidden" name="id_clienteSugerencia" value="<?php echo $id ?>">
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-bold">Sugerencia: </label>
+                        <textarea name="sugerencia" id="sugerencia" class="form-control text-gray-900" cols="57" rows="5"></textarea>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label class="font-weight-bold">Para: </label>
-                    <label>DICOMES</label>
+                <div class="modal-footer">
+                    <button class="btn text-white" style="background-color: #0f9bd0;">Enviar</button>
+                    <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
                 </div>
-                <form id="formMessage">
-                    <input type="text" name="busqueda" id="busqueda" placeholder="Buscar...">
-                    <ul id="respuesta">
-
-                    </ul>
-                </form>
-                <?php
-                    /* if(!empty($_GET['busqueda'])){
-                        $busqueda = $_GET['busqueda'];
-                        $search = "SELECT * FROM cliente WHERE nombre LIKE '%".$busqueda."'%";
-                        $stmt = $conex->prepare($search);
-                        echo "<div class''></div>";
-                        while($item = $stmt->fetch(PDO::FETCH_ASSOC)){
-                            echo '
-                            <div class="">
-                                <div>
-                                    <label>'.$item["nombre"]." ".$item["apellido"].'</label>
-                                </div>
-                            </div>
-                            ';
-                        }
-                    } */
-                ?>
-            </div>
-            <div class="modal-footer">
-                <a class="btn text-white" style="background-color: #68086c;" href="#">Enviar</a>
-                <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cancelar</button>
-            </div>
-
+            </form>
         </div>
     </div>
 </div>

@@ -29,7 +29,13 @@ $sql = $conex->query("SELECT * FROM misSolicitudes WHERE id_cliente =".$_SESSION
     <!-- Message -->
     <?php if (isset($_GET['solicitudEliminada'])) { ?>
       <div class="alert alert-success alert-dismissible fade show">
-        <h6>La solicitud de cobertura ha sido eliminada con éxito</h6>
+        <h6>La solicitud de cobertura ha sido eliminada con éxito.</h6>
+        <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
+        </button>
+      </div>
+    <?php } else if (isset($_GET['solicitudActuEnviada'])) { ?>
+      <div class="alert alert-success alert-dismissible fade show">
+        <span>La solicitud de actualización ha sido enviada con éxito.</span>
         <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
         </button>
       </div>
@@ -77,7 +83,8 @@ $sql = $conex->query("SELECT * FROM misSolicitudes WHERE id_cliente =".$_SESSION
                   $resultados['cantidad_personas'] . "/" .
                   $resultados['title'] . "/" .
                   $resultados['descripcion'] . "/" .
-                  $resultados['estado'];
+                  $resultados['estado'] . "/" .
+                  $resultados['id'];
 
                 $eliminar = $resultados['id'];
               ?>
@@ -226,36 +233,37 @@ $sql = $conex->query("SELECT * FROM misSolicitudes WHERE id_cliente =".$_SESSION
         </button>
       </div>
 
-      <form action="#" method="POST">
+      <form action="../admin/calendar/eventos.php?accion=actualizar" method="POST">
 
         <div class="modal-body">
           <div class="form-group">
             <label class="font-weight-bold">Fecha:</label>
-            <input type="date" class="form-control font-italic bg-white" id="fechaU">
+            <input type="date" class="form-control font-italic bg-white" name="fechaU" id="fechaU">
           </div>
           <div class="form-group">
             <label class="font-weight-bold">Ubicación:</label>
-            <input class="form-control font-italic bg-white" id="ubicacionU">
+            <input class="form-control font-italic bg-white" name="ubicacionU" id="ubicacionU">
           </div>
           <div class="form-group">
             <div class="row">
               <div class="col-md-6">
                 <label class="font-weight-bold">Hora Inicial:</label>
-                <input type="time" class="form-control font-italic bg-white" id="horaIniU">
+                <input type="time" class="form-control font-italic bg-white" name="horaIniU" id="horaIniU">
               </div>
               <div class="col-md-6">
                 <label class="font-weight-bold">Hora Final:</label>
-                <input type="time" class="form-control font-italic bg-white" id="horaFinU">
+                <input type="time" class="form-control font-italic bg-white" name="horaFinU" id="horaFinU">
               </div>
             </div>
           </div>
           <div class="form-group">
             <label class="font-weight-bold">Descripción:</label>
-            <textarea class="form-control text-dark" cols="57" rows=5 id="descripcionU"></textarea>
+            <textarea class="form-control text-dark" cols="57" rows=5 name="descripcionU" id="descripcionU"></textarea>
           </div>
         </div>
         <div class="modal-footer">
           <button class="btn text-white" name="btnSolicitud" id="btnSolicitud" style="background-color: #0f9bd0;">Solicitud de cambio</button>
+          <input type="hidden" name="id_servicioU" id="id_servicioU">
           <button type="button" class="btn btn-outline-dark" data-dismiss="modal">Cerrar</button>
         </div>
 
@@ -269,10 +277,10 @@ $sql = $conex->query("SELECT * FROM misSolicitudes WHERE id_cliente =".$_SESSION
 <div class="modal text-gray-900" tabindex="-1" id="btnEliminar" role="dialog">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header" style="background-color: #68086c;">
-        <h5 class="modal-title text-white">Eliminar</h5>
+      <div class="modal-header">
+        <h5 class="modal-title">Eliminar</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span class="text-white" aria-hidden="true">&times;</span>
+          <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">

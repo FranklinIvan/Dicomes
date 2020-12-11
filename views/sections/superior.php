@@ -206,14 +206,15 @@ if ($tipoUsuario == 1) {
                             </form>
                         </div>
                     </li>
-
+                    
+                    <?php if ($tipoUsuario == 1) { ?>
                     <!-- Nav Item - Send Messages -->
                     <li class="nav-item dropdown no-arrow mx-1">
                     <a class="nav-link dropdown-toggle" href="#" id="sendMessages" data-toggle="modal" data-target="#sendMessage" role="button" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-comments fa-fw text-gray-600"></i>
                         </a>
                     </li>
-
+                    <?php } ?>
                     <!-- Nav Item - Messages -->
                     <li class="nav-item dropdown no-arrow mx-1">
                         <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -238,7 +239,9 @@ if ($tipoUsuario == 1) {
                                     $datos = $noti['nombre'] . "/" .
                                         $noti['apellido'] . "/" .
                                         $noti['foto'] . "/" .
-                                        $noti['mensaje'];
+                                        $noti['mensaje'] . "/" .
+                                        $noti['id_notificacion'] . "/" .
+                                        $noti['id_cliente'];
                                 ?>
                                     <a onclick="mostrarNoti('<?php echo $datos ?>')" data-toggle="modal" data-target="#messageModal" class="dropdown-item d-flex align-items-center" href="#">
                                         <div class="dropdown-list-image mr-3">

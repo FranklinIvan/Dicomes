@@ -23,6 +23,12 @@ require('../views/sections/superior.php');
         <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
         </button>
       </div>
+    <?php } else if (isset($_GET['sugerenciaEnviada'])) { ?>
+      <div class="alert alert-success alert-dismissible fade show">
+        <span>Envidado correctamente ¡Gracias por tus sugerencias!</span>
+        <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
+        </button>
+      </div>
     <?php } else if (isset($_GET['error'])) { ?>
       <div class="alert alert-danger alert-dismissible fade show">
         <span>¡Ups, ha ocurrido un error!</span>
@@ -156,7 +162,7 @@ require('../views/sections/superior.php');
                     <select name="tipoServicio" class="custom-select">
                       <option value="Graduación">Graduación</option>
                       <option value="Congreso">Congreso</option>
-                      <option value="seminario">Seminario</option>
+                      <option value="Seminario">Seminario</option>
                       <option value="Presentación">Presentación</option>
                       <option value="Evento">Evento</option>
                       <option value="Otro">Otro</option>

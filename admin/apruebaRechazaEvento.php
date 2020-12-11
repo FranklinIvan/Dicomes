@@ -4,17 +4,17 @@
     
     if (isset ($_REQUEST['id_servicio'])){
     $id_servicio = $_REQUEST['id_servicio'];
-    $id_cliente =  $_REQUEST['id_cliente'];
+    $id_cliente = $_REQUEST['id_cliente'];
+    $id_personal=  $_REQUEST['id_personal'];
+    $tipoSevicio =  $_REQUEST['verTipoServicio'];
+    //echo $tipoSevicio;
+    //echo $id_personal;
     }
     else{
         echo "La variable no esta definida";
     }
 
     if( $_POST['submit'] =='Aceptar'){
-        //Mensaje y color para mostrar en la pagina.
-        $msg = "Solicitud aceptada";
-        $colorMsg = "alert-success";
-
         $estado = "aceptado";
         $color = "mediumseagreen";
         try {
@@ -28,19 +28,35 @@
             $leido = 1;
             $sql2=$conex->exec("UPDATE notificaciones SET mensaje='$mensaje', leido='$leido' WHERE id_servicio = '$id_servicio'" );
 
-            
-
-            } catch (PDOException $e) {
-                throw $e;
+            // Esto no lo quiero hacer, pero bueno.
+            if($tipoSevicio == "Graduación"){
+                $tipoSevicio = 1;
+            }else if($tipoSevicio == "Congreso"){
+                $tipoSevicio = 2;
+            }else if($tipoSevicio == "Seminario"){
+                $tipoSevicio = 3;
+            }else if($tipoSevicio == "Presentación"){
+                $tipoSevicio = 4;
+            }else if($tipoSevicio == "Evento"){
+                $tipoSevicio = 5;
+            }else if($tipoSevicio == "Otro"){
+                $tipoSevicio = 6;
             }
+
+            $sql3=$conex->exec("INSERT INTO atiende (id_servicio, id_personal, cod_tipo) VALUES('$id_servicio','$id_personal','$tipoSevicio')");
+ 
+            if($sql == true and $sql2 == true and $sql3 == true){
+                header("Location:../views/solicitudesCobertura.php?solicitudAceptada");
+            }else{
+                header("Location:../views/solicitudesCobertura.php?error");
+            }
+            
+        } catch (PDOException $e) {
+            throw $e;
+        }
     }else{
         try {
-            //Mensaje y color para mostrar en la pagina.
-            $msg = "Solicitud rechazada";
-            $colorMsg = "alert-warning";
-
-            $sql=$conex->exec("DELETE FROM notificaciones WHERE id_servicio ='$id_servicio'");
-            $sql2=$conex->exec("DELETE FROM servicio WHERE id ='$id_servicio'");
+            $sql=$conex->exec("DELETE FROM servicio WHERE id ='$id_servicio'");
             
             if($_REQUEST['motivo'] == ""){
                 $mensaje = "Su solicitud ha sido rechazada.";
@@ -48,19 +64,17 @@
                 $mensaje = $_REQUEST['motivo'];
             }
             $leido = 1;
-            $sql3=$conex->exec("INSERT INTO notificaciones(mensaje,leido,id_cliente) VALUES('$mensaje','$leido','$id_cliente')");
+            $sql2=$conex->exec("INSERT INTO notificaciones(mensaje,leido,id_cliente) VALUES('$mensaje','$leido','$id_cliente')");
 
-            
+            if($sql == true and $sql2 == true){
+                header("Location:../views/solicitudesCobertura.php?solicitudRechazada");
+            }else{
+                header("Location:../views/solicitudesCobertura.php?error");
+            }
+
         } catch (PDOException $e) {
             throw $e;
-        }
+        } 
     }
 
-    echo $_POST['submit'].$estado;
-    
-    if($sql==true){
-            header("Location:../views/solicitudesCobertura.php?msg=".$msg."&color=".$colorMsg);
-    }else{
-        echo  "Error en la actualizacion";
-    }
 ?>

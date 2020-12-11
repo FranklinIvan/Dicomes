@@ -11,6 +11,10 @@
     }
 
     if( $_POST['submit'] =='Aceptar'){
+        //Mensaje y color para mostrar en la pagina.
+        $msg = "Solicitud aceptada";
+        $colorMsg = "alert-success";
+
         $estado = "aceptado";
         $color = "mediumseagreen";
         try {
@@ -31,6 +35,10 @@
             }
     }else{
         try {
+            //Mensaje y color para mostrar en la pagina.
+            $msg = "Solicitud rechazada";
+            $colorMsg = "alert-warning";
+
             $sql=$conex->exec("DELETE FROM notificaciones WHERE id_servicio ='$id_servicio'");
             $sql2=$conex->exec("DELETE FROM servicio WHERE id ='$id_servicio'");
             
@@ -51,7 +59,7 @@
     echo $_POST['submit'].$estado;
     
     if($sql==true){
-            header("Location:../views/solicitudesCobertura.php");
+            header("Location:../views/solicitudesCobertura.php?msg=".$msg."&color=".$colorMsg);
     }else{
         echo  "Error en la actualizacion";
     }

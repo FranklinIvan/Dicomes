@@ -76,7 +76,7 @@
                 <div id="error" style="color:red;"></div>
                 <input type="password" placeholder="Repetir Contraseña" name="password2"  id="password2" required>
                 <select name="sede" class="custom-select" required>
-                    <option value="" selected>Centro regional</option>
+                    <option value="" selected>Seleccione un Centro regional</option>
                     <option value="Centro Regional de Veraguas">Centro Regional de Veraguas</option>
                     <option value="Centro Regional de Panamá Oeste">Centro Regional de Panamá Oeste</option>
                     <option value="Centro Regional de Azuero">Centro Regional de Azuero</option>

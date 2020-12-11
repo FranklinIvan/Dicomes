@@ -107,7 +107,7 @@ if ($tipoUsuario == 1) {
                         <i class="fas fa-fw fa-envelope" id=""></i>
                         <span id="">Preguntas Frecuentes</span></a>
                 </li>
-            <?php } else { ?>
+            <?php } else if ($tipoUsuario == 2) { ?>
                 <li class="nav-item" id="solicitudesCobertura">
                     <a class="nav-link" href="../views/solicitudesCobertura.php">
                         <i class="fas fa-fw fa-envelope" id="solicitudesCoberturaIcon"></i>
@@ -124,6 +124,19 @@ if ($tipoUsuario == 1) {
                     <a class="nav-link" href="../views/solicitudesCambio.php">
                         <i class="fas fa-fw fa-exchange-alt" id="solicitudCambioIcono"></i>
                         <span id="solicitudCambioTitulo">Solicitudes de cambio</span></a>
+                </li>
+
+                <li class="nav-item" id="reportes">
+                    <a class="nav-link" href="../views/reportes.php">
+                        <i class="fas fa-fw fa-exchange-alt" id="reportesIcono"></i>
+                        <span id="reportesTitulo">Reportes</span></a>
+                </li>
+
+            <?php }else{ ?>
+                <li class="nav-item" id="reportes">
+                    <a class="nav-link" href="../views/reportes.php">
+                        <i class="fas fa-fw fa-exchange-alt" id="reportesIcono"></i>
+                        <span id="reportesTitulo">Reportes</span></a>
                 </li>
             <?php } ?>
 

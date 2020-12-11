@@ -14,6 +14,14 @@ $solicitudes = $conex->query("SELECT * FROM missolicitudes WHERE estado='pendien
 
     <div class="">
       <h2>Sin Solicitudes de Cobertura</h2><br>
+      <?php if (isset($_GET['msg'])) { ?>
+      <div class="alert <?php echo $_GET['color']?> alert-dismissible fade show">
+        <h6><?php echo $_GET['msg']?></h6>
+        <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
+        </button>
+      </div>
+    <?php } ?>
+    
       <h6 class="mb-5">Por el momento, no cuentas con solicitudes de cobertura.</h6>
       <img class="img-fluid mx-auto d-block" src="../images/empty.png" alt="Imagen" style="width: 150px; height: 160px;">
     </div>
@@ -22,6 +30,14 @@ $solicitudes = $conex->query("SELECT * FROM missolicitudes WHERE estado='pendien
   } else {
   ?>
     <h2>Solicitudes de Coberturas</h2><br>
+    
+    <?php if (isset($_GET['msg'])) { ?>
+      <div class="alert <?php echo $_GET['color']?> alert-dismissible fade show">
+        <h6><?php echo $_GET['msg']?></h6>
+        <button type="button" class="close" data-dismiss="alert"><span>&times;</span>
+        </button>
+      </div>
+    <?php } ?>
 
     <div class="card shadow mb-4">
       <div class="card-header py-3">
